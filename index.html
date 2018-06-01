@@ -1,0 +1,2800 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<title>TalonRO Calculator (PvM)</title>
+		<meta name="keywords" content="private server, ragnarok server, ragnarok online, MMORPG, talonro, multiplayer, rpg, talonian" />
+		<meta name="description" content="Join the community of Talon Ragnarok Online, the most popular Ragnarok Online server in the world!" />
+<link rel="shortcut icon" href="https://www.talonro.com/favicon.png">
+<script type="text/javascript"><!--
+	Lang = 0;
+	Taijin=0;
+	// -->
+</script>
+<script type="text/javascript" src="js/head.js"></script>
+<script type="text/javascript" src="js/item.js"></script>
+<script type="text/javascript" src="js/etc.js"></script>
+<script type="text/javascript" src="js/skill.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/calc_style.css">
+<style type="text/css">
+<!--
+div#ubernavi {
+	background: url(images/th.png) repeat-x;
+	border-bottom: 1px solid #999;
+	border-right: 1px solid #999;
+	border-left: 1px solid #999;
+	display:inline-block;
+	top:0;
+	padding: 0.5em;
+	margin-left: 3px;
+	line-height: 100%;
+	
+}
+div#ubernavi a {
+	text-decoration: none;
+	color:#000;
+}
+div#ubernavi a:hover {
+	text-decoration: underline;
+}
+span.navititle {
+	
+	font-weight:bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<div id="ubernavi" align="left" style="margin-left: 7px;">
+<span class="navititle">Quick Navigation:</span> [<a href="./">PvM Calc</a>] [<a href="pvp.html">PvP Calc</a>] [<a href="https://forum.talonro.com/topic/1292-talonro-calculator/" target="_blank">Bug Report/Requests</a>]
+</div>
+<form name="calcForm">
+
+<div class="topic-main" align="left">
+<div align="left" style="margin-left: 6.5px;margin-top: 6.5px;">
+  <strong style="color:#F00">NOTE: the calculator is player-made and while quite accurate, it is not a 100% representation of TalonRO's gameplay. It is highly discouraged to base in-game purchases on results obtained through this calculator.</strong>
+</div>
+<div class="topic" align="left" style="margin-left: 6.5px;margin-top: 6.5px;">
+<h3>Changelog <span style="font-size:0.8em;">[<span onclick="SaveCookieChangelogDisplay();" style="cursor:pointer">hide/show</span>]</span></h3>
+<div style="margin-left: 5px;">
+<div id="ChangelogDisplay" style="display:inline;line-height: 165%;">
+<span onclick="document.getElementById('changelog').style.display='inline';this.style.display='none'" style="cursor:pointer">[click here to see older changelog]<br></span>
+<div id="changelog" style="display:none">
+<b>[Update 2012-05-08]</b><br>
+- custom cards added<br>
+- problems with Lady Tanee and Vesper Card<br>
+- LKH added<br>
+- Asura Strike delay fixed to 15sec<br>
+<b>[Update 2012-05-09]</b><br>
+- updated calculator source, more equip, cards and "Extended Info"-stuff available, also some items have a newer description now<br>
+- added some rental items (rental stuff ends with " R", ie normal version is called "Ballista", rental one is "Ballista R")<br>
+- adjusted Hermose Cap stats to -50atk and -20% matk (it was -20atk and -10% matk before)<br>
+<b>[Update 2012-05-15]</b><br>
+- fixed Pirate Dagger, it adds 5 atk now instead of +1% dmg like it was before<br>
+- FIXED! (Gryphon Card is working properly now) <strike>deactivated Gryphon Card effect (check <a href="https://forum.talonro.com/index.php/topic,40134.0.html#msg453107">here</a> for more information)</strike><br>
+<b>[Update 2012-05-21]</b><br>
+- adjusted Megingjard stats to +30str (instead of 40); -10% Asura damage; no str bonus to Assassin cls<br>
+- added more rental items<br>
+<b>[Update 2012-05-24]</b><br>
+- adjusted Brisingamen: added slot; added dex+3; changed luk to +6 (instead of +10); changed def to 5 (instead of 1)<br>
+- added all missing rental items, they're all implemented now (except those experience accessoires)<br>
+- added str/agi/int mid slotted headgears (+1 STR [1], +1 AGI [1], +1 INT [1])<br>
+<b>[Update 2012-05-25]</b><br>
+- added SQI-Bonus interface! you can find it on the bottom of the page, it's still 'beta' so report any errors you might have, please<br>
+- added SQI and bonuses for: Twin Fang<br>
+<b>[Update 2012-05-26]</b><br>
+- added SQI and bonuses for: Aegis Shield<br>
+- improved SQI-Bonus interface: now SQI-Bonus is activated only if the appropriated SQI is equiped<br>
+<b>[Update 2012-05-26] v2</b><br>
+- fixed 'Additional Effects', working properly now (destroyed it by myself before...)<br>
+<b>[Update 2012-05-28]</b><br>
+- improved SQI-Bonus interface: you can only see SQI-Bonus for equiped SQI now; also SQI-Bonus will be resetted after class-change<br>
+- added SQI and bonuses for: Artemis Bow<br>
+<b>[Update 2012-05-29]</b><br>
+- added SQI and bonuses for: Belmont Whip<br>
+- added SQI and bonuses for: Blade of Angels<br>
+<b>[Update 2012-05-30]</b><br>
+- added SQI and bonuses for: Djinn (damage reflection can be activated under "Additional Effects - Temporary Card/Item Effects")<br>
+- added SQI and bonuses for: Electric Guitar<br>
+- added SQI and bonuses for: Evangelist<br>
+- added SQI and bonuses for: Eversong Greaves<br>
+<b>[Update 2012-05-31]</b><br>
+- adjusted Leaf Clover in Mouth (adds 1% MATK)<br>
+- adjusted Valkyrie Helm<br>
+- adjusted Gentlemen's Pipe (adds 1% MATK)<br>
+<b>[Update 2012-06-01]</b><br>
+- added SQI and bonuses for: Ghostdancer Staff<br>
+- added SQI and bonuses for: Hira Shurikat<br>
+- adjusted SQI and added bonuses for: Mjolnir<br>
+- added SQI and bonuses for: Nibelungen<br>
+<b>[Update 2012-06-02]</b><br>
+- adjusted SQI bonus for: Djinn - 50% more damage with Mammonite<br>
+- added SQI and bonuses for: Scouter<br>
+- adjusted SQI interface to Super Novice, so this class is able to use two SQIs and those bonuses e.g. Blade of Angels &amp; Scouter<br>
+<b>[Update 2012-06-03]</b><br>
+- added SQI and bonuses for: Sherwood Bow<br>
+- added SQI and bonuses for: Staff of Magi<br>
+- added SQI and bonuses for: Suiken<br>
+- added SQI and bonuses for: Tome of Ymir<br>
+<b>[Update 2012-06-04]</b><br>
+- added a navigation bar to quickly switch between the PvM and the new PvP calc<br>
+<b>[Update 2012-06-12]</b><br>
+- adjusted Novice gears (Novice False Eggshell, Novice Main Gauche, Novice Guard, Tattered Novice Ninja Suit, Somber Novice Hood)<br>
+<b>[Update 2012-06-16]</b><br>
+- added equip combos for rental items (eg Spiritual Ring R + Divine Cross)<br>
+- fixed Lady Tanee Card<br>
+<b>[Update 2012-06-18]</b><br>
+- adjusted General Egnigem Cenia Card, adds +20% SP instead of +10% (tro Card desc was fixed too) (thanks GM-Seiren for confirming it)<br>
+<b>[Update 2012-06-19]</b><br>
+- added Pussy Cat Bell<br>
+- slightly adjusted MaxSP calculation<br>
+<b>[Update 2012-06-20]</b><br>
+- adjusted 'Service for You' MaxSP Increase calculation<br>
+- adjusted MaxSP calculation if Gospel's 'All stats +20' buff is active<br>
+<b>[Update 2012-06-21]</b><br>
+- adjusted MaxSP calculation if Bless is active<br>
+<b>[Update 2012-06-21]v2</b><br>
+- slightly adjusted Asura Strike calculation<br>
+- added missing Armor enchants: DEF/MDEF/CRIT/ASPD/FLEE/HIT<br>
+- added Rock Replica<br>
+- fixed SQI Bonus selection for Google Chrome and Internet Explorer<br>
+<b>[Update 2012-06-22]</b><br>
+- Lower headgears added: Chewing Bubblegum, Nut Donut In Mouth, Scissors Replica, Paper Replica<br>
+- Upper/mid headgear added: Crown of Deceit<br>
+<b>[Update 2012-06-23]</b><br>
+- Lower headgears added: Cherry Blossom In Mouth, Choco Donut In Mouth, Donut In Mouth, Green Onion In Mouth, Handkerchief In Mouth, Lollipop, Love Piece (+item combo with Heart Wing Hairband), Ninja's Scroll, Plant Stem In Mouth, Puppy Grass, Rainbow Scarf, Rose Of Crimson, Samurai Mask, Special Carrot In Mouth (+item combo with Sheila Hairnet), Strange Tongue, Umbala Spirit<br>
+- Lower headgears added: '+1 DEF' for all headgears which don't add any special effect except 1 def (includes those which increase heal by specific recovery items)<br>
+- Lower headgears adjusted: Spiked Scarf, Well-Chewed Pencil (added item combo with Model Training Hat)<br>
+- Peco Peco Hairband effect fixed<br>
+<b>[Update 2012-06-25]</b><br>
+- slightly adjusted ASPD calculation<br>
+<b>[Update 2012-06-28]</b><br>
+- adjusted Ice Pick: -30% damage to demi-human<br>
+<b>[Update 2012-06-29]</b><br>
+- changed LKH position in the headgear list; it appears as the first option now because it's used alot<br>
+- added Chicken Hat<br>
+- added effect to Novice Breastplate: +2000 HP<br>
+- adjusted Blade of Angels class requirements, Novice/Novice High can use it too now<br>
+<b>[Update 2012-06-29]v2</b><br>
+- adjusted Hermose's Cap to the latest server updates: -10% ATK instead of -50 ATK<br>
+<b>[Update 2012-06-30]</b><br>
+- removed SQI bonuses for Scouter if equipped by Super Novice (that's apparently not possible)<br>
+- improved SQI-Bonus interface: SQI bonuses and interface will be deactivated if SQI is unequipped<br>
+- renamed some monster (typos, etc...)<br>
+<b>[Update 2012-07-01]</b><br>
+- fixed ASPD boost of Thief Ring &amp; Cold Heart equip combo<br>
+- added monster images, slightly changed design for 'Monster Combat Simulator'<br>
+- fixed some style bugs<br>
+<b>[Update 2012-07-01]v2</b><br>
+- fixed monster image animation error for Firefox user<br>
+<b>[Update 2012-07-03]</b><br>
+- adjusted Guarana Candy: activates Increase AGI Level 10 instead of +10% ASPD and +5 Hit<br>
+<b>[Update 2012-07-04]</b><br>
+- added link to report bugs or make requests to the quick navigation<br>
+- Incanation Samurai Card atk bonus is now shown in the ATK field (it worked before too! it just wasn't shown in the atk field but at combat results)<br>
+<b>[Update 2012-07-05]</b><br>
+- added mid-headgear: Filir Wings<br>
+<b>[Update 2012-07-06]</b><br>
+- renamed Ogretooth to Tirfing (card)<br>
+<b>[Update 2012-07-06]v2</b><br>
+- added upper headgear: Moonlight Flower Hat<br>
+- updated missing descriptions<br>
+<b>[Update 2012-07-08]</b><br>
+- adjusted Magic Bible Vol.1 class requirements and changed the name to Book of Charms Vol.1 (used ingame)<br>
+- added a hide/show-function to changelog, hide/show status will be saved in cookie and loaded automatically next time you visit the site<br>
+&nbsp;&nbsp;which means if you hide the changelog it will always be hidden until you click the button again<br>
+<b>[Update 2012-07-10]</b><br>
+- adjusted Novice Armlet<br>
+<b>[Update 2012-07-11]</b><br>
+- adjusted Cornus HP and exp<br>
+- adjusted Byorgue Card description<br>
+<b>[Update 2012-07-12]</b><br>
+- adjusted Bone Plate class requirements<br>
+<b>[Update 2012-07-14]</b><br>
+- adjusted ATK field to calculate Gunslinger weapons based on DEX instead of STR (damage isn't changed because it was calculated correctly)<br>
+<b>[Update 2012-07-15]</b><br>
+- added all custom TalonRO pets<br>
+<b>[Update 2012-07-17]</b><br>
+- renamed Black Cat to Whickebine Black Cat Ears, removed defense reduction<br>
+<b>[Update 2012-07-20]</b><br>
+- added upper headgear: Chicken Of Love Hat<br>
+<b>[Update 2012-07-23]</b><br>
+- fixed Gryphon Card: effect wasn't working correctly with 2 Gryphon Cards<br>
+<b>[Update 2012-07-25]</b><br>
+- code revamp, doesn't really change anything for you except for a small visual change, also favicon showing now<br>
+<b>[Update 2012-07-29]</b><br>
+- fixed bug for IE: some options were being removed after activating them<br>
+<b>[Update 2012-07-31]</b><br>
+- removed "What Homunculus will I get?" option, because stats don't affect the chance getting a specific homunculus (source: Boreas)<br>
+<b>[Update 2012-08-01]</b><br>
+- removed 'alert' which pops up at choosing SQI bonus<br>
+- added upper headgear: Minor Valkyrian Helm<br>
+<b>[Update 2012-08-02]</b><br>
+- added upper headgear: Deviruchi Headphones<br>
+<b>[Update 2012-08-04]</b><br>
+- added 'Manual Edits' interface (bottom of the page), so you can simulate equip effects which aren't added yet<br>
+<b>[Update 2012-08-09]</b><br>
+- reduced Ice Pick damage against Emperium and castle guardians<br>
+<b>[Update 2012-08-12]</b><br>
+- adjusted Silver Shotel job requirements<br>
+<b>[Update 2012-08-13]</b><br>
+- added more card shortcuts (TTT, DTT, DDT ...)<br>
+<b>[Update 2012-08-16]</b><br>
+- added upper headgears: Black Feather Beret, Cat Ear Beret<br>
+- fixed Spiked Scarf: +1 def wasn't showing<br>
+<b>[Update 2012-08-28]</b><br>
+- adjusted Chef Hat to the latest TalonRO Updates<br>
+<b>[Update 2012-09-03]</b><br>
+- fixed Chewing Bubblegum: +1% damage was changed to +1% ATK (there's a difference for some skills)<br>
+- fixed Tournament Shield &amp; equip combos: +1% ATK was changed to +1% damage<br>
+<b>[Update 2012-11-07]</b><br>
+- added headgears (server update: 2012-08-28): Knit Rabbit Ear Hat, Magical Booster<br>
+- adjusted Southern Cross effect and description<br>
+- added headgears (server update: 2012-10-21): Blue Poring Clip, Green Poring Clip, Pink Poring Clip, Yellow Poring Clip, King Poring Hat,<br>
+&nbsp;&nbsp;Majoruros Horn, Gold Coin Poring Hat, Cold Breath, Ifrit Eyes, Poker Card In Mouth, Choco Stick In Mouth, Rainbow Poring Hat,<br>
+&nbsp;&nbsp;Scrat Hat, Pink Bunny Band, Anemos Mask, Black Shiba Hat, Cursed Book<br>
+- added headgear: Ice Ear Wing, Flying Angel<br>
+- fixed class requirements for Thin Blade, now usable by non-trans classes<br>
+- removed "Ninja's Scroll", because it was available twice - use "Ninja Scroll" now<br>
+- added "Continental Guard Quest (Resurrection of Satan Morroc)" Items: Death Loop, Rune Spellstone (Seal of Continental Guard was already implented)<br>
+<b>[Update 2012-11-09]</b><br>
+- slightly adjusted ASPD calculation (still not perfect though..)<br>
+<b>[Update 2012-12-09]</b><br>
+- fixed ATK-value, includes Pirate Dagger now<br>
+<b>[Update 2012-12-26]</b><br>
+- fixed Andre Larva Card not showing at card-options<br>
+- fixed [Aquired Skill] and [Auto-Casted Skill] Level after switching between Fireblend and Fireblend R (rental)<br>
+<b>[Update 2012-12-26]v2</b><br>
+- fixed Ramen Hat: not decreasing int by 1 anymore; added description<br>
+<b>[Update 2012-12-27]</b><br>
+- fixed Rebirth Spirit calculation<br>
+- renamed Kandura armor to Gandora to match ingame name<br>
+<b>[Update 2012-12-30]</b><br>
+- adjusted Ice Pick based Shield Boomerang damage calculation, it's a lot closer to the ingame damage now - but you may still experience a difference of about 10%<br>
+<b>[Update 2013-01-01]</b><br>
+- fixed Ice Pick effect for off-hand: now Ice Pick effect works for main-hand only (if used with basic attack)<br>
+<b>[Update 2013-01-06]</b><br>
+- added Sanctuary healing amount to the Extended Info menu<br>
+<b>[Update 2013-10-06]</b><br>
+- Mysteltainn Card atk will now be added to the 'ATK' field<br>
+- renamed Horn of Hilthrion to Soul of Hels Leon to match ingame name<br>
+- fixed Red Ferus Card: removed +5 AGI, added +5% damage with Fire Pillar<br>
+- added MobDB-link below the monster name<br>
+- fixed Dullahan pet bonus: adds +5% to critical damage instead of CRIT +5<br>
+- added monster: Piranha<br>
+- fixed Asura: weapon size isn't affecting the damage anymore (i.e. Fist/Stunner/etc... does 100% damage on small/mid/large sized monster)<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php/topic,49644.0.html">New maps, monsters, items and cards!</a><br>
+&nbsp;&nbsp;- Dewata monster adjustments: Comodo, Leak, Banaspaty, Butoijo, Alnoldi, Cendrawasih<br>
+&nbsp;&nbsp;- Dewata monster cards added: Cendrawasih, Alnoldi, Butoijo, Banaspaty, Leak, Comodo<br>
+&nbsp;&nbsp;- Dewata gear added: Tidung<br>
+&nbsp;&nbsp;- El Dicastes monster adjustments: One-Horn Scaraba, One-Horn Scaraba Egg, Two-Horn Scaraba, Two-Horn Scaraba Egg, Antler Scaraba, Antler Scaraba Egg, Queen Scaraba, Rake Scaraba, Rake Scaraba Egg, Dolomedes, Tatacho<br>
+&nbsp;&nbsp;- El Dicastes monster cards added: Centipede, Dolomedes, Scaraba, Queen Scaraba<br>
+&nbsp;&nbsp;- El Dicastes Gear added: Stem Whip, Alca Bringer, Chrome Metal Two-Handed Sword, Mystic Bow, Red Ether Bag, Imperial Guard, Imperial Spear (+ combo), Green Whistle, Black Wing (+ combo)<br>
+&nbsp;&nbsp;- Bibilan/Byalan monster adjustments: King Dramoh, Kraken, Pot Dofle, Sedora, Sropho<br>
+&nbsp;&nbsp;- Bibilan/Byalan monster cards added: Sropho, Sedora, Pot Dofle, Kraken, King Dramoh<br>
+- fixed Centipede Card: removed poison status resistance, added poison element resistance<br>
+- fixed SQI bonus for: Aegis Shield - Grand Cross damage bonus is working now<br>
+- renamed Bowman's Scarf to Renown Archer's Scarf and Icarus Wings to Feather of Icarus to match ingame names<br>
+- renamed Kronos to Chronos to match ingame name and adjusted effects<br>
+- changed One-Horn Scaraba and Two-Horn Scaraba to boss-type<br>
+<b>[Update 2013-10-07]</b><br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php/topic,50791.0.html">Easter Event and Updates~</a><br>
+&nbsp;&nbsp;- new headgears added: Mother Elven Ears, Elder Crown, RWC Commemorative Pin, Angeling Fur Hat, Wunderkammer<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php/topic,51303.0.html">Spring Event, mob tweaks and more updates~</a><br>
+&nbsp;&nbsp;- new headgears added: Valkyrie Circlet, Patron of the Sea God, Imperial Feather (+ combo)<br>
+&nbsp;&nbsp;- no mob tweaks done, they were included yesterday already<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php/topic,52007.0.html">WoE:SE implementation and more</a><br>
+&nbsp;&nbsp;- new bow+arrow combo added: Elven Bow + Elven Arrow<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php/topic,53466.0.html">WoE Changes, Summer Event, New Gears and much more!</a><br>
+&nbsp;&nbsp;- new equip added: Round Buckler, Silver Guard, Rosa Shield, Carga Mace, Dulga, Puente Robe, Claire Suits, Lapine Staff<br>
+- added new equip: Kris, Falken Blitz, Fancy Phantom Mask<br>
+- fixed Super Novice Link for weapons: if activated it was showing some lv 3 weapons like Stunner before<br>
+<b>[Update 2013-10-07]v2</b><br>
+- fixed Schwartzwald Pine Jubilee: +20 Perfect Dodge instead of +20 Flee<br>
+<b>[Update 2013-10-08]</b><br>
+- renamed Red Bow to Falken Blitz and removed newly implented Falken Blitz because it's the same weapon<br>
+- renamed Radio Antenna to Antenna to match ingame name and adjusted effects<br>
+- fixed Sharp Shooting: Drosera Card and Sharp Arrow increases crit rate now; The Paper Card increases damage now<br>
+- fixed def ignoring effects for left hand/off-hand (ie. Weeder Knife/Combat Knife) because those work for right/main hand only no matter which hand the weapon is used with<br>
+<b>[Update 2013-10-13]</b><br>
+- improved Shield Chain damage calculation, it's still a bit off compared to ingame damage but way better than before<br>
+<b>[Update 2013-10-13]v2</b><br>
+- added headgear: Little Feather Hat, Sting Hat, New/Powerful/Ultimate Ascended Black Dragon Hat, Snake Head Hat<br>
+- renamed Large Bapho Horns to Baphomet Horns to match ingame name<br>
+- removed 2 of 3 Emperium 'monster' and adjusted the last one to boss-type, so Abysmal Knight Card works too<br>
+- changed all TalonRO related links to https, so you won't get a warning on some browsers anymore<br>
+- "Supportive / Party Skills", "Monster Buffs" and  "Monster Debuffs" are shown as [Active] now when a character build is loaded by URL which has one of the options set<br>
+<b>[Update 2014-08-30]</b><br>
+- Mob info is showing if mob is boss/non-boss now<br>
+- added armor: Used Mage Coat<br>
+- added headgear: Holy Marching Hat<br>
+- fixed Evil Snake Lord description: +50% resistance to Chaos(Confusion)/Stone Curse<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php?topic=58926.0">Halloween Competitions Winners!</a><br>
+&nbsp;&nbsp;- new equip added: Salvage Cape, Bloody Cross, Giant Shield<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php?topic=63445.0">The Folkvang Patch</a><br>
+&nbsp;&nbsp;- adjusted Queen Scaraba exp<br>
+&nbsp;&nbsp;- added Scaraba Hole monster: Gold Antler Scaraba, Gold Antler Scaraba Egg, Gold One-Horn Scaraba, Gold One-Horn Scaraba Egg, Gold Queen Scaraba, Gold Rake Scaraba, Gold Rake Scaraba Egg, Gold Two-Horn Scaraba, Gold Two-Horn Scaraba Egg<br>
+&nbsp;&nbsp;- added Brasilis monster: Iara, Boitata, Curupira, Headless Mule, Toucan<br>
+&nbsp;&nbsp;- reducing Poem of Bragi delay reduction from 5% to 3% per skill level on level 10<br>
+&nbsp;&nbsp;- new headgears added: Polar Bear Cap, Magician's Night Cap, Tasty Strawberry Hat<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php?topic=64209.0">Folkvang: Second Wave</a><br>
+&nbsp;&nbsp;- added Port Malaya monster: Manananggal, Tiyanak, Wakwak, Jejeling, Tikbalang, Bungisngis, Engkanto, Mangkukulam<br>
+&nbsp;&nbsp;- added Golden Scaraba Card and Golden Queen Scaraba Card<br>
+&nbsp;&nbsp;- added Lighthalzen monster: Alphoccio, Biochemist Flamel, Celia, Champion Chen, Chen, Flamel, Gertie, Gypsi Trentini, Minstrel Alphoccio, Paladin Randel, Randal, Scholar Celia, Stalker Gertie, Trentini<br>
+&nbsp;&nbsp;- new headgears added: Full Bloom Hairpin, Diadem Of Bruenhild<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php?topic=65535.0">Folkvang: Wave Three, Summer, and more</a><br>
+&nbsp;&nbsp;- new equip added: Creeper Bow, Bible of Promise(2nd Vol.), Mental Stick (+item combo with Telekinetic Orb), Telekinetic Orb, Recovery Light, Sura's Rampage, Green Surgical Gown (+item combo with Mes), Catapult, Cannon Spear, Assassin's Glove (+combo with Krishna and Chakram), Geffenia Water Book (+combo with Lacrima Stick), Lever Action Rifle (rental)<br>
+- adjusted Stone Skin Monster Buff, it reduced only INT based MDEF before, now it also reduces the %-based MDEF<br>
+<b>[Update 2014-09-02]</b><br>
+- added headgears: Evil Mask (+combo with Succubus and Incubus Horn), Halloween Midas Whisper<br>
+<b>[Update 2014-09-11]</b><br>
+- adjusted Proxy Skin Fragment resistance from 7% to 3% against all elements<br>
+- added headgear: Gossip Raven<br>
+<b>[Update 2014-09-24]</b><br>
+- High Wizard MDEF reduction is shown in the monster info now<br>
+<b>[Update 2014-09-29]</b><br>
+- Implemented Pharmacy Boost as mentioned in news: <a href="https://forum.talonro.com/index.php?topic=54602.0">Homunculus changes and fixes</a><br>
+<b>[Update 2014-10-22]</b><br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php?topic=67203.0">Autumn Patch 2014</a><br>
+&nbsp;&nbsp;- adjusted Djinn: it now has three slots<br>
+&nbsp;&nbsp;- adjusted Asura delay: decreased from 15 sec to 10 sec<br>
+<b>[Update 2014-12-28]</b><br>
+- increased slots to save character builds from 19 to 50, your current saves are not modified and can still be used<br>
+- increased usability by adding labels for some checkboxes (bigger click area, because you can click on the text instead of the checkbox)<br>
+- adjusted Angel of Ghost bonus to ATK + 2%, MATK + 2%, other bonuses removed<br>
+- added Woodie pet<br>
+- fixed Poem of Bragi change from [Update 2014-08-30], now reducing delay on every skill level not only on skill level 10<br>
+- adjusted max INT/DEX for some Skills in the 'Music and Dance Skills' section at the bottom of the calc<br>
+<b>[Update 2015-01-01]</b><br>
+- adjusted Poem of Bragi mentioned in news: <a href="https://forum.talonro.com/index.php?topic=67203">Autumn Patch 2014</a><br>
+&nbsp;&nbsp;- there is an additional option in the 'Music and Dance Skills' section which allows to set PvP/WOE mode for Poem of Bragi (default: PvM)<br>
+- added mid headgears: Shutter Glasses, Unique Sunglasses, Hexagonal Glasses<br>
+- implementing TalonRO updates: <a href="https://forum.talonro.com/index.php?topic=68557.0">Winter 2014 Patch Updates</a><br>
+&nbsp;&nbsp;- adjusted Poem of Bragi in the 'Music and Dance Skills' section, damage will now be reduced proportional to the after cast delay reduction Bragi provides<br>
+&nbsp;&nbsp;- fixed Assassin Cross of Sunset in the 'Music and Dance Skills' section, now providing a higher ASPD boost<br>
+&nbsp;&nbsp;- added headgear card: Pinguicula Card<br>
+&nbsp;&nbsp;- adjusted Dark Pinguicula Card, now nullifying the use of Bottle Grenades when casting Demonstration skill instead of adding 10 ATK<br>
+&nbsp;&nbsp;- added headgears: Gentlemen Fez and Tarnished Lamp<br>
+<b>[Update 2015-12-19]</b><br>
+- adjusted favicon<br>
+- added headgear: Santa Cat Hat, Butterfly Hairpin<br>
+- adjusted Bunny Top Hat bonus to AGI +3, removed other bonus<br>
+- added Kris weapon enchantments, these will be shown below the cards selection of the weapon when Kris is selected (please report missing enchantmets - I do not know all of them)<br>
+<b>[Update 2015-12-21]</b><br>
+- added Kris weapon enchantments: VIT, LUK, %-MATK, %-ATK<br>
+- adjusted "Save" and "Save as URL" feature to save Kris enchantments<br>
+- added Beach Manteau, Beach Sandals and combo for both, Ancient Horns (+100 ATK can be activated under "Additional Effects - Temporary Card/Item Effects")<br>
+- added cap to success rate for Potion Brewing at 100%<br>
+- fixed ATK increase if two Bloody Knight cards are used, the combat results are not affected by this as they were calculated correctly already<br>
+- fixed Sedora Card: FLEE increase is correctly limited to Thief Class now<br>
+<b>[Update 2015-12-22]</b><br>
+- adjusted "Save" and "Save as URL" feature to save SQI bonus<br>
+<b>[Update 2015-12-29]</b><br>
+- added Evil Marching Hat and Nepenthes Card (adjusted Archer card combo and card shortcut)<br>
+<b>[Update 2016-05-05]</b><br>
+- fixed Ship Captain's Hat, it increases DEX by 1 and ranged damage by 7% instead of 3%<br>
+- fixed Little Feather Hat and Sharp Arrow combo, +5% crit damage will be added even though a melee weapon is equiped for classes which are able to equip arrows<br>
+- fixed Brocca R, it no longer increases damage against small and large sized monsters, damage against medium sized is decreased to 20% instead of 25%<br>
+- added lower headgear: Vajra<br>
+</div>
+<b>[Update 2016-11-02]</b><br>
+- renamed Cardo to Carled<br>
+- renamed Thorn Staff of Darkness to Dark Thorn Staff, removed description of it being two-handed<br>
+- added elemental Bullets for Gunslinger weapons<br>
+- fixed Little Feather Hat, added 2 DEX<br>
+- fixed Sedora Card, +4 FLEE bonus for Thief class was calculated once only even when using more than one Sedora Card<br>
+- adjusted Rapid Shower cooldown to match ingame value (1sec now instead of 1.7)<br>
+- added Bayani Bakonawa Scale Armor, Bayani Buwaya Skin Clothes, Bayani Kalasag and Bayani Nightmare Bangungot Boots<br>
+</div>
+</div></div>
+<div class="topic" style="margin-left: 6.5px;">
+<h3 style="font-size:15px">Character Simulator</h3>
+<table><tbody>
+<tr><td>&nbsp;</td><td>
+
+<input value="Save" onclick="SaveCookie()" type="button">
+<select name="A_SaveSlot">
+	<option selected="selected" value="num00">Save1: No Data</option>
+	<option value="num01">Save2: No Data</option>
+	<option value="num02">Save3: No Data</option>
+	<option value="num03">Save4: No Data</option>
+	<option value="num04">Save5: No Data</option>
+	<option value="num05">Save6: No Data</option>
+	<option value="num06">Save7: No Data</option>
+	<option value="num07">Save8: No Data</option>
+	<option value="num09">Save9: No Data</option>
+	<option value="num10">Save10: No Data</option>
+	<option value="num11">Save11: No Data</option>
+	<option value="num12">Save12: No Data</option>
+	<option value="num13">Save13: No Data</option>
+	<option value="num14">Save14: No Data</option>
+	<option value="num15">Save15: No Data</option>
+	<option value="num16">Save16: No Data</option>
+	<option value="num17">Save17: No Data</option>
+	<option value="num18">Save18: No Data</option>
+	<option value="num19">Save19: No Data</option>
+	<option value="num20">Save20: No Data</option>
+	<option value="num21">Save21: No Data</option>
+	<option value="num22">Save22: No Data</option>
+	<option value="num23">Save23: No Data</option>
+	<option value="num24">Save24: No Data</option>
+	<option value="num25">Save25: No Data</option>
+	<option value="num26">Save26: No Data</option>
+	<option value="num27">Save27: No Data</option>
+	<option value="num28">Save28: No Data</option>
+	<option value="num29">Save29: No Data</option>
+	<option value="num30">Save30: No Data</option>
+	<option value="num31">Save31: No Data</option>
+	<option value="num32">Save32: No Data</option>
+	<option value="num33">Save33: No Data</option>
+	<option value="num34">Save34: No Data</option>
+	<option value="num35">Save35: No Data</option>
+	<option value="num36">Save36: No Data</option>
+	<option value="num37">Save37: No Data</option>
+	<option value="num38">Save38: No Data</option>
+	<option value="num39">Save39: No Data</option>
+	<option value="num40">Save40: No Data</option>
+	<option value="num41">Save41: No Data</option>
+	<option value="num42">Save42: No Data</option>
+	<option value="num43">Save43: No Data</option>
+	<option value="num44">Save44: No Data</option>
+	<option value="num45">Save45: No Data</option>
+	<option value="num46">Save46: No Data</option>
+	<option value="num47">Save47: No Data</option>
+	<option value="num48">Save48: No Data</option>
+	<option value="num49">Save49: No Data</option>
+	<option value="num50">Save50: No Data</option>
+</select>
+<input value="Load" onclick="LoadCookie()" type="button">
+<span id="DELHTML"><font size="2"><a href="del.html">[delete saved data]</a></font></span><br>
+<input value="Save as URL" onclick="URLOUT()" type="button"><input name="URL_TEXT" size="130" type="text">
+<table>
+<tbody>
+	<tr>
+		<td valign="top">
+			<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse;">
+<tbody>
+	<tr>
+		<td colspan="6" class="subheader" bgcolor="#DDDDFF">
+			<div style="float: left; padding: 3px;"><span id="nm01">Base Stats</span></div>
+			<!-- <div style="float: right; padding-right: 3px;">
+				<input id="lab1" name="A_youshi" onclick="calc()" type="checkbox">
+				<label for="lab1"><span id="nm078">Adopted</span></label> / <input id="lab2" name="BLVauto" checked="checked" type="checkbox">
+				<label for="lab2"><span id="nm02">Auto Adjust Base Level</span></label>
+			</div> -->
+			<!-- Auto adjust according to base Lv is no longer ticked by default -->
+			<div style="float: right; padding-right: 3px;">
+				<input id="lab1" name="A_youshi" onclick="calc()" type="checkbox">
+				<label for="lab1"><span id="nm078">Adopted</span></label> / <input id="lab2" name="BLVauto" type="checkbox">
+				<label for="lab2"><span id="nm02">Auto Adjust Base Level</span></label>
+			</div>
+			<div style="clear: both;"></div>
+		</td>
+	</tr>
+<tr>
+<td id="nm03">LV</td>
+<td>
+<select name="A_BaseLV" onchange="StCalc(1)|StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option><option value="11">11
+	</option><option value="12">12
+	</option><option value="13">13
+	</option><option value="14">14
+	</option><option value="15">15
+	</option><option value="16">16
+	</option><option value="17">17
+	</option><option value="18">18
+	</option><option value="19">19
+	</option><option value="20">20
+	</option><option value="21">21
+	</option><option value="22">22
+	</option><option value="23">23
+	</option><option value="24">24
+	</option><option value="25">25
+	</option><option value="26">26
+	</option><option value="27">27
+	</option><option value="28">28
+	</option><option value="29">29
+	</option><option value="30">30
+	</option><option value="31">31
+	</option><option value="32">32
+	</option><option value="33">33
+	</option><option value="34">34
+	</option><option value="35">35
+	</option><option value="36">36
+	</option><option value="37">37
+	</option><option value="38">38
+	</option><option value="39">39
+	</option><option value="40">40
+	</option><option value="41">41
+	</option><option value="42">42
+	</option><option value="43">43
+	</option><option value="44">44
+	</option><option value="45">45
+	</option><option value="46">46
+	</option><option value="47">47
+	</option><option value="48">48
+	</option><option value="49">49
+	</option><option value="50">50
+	</option><option value="51">51
+	</option><option value="52">52
+	</option><option value="53">53
+	</option><option value="54">54
+	</option><option value="55">55
+	</option><option value="56">56
+	</option><option value="57">57
+	</option><option value="58">58
+	</option><option value="59">59
+	</option><option value="60">60
+	</option><option value="61">61
+	</option><option value="62">62
+	</option><option value="63">63
+	</option><option value="64">64
+	</option><option value="65">65
+	</option><option value="66">66
+	</option><option value="67">67
+	</option><option value="68">68
+	</option><option value="69">69
+	</option><option value="70">70
+	</option><option value="71">71
+	</option><option value="72">72
+	</option><option value="73">73
+	</option><option value="74">74
+	</option><option value="75">75
+	</option><option value="76">76
+	</option><option value="77">77
+	</option><option value="78">78
+	</option><option value="79">79
+	</option><option value="80">80
+	</option><option value="81">81
+	</option><option value="82">82
+	</option><option value="83">83
+	</option><option value="84">84
+	</option><option value="85">85
+	</option><option value="86">86
+	</option><option value="87">87
+	</option><option value="88">88
+	</option><option value="89">89
+	</option><option value="90">90
+	</option><option value="91">91
+	</option><option value="92">92
+	</option><option value="93">93
+	</option><option value="94">94
+	</option><option value="95">95
+	</option><option value="96">96
+	</option><option value="97">97
+	</option><option value="98">98
+	</option><option value="99">99
+	</option>
+</select>
+</td>
+<td id="nm04">JobLV</td>
+<td>
+<select name="A_JobLV" onchange="StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option>
+</select>
+</td>
+<td id="nm05">Class</td>
+<td>
+<select name="A_JOB" onchange="ClickJob(this[this.selectedIndex].value) | StAllCalc() | StCalc()">
+	<option selected="selected" value="0">Novice
+	</option><option value="1">Swordsman
+	</option><option value="2">Thief
+	</option><option value="3">Acolyte
+	</option><option value="4">Archer
+	</option><option value="5">Magician
+	</option><option value="6">Merchant
+	</option><option value="7">Knight
+	</option><option value="8">Assassin
+	</option><option value="9">Priest
+	</option><option value="10">Hunter
+	</option><option value="11">Wizard
+	</option><option value="12">Blacksmith
+	</option><option value="13">Crusader
+	</option><option value="14">Rogue
+	</option><option value="15">Monk
+	</option><option value="16">Bard
+	</option><option value="17">Dancer
+	</option><option value="18">Sage
+	</option><option value="19">Alchemist
+	</option><option value="20">Super Novice
+	</option><option value="21">Lord Knight
+	</option><option value="22">Assassin Cross
+	</option><option value="23">High Priest
+	</option><option value="24">Sniper
+	</option><option value="25">High Wizard
+	</option><option value="26">Whitesmith
+	</option><option value="27">Paladin
+	</option><option value="28">Stalker
+	</option><option value="29">Champion
+	</option><option value="30">Clown
+	</option><option value="31">Gypsy
+	</option><option value="32">Professor
+	</option><option value="33">Creator
+	</option><option value="34">High Novice
+	</option><option value="35">High Swordsman
+	</option><option value="36">High Thief
+	</option><option value="37">High Acolyte
+	</option><option value="38">High Archer
+	</option><option value="39">High Magician
+	</option><option value="40">High Merchant
+	</option><option value="41">Taekwon Kid
+	</option><option value="42">Star Gladiator
+	</option><option value="43">Soul Linker
+	</option><option value="44">Ninja
+	</option><option value="45">Gunslinger
+	</option>
+</select>
+</td>
+</tr>
+<tr>
+<td id="nm06">STR</td>
+<td>
+<select name="A_STR" onchange="StCalc() | StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option><option value="11">11
+	</option><option value="12">12
+	</option><option value="13">13
+	</option><option value="14">14
+	</option><option value="15">15
+	</option><option value="16">16
+	</option><option value="17">17
+	</option><option value="18">18
+	</option><option value="19">19
+	</option><option value="20">20
+	</option><option value="21">21
+	</option><option value="22">22
+	</option><option value="23">23
+	</option><option value="24">24
+	</option><option value="25">25
+	</option><option value="26">26
+	</option><option value="27">27
+	</option><option value="28">28
+	</option><option value="29">29
+	</option><option value="30">30
+	</option><option value="31">31
+	</option><option value="32">32
+	</option><option value="33">33
+	</option><option value="34">34
+	</option><option value="35">35
+	</option><option value="36">36
+	</option><option value="37">37
+	</option><option value="38">38
+	</option><option value="39">39
+	</option><option value="40">40
+	</option><option value="41">41
+	</option><option value="42">42
+	</option><option value="43">43
+	</option><option value="44">44
+	</option><option value="45">45
+	</option><option value="46">46
+	</option><option value="47">47
+	</option><option value="48">48
+	</option><option value="49">49
+	</option><option value="50">50
+	</option><option value="51">51
+	</option><option value="52">52
+	</option><option value="53">53
+	</option><option value="54">54
+	</option><option value="55">55
+	</option><option value="56">56
+	</option><option value="57">57
+	</option><option value="58">58
+	</option><option value="59">59
+	</option><option value="60">60
+	</option><option value="61">61
+	</option><option value="62">62
+	</option><option value="63">63
+	</option><option value="64">64
+	</option><option value="65">65
+	</option><option value="66">66
+	</option><option value="67">67
+	</option><option value="68">68
+	</option><option value="69">69
+	</option><option value="70">70
+	</option><option value="71">71
+	</option><option value="72">72
+	</option><option value="73">73
+	</option><option value="74">74
+	</option><option value="75">75
+	</option><option value="76">76
+	</option><option value="77">77
+	</option><option value="78">78
+	</option><option value="79">79
+	</option><option value="80">80
+	</option><option value="81">81
+	</option><option value="82">82
+	</option><option value="83">83
+	</option><option value="84">84
+	</option><option value="85">85
+	</option><option value="86">86
+	</option><option value="87">87
+	</option><option value="88">88
+	</option><option value="89">89
+	</option><option value="90">90
+	</option><option value="91">91
+	</option><option value="92">92
+	</option><option value="93">93
+	</option><option value="94">94
+	</option><option value="95">95
+	</option><option value="96">96
+	</option><option value="97">97
+	</option><option value="98">98
+	</option><option value="99">99
+	</option>
+</select>
+<span id="A_STRp">+0</span>
+</td>
+<td id="nm07">AGI</td>
+<td>
+<select name="A_AGI" onchange="StCalc() | StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option><option value="11">11
+	</option><option value="12">12
+	</option><option value="13">13
+	</option><option value="14">14
+	</option><option value="15">15
+	</option><option value="16">16
+	</option><option value="17">17
+	</option><option value="18">18
+	</option><option value="19">19
+	</option><option value="20">20
+	</option><option value="21">21
+	</option><option value="22">22
+	</option><option value="23">23
+	</option><option value="24">24
+	</option><option value="25">25
+	</option><option value="26">26
+	</option><option value="27">27
+	</option><option value="28">28
+	</option><option value="29">29
+	</option><option value="30">30
+	</option><option value="31">31
+	</option><option value="32">32
+	</option><option value="33">33
+	</option><option value="34">34
+	</option><option value="35">35
+	</option><option value="36">36
+	</option><option value="37">37
+	</option><option value="38">38
+	</option><option value="39">39
+	</option><option value="40">40
+	</option><option value="41">41
+	</option><option value="42">42
+	</option><option value="43">43
+	</option><option value="44">44
+	</option><option value="45">45
+	</option><option value="46">46
+	</option><option value="47">47
+	</option><option value="48">48
+	</option><option value="49">49
+	</option><option value="50">50
+	</option><option value="51">51
+	</option><option value="52">52
+	</option><option value="53">53
+	</option><option value="54">54
+	</option><option value="55">55
+	</option><option value="56">56
+	</option><option value="57">57
+	</option><option value="58">58
+	</option><option value="59">59
+	</option><option value="60">60
+	</option><option value="61">61
+	</option><option value="62">62
+	</option><option value="63">63
+	</option><option value="64">64
+	</option><option value="65">65
+	</option><option value="66">66
+	</option><option value="67">67
+	</option><option value="68">68
+	</option><option value="69">69
+	</option><option value="70">70
+	</option><option value="71">71
+	</option><option value="72">72
+	</option><option value="73">73
+	</option><option value="74">74
+	</option><option value="75">75
+	</option><option value="76">76
+	</option><option value="77">77
+	</option><option value="78">78
+	</option><option value="79">79
+	</option><option value="80">80
+	</option><option value="81">81
+	</option><option value="82">82
+	</option><option value="83">83
+	</option><option value="84">84
+	</option><option value="85">85
+	</option><option value="86">86
+	</option><option value="87">87
+	</option><option value="88">88
+	</option><option value="89">89
+	</option><option value="90">90
+	</option><option value="91">91
+	</option><option value="92">92
+	</option><option value="93">93
+	</option><option value="94">94
+	</option><option value="95">95
+	</option><option value="96">96
+	</option><option value="97">97
+	</option><option value="98">98
+	</option><option value="99">99
+	</option>
+</select>
+<span id="A_AGIp">+0</span>
+</td>
+<td id="nm08">VIT</td>
+<td>
+<select name="A_VIT" onchange="StCalc() | StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option><option value="11">11
+	</option><option value="12">12
+	</option><option value="13">13
+	</option><option value="14">14
+	</option><option value="15">15
+	</option><option value="16">16
+	</option><option value="17">17
+	</option><option value="18">18
+	</option><option value="19">19
+	</option><option value="20">20
+	</option><option value="21">21
+	</option><option value="22">22
+	</option><option value="23">23
+	</option><option value="24">24
+	</option><option value="25">25
+	</option><option value="26">26
+	</option><option value="27">27
+	</option><option value="28">28
+	</option><option value="29">29
+	</option><option value="30">30
+	</option><option value="31">31
+	</option><option value="32">32
+	</option><option value="33">33
+	</option><option value="34">34
+	</option><option value="35">35
+	</option><option value="36">36
+	</option><option value="37">37
+	</option><option value="38">38
+	</option><option value="39">39
+	</option><option value="40">40
+	</option><option value="41">41
+	</option><option value="42">42
+	</option><option value="43">43
+	</option><option value="44">44
+	</option><option value="45">45
+	</option><option value="46">46
+	</option><option value="47">47
+	</option><option value="48">48
+	</option><option value="49">49
+	</option><option value="50">50
+	</option><option value="51">51
+	</option><option value="52">52
+	</option><option value="53">53
+	</option><option value="54">54
+	</option><option value="55">55
+	</option><option value="56">56
+	</option><option value="57">57
+	</option><option value="58">58
+	</option><option value="59">59
+	</option><option value="60">60
+	</option><option value="61">61
+	</option><option value="62">62
+	</option><option value="63">63
+	</option><option value="64">64
+	</option><option value="65">65
+	</option><option value="66">66
+	</option><option value="67">67
+	</option><option value="68">68
+	</option><option value="69">69
+	</option><option value="70">70
+	</option><option value="71">71
+	</option><option value="72">72
+	</option><option value="73">73
+	</option><option value="74">74
+	</option><option value="75">75
+	</option><option value="76">76
+	</option><option value="77">77
+	</option><option value="78">78
+	</option><option value="79">79
+	</option><option value="80">80
+	</option><option value="81">81
+	</option><option value="82">82
+	</option><option value="83">83
+	</option><option value="84">84
+	</option><option value="85">85
+	</option><option value="86">86
+	</option><option value="87">87
+	</option><option value="88">88
+	</option><option value="89">89
+	</option><option value="90">90
+	</option><option value="91">91
+	</option><option value="92">92
+	</option><option value="93">93
+	</option><option value="94">94
+	</option><option value="95">95
+	</option><option value="96">96
+	</option><option value="97">97
+	</option><option value="98">98
+	</option><option value="99">99
+	</option>
+</select>
+<span id="A_VITp">+0</span>
+</td>
+</tr>
+<tr>
+<td id="nm010">INT</td>
+<td>
+<select name="A_INT" onchange="StCalc() | StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option><option value="11">11
+	</option><option value="12">12
+	</option><option value="13">13
+	</option><option value="14">14
+	</option><option value="15">15
+	</option><option value="16">16
+	</option><option value="17">17
+	</option><option value="18">18
+	</option><option value="19">19
+	</option><option value="20">20
+	</option><option value="21">21
+	</option><option value="22">22
+	</option><option value="23">23
+	</option><option value="24">24
+	</option><option value="25">25
+	</option><option value="26">26
+	</option><option value="27">27
+	</option><option value="28">28
+	</option><option value="29">29
+	</option><option value="30">30
+	</option><option value="31">31
+	</option><option value="32">32
+	</option><option value="33">33
+	</option><option value="34">34
+	</option><option value="35">35
+	</option><option value="36">36
+	</option><option value="37">37
+	</option><option value="38">38
+	</option><option value="39">39
+	</option><option value="40">40
+	</option><option value="41">41
+	</option><option value="42">42
+	</option><option value="43">43
+	</option><option value="44">44
+	</option><option value="45">45
+	</option><option value="46">46
+	</option><option value="47">47
+	</option><option value="48">48
+	</option><option value="49">49
+	</option><option value="50">50
+	</option><option value="51">51
+	</option><option value="52">52
+	</option><option value="53">53
+	</option><option value="54">54
+	</option><option value="55">55
+	</option><option value="56">56
+	</option><option value="57">57
+	</option><option value="58">58
+	</option><option value="59">59
+	</option><option value="60">60
+	</option><option value="61">61
+	</option><option value="62">62
+	</option><option value="63">63
+	</option><option value="64">64
+	</option><option value="65">65
+	</option><option value="66">66
+	</option><option value="67">67
+	</option><option value="68">68
+	</option><option value="69">69
+	</option><option value="70">70
+	</option><option value="71">71
+	</option><option value="72">72
+	</option><option value="73">73
+	</option><option value="74">74
+	</option><option value="75">75
+	</option><option value="76">76
+	</option><option value="77">77
+	</option><option value="78">78
+	</option><option value="79">79
+	</option><option value="80">80
+	</option><option value="81">81
+	</option><option value="82">82
+	</option><option value="83">83
+	</option><option value="84">84
+	</option><option value="85">85
+	</option><option value="86">86
+	</option><option value="87">87
+	</option><option value="88">88
+	</option><option value="89">89
+	</option><option value="90">90
+	</option><option value="91">91
+	</option><option value="92">92
+	</option><option value="93">93
+	</option><option value="94">94
+	</option><option value="95">95
+	</option><option value="96">96
+	</option><option value="97">97
+	</option><option value="98">98
+	</option><option value="99">99
+	</option>
+</select>
+<span id="A_INTp">+0</span>
+</td>
+<td id="nm09">DEX</td>
+<td>
+<select name="A_DEX" onchange="StCalc() | StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option><option value="11">11
+	</option><option value="12">12
+	</option><option value="13">13
+	</option><option value="14">14
+	</option><option value="15">15
+	</option><option value="16">16
+	</option><option value="17">17
+	</option><option value="18">18
+	</option><option value="19">19
+	</option><option value="20">20
+	</option><option value="21">21
+	</option><option value="22">22
+	</option><option value="23">23
+	</option><option value="24">24
+	</option><option value="25">25
+	</option><option value="26">26
+	</option><option value="27">27
+	</option><option value="28">28
+	</option><option value="29">29
+	</option><option value="30">30
+	</option><option value="31">31
+	</option><option value="32">32
+	</option><option value="33">33
+	</option><option value="34">34
+	</option><option value="35">35
+	</option><option value="36">36
+	</option><option value="37">37
+	</option><option value="38">38
+	</option><option value="39">39
+	</option><option value="40">40
+	</option><option value="41">41
+	</option><option value="42">42
+	</option><option value="43">43
+	</option><option value="44">44
+	</option><option value="45">45
+	</option><option value="46">46
+	</option><option value="47">47
+	</option><option value="48">48
+	</option><option value="49">49
+	</option><option value="50">50
+	</option><option value="51">51
+	</option><option value="52">52
+	</option><option value="53">53
+	</option><option value="54">54
+	</option><option value="55">55
+	</option><option value="56">56
+	</option><option value="57">57
+	</option><option value="58">58
+	</option><option value="59">59
+	</option><option value="60">60
+	</option><option value="61">61
+	</option><option value="62">62
+	</option><option value="63">63
+	</option><option value="64">64
+	</option><option value="65">65
+	</option><option value="66">66
+	</option><option value="67">67
+	</option><option value="68">68
+	</option><option value="69">69
+	</option><option value="70">70
+	</option><option value="71">71
+	</option><option value="72">72
+	</option><option value="73">73
+	</option><option value="74">74
+	</option><option value="75">75
+	</option><option value="76">76
+	</option><option value="77">77
+	</option><option value="78">78
+	</option><option value="79">79
+	</option><option value="80">80
+	</option><option value="81">81
+	</option><option value="82">82
+	</option><option value="83">83
+	</option><option value="84">84
+	</option><option value="85">85
+	</option><option value="86">86
+	</option><option value="87">87
+	</option><option value="88">88
+	</option><option value="89">89
+	</option><option value="90">90
+	</option><option value="91">91
+	</option><option value="92">92
+	</option><option value="93">93
+	</option><option value="94">94
+	</option><option value="95">95
+	</option><option value="96">96
+	</option><option value="97">97
+	</option><option value="98">98
+	</option><option value="99">99
+	</option>
+</select>
+<span id="A_DEXp">+0</span>
+</td>
+<td id="nm011">LUK</td>
+<td>
+<select name="A_LUK" onchange="StCalc() | StAllCalc()">
+	<option selected="selected" value="1">1
+	</option><option value="2">2
+	</option><option value="3">3
+	</option><option value="4">4
+	</option><option value="5">5
+	</option><option value="6">6
+	</option><option value="7">7
+	</option><option value="8">8
+	</option><option value="9">9
+	</option><option value="10">10
+	</option><option value="11">11
+	</option><option value="12">12
+	</option><option value="13">13
+	</option><option value="14">14
+	</option><option value="15">15
+	</option><option value="16">16
+	</option><option value="17">17
+	</option><option value="18">18
+	</option><option value="19">19
+	</option><option value="20">20
+	</option><option value="21">21
+	</option><option value="22">22
+	</option><option value="23">23
+	</option><option value="24">24
+	</option><option value="25">25
+	</option><option value="26">26
+	</option><option value="27">27
+	</option><option value="28">28
+	</option><option value="29">29
+	</option><option value="30">30
+	</option><option value="31">31
+	</option><option value="32">32
+	</option><option value="33">33
+	</option><option value="34">34
+	</option><option value="35">35
+	</option><option value="36">36
+	</option><option value="37">37
+	</option><option value="38">38
+	</option><option value="39">39
+	</option><option value="40">40
+	</option><option value="41">41
+	</option><option value="42">42
+	</option><option value="43">43
+	</option><option value="44">44
+	</option><option value="45">45
+	</option><option value="46">46
+	</option><option value="47">47
+	</option><option value="48">48
+	</option><option value="49">49
+	</option><option value="50">50
+	</option><option value="51">51
+	</option><option value="52">52
+	</option><option value="53">53
+	</option><option value="54">54
+	</option><option value="55">55
+	</option><option value="56">56
+	</option><option value="57">57
+	</option><option value="58">58
+	</option><option value="59">59
+	</option><option value="60">60
+	</option><option value="61">61
+	</option><option value="62">62
+	</option><option value="63">63
+	</option><option value="64">64
+	</option><option value="65">65
+	</option><option value="66">66
+	</option><option value="67">67
+	</option><option value="68">68
+	</option><option value="69">69
+	</option><option value="70">70
+	</option><option value="71">71
+	</option><option value="72">72
+	</option><option value="73">73
+	</option><option value="74">74
+	</option><option value="75">75
+	</option><option value="76">76
+	</option><option value="77">77
+	</option><option value="78">78
+	</option><option value="79">79
+	</option><option value="80">80
+	</option><option value="81">81
+	</option><option value="82">82
+	</option><option value="83">83
+	</option><option value="84">84
+	</option><option value="85">85
+	</option><option value="86">86
+	</option><option value="87">87
+	</option><option value="88">88
+	</option><option value="89">89
+	</option><option value="90">90
+	</option><option value="91">91
+	</option><option value="92">92
+	</option><option value="93">93
+	</option><option value="94">94
+	</option><option value="95">95
+	</option><option value="96">96
+	</option><option value="97">97
+	</option><option value="98">98
+	</option><option value="99">99
+	</option>
+</select>
+<span id="A_LUKp">+0</span>
+</td>
+</tr>
+</tbody></table><br>
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse;"><tbody>
+<tr><td>
+<span id="nm012">Remaining Status Points</span></td><td><span id="A_STPOINT">48</span>
+</td></tr>
+</tbody></table>
+
+
+</td><td valign="top">
+
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse;">
+<tbody><tr><td class="subheader" bgcolor="#DDDDFF">
+<div style="float: left; padding: 3px;"><span id="nm013">Extended Info</span></div>
+<div style="float: right; padding-right: 3px;">
+<select name="A_Kakutyou" onchange="KakutyouKansuu2() | StAllCalc()">
+	<option selected="selected" value="0">-
+	</option><option value="1">Heal Amount
+	</option><option value="16">Sanctuary Healing Amount
+	</option><option value="2">Increased HP Recovery
+	</option><option value="3">Increased SP Recovery
+	</option><option value="4">Spirits Recovery
+	</option><option value="5">Weight Limit
+	</option><option value="6">Player Resistance
+	</option><option value="7">Attack Modifiers
+	</option><option value="10">Cast time/delay
+	</option><option value="11">Experience
+	</option><option value="12">Potion Pitcher HP/SP Power
+	</option><option value="13">Forge/Potion/EDP Creation Success Rates
+	</option><option value="14">Strip Chance
+	</option><option value="15">Cooking Success Rates
+	</option>
+</select>
+</div><div style="clear: both;"></div>
+</td></tr>
+<tr><td>
+<span id="A_KakutyouSel"></span>
+<span id="A_KakutyouData"></span>
+</td></tr>
+</tbody></table>
+
+</td></tr>
+</tbody></table>
+<br>
+<table border="0">
+<tbody><tr>
+<td id="nm014" class="title" style="width: 7.5%;">Max HP</td>
+<td id="nm015" class="title" style="width: 7.5%;">Max SP</td>
+<td id="nm016" class="title" style="width: 7.5%;">DEF</td>
+<td id="nm017" class="title" style="width: 7.5%;">MDEF</td>
+<td id="nm018" class="title" style="width: 7.5%;">HIT</td>
+<td id="nm019" class="title" style="width: 7.5%;">FLEE</td>
+<td id="nm020" class="title" style="width: 10%;">Perfect Dodge</td>
+<td id="nm021" class="title" style="width: 7.5%;">Critical</td>
+<td id="nm085" class="title" style="width: 7.5%;">ATK</td>
+<td id="nm022" class="title" style="width: 7.5%;">MATK</td>
+<td id="nm023" class="title" style="width: 7.5%;">ASPD</td>
+<td id="nm024" class="title" style="width: 7.5%;">HP Regen</td>
+<td id="nm025" class="title" style="width: 7.5%;">SP Regen</td>
+</tr><tr>
+<td class="data" id="A_MaxHP" align="right"> 40</td>
+<td class="data" id="A_MaxSP" align="right"> 11</td>
+<td class="data" id="A_totalDEF" align="right">0+1</td>
+<td class="data" id="A_MDEF" align="right">0+1<br><b>WOE: </b>0+1</td>
+<td class="data" id="A_HIT" align="right">2</td>
+<td class="data" id="A_FLEE" align="right">2<br><b>WOE: </b>1</td>
+<td class="data" id="A_LUCKY" align="right">1.1</td>
+<td class="data" id="A_CRI" align="right">1.3</td>
+<td class="data" id="A_ATK2" align="right">1+0<br><b>WOE: </b>1+0</td>
+<td class="data" id="A_MATK" align="right">1~1</td>
+<td class="data" id="A_ASPD" align="right">150.2</td>
+<td class="data" id="A_HPR" align="right">1</td>
+<td class="data" id="A_SPR" align="right">1</td>
+</tr>
+</tbody></table>
+<br>
+
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;">
+<tbody>
+	<tr><td colspan="3" class="subheader">
+		<div style="float: left; padding: 3px;">Weapon Settings</div><div style="clear: left;"></div>
+	</td></tr>
+<tr><td>
+<span id="nm026">Speed Potion: </span><select name="A_SpeedPOT" onchange="StAllCalc()">
+	<option selected="selected" value="0">None</option>
+	<option value="1">Concentration Potion</option>
+	
+	
+<option value="2">Awakening Potion(Lv40)</option><option value="3">-Special(Berserk Pitcher)(Lv85)</option></select></td>
+<td>&nbsp;</td>
+<td>&nbsp;
+<span id="nm027">Weapon Type: </span><select name="A_WeaponType" onchange="ClickWeaponType(this[this.selectedIndex].value) | StAllCalc()"><option selected="selected" value="0">Unarmed</option><option value="1">Dagger</option><option value="2">Sword</option><option value="6">Axe</option><option value="8">Mace</option><option value="9">Rod</option></select>
+<span id="A_SobWeaponName"></span>
+<select name="A_Arrow" onchange="StAllCalc()" style="visibility:hidden">
+	<option selected="selected" value="0">Arrow</option><option value="1">Silver Arrow</option><option value="2">Fire Arrow</option><option value="3">Iron Arrow</option><option value="4">Stone Arrow</option><option value="5">Crystal Arrow</option><option value="6">Arrow of Wind</option><option value="7">Arrow of Shadow</option><option value="8">Immaterial Arrow</option><option value="9">Rusty Arrow</option><option value="10">Steel Arrow</option><option value="11">Oridecon Arrow</option><option value="12">Arrow of Counter Evil</option><option value="13">Frozen Arrow</option><option value="14">Poison Arrow</option><option value="15">Sharp Arrow</option><option value="16">Holy Arrow</option></select>
+</td></tr>
+</tbody></table>
+<br>
+
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse;" onmouseover="FirstNovis()">
+<tbody><tr><td colspan="4" class="subheader"><div style="float: left; padding: 3px;"><span id="nm028">Weapon &amp; Armor / Cards</span></div><div style="clear: left;"></div></td></tr>
+<tr>
+<td class="calc"><span id="nm029">Weapon: </span><select name="A_weapon1" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)"><option selected="selected" value="0">(Unarmed)</option></select></td>
+<td class="calc">
+<span id="A_seirenchi_name"></span>
+<select name="A_Weapon_ATKplus" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">+0
+	</option><option value="1">+1
+	</option><option value="2">+2
+	</option><option value="3">+3
+	</option><option value="4">+4
+	</option><option value="5">+5
+	</option><option value="6">+6
+	</option><option value="7">+7
+	</option><option value="8">+8
+	</option><option value="9">+9
+	</option><option value="10">+10
+</option></select>
+</td>
+<td class="calc"><span id="nm030">Attribute: </span><select name="A_Weapon_zokusei"><option selected="selected" value="0">Neutral</option><option value="1">Water</option><option value="2">Earth</option><option value="3">Fire</option><option value="4">Wind</option><option value="5">Poison</option><option value="6">Holy</option><option value="7">Shadow</option><option value="8">Ghost</option><option value="9">Undead</option></select></td>
+<td class="calc"><select name="A_cardshort" onchange="SetCardShort()|StAllCalc()|ActiveSkillSetPlus()"><option selected="selected" value="0">Card Shortcuts</option><option value="1">Remove All Cards</option><option value="2">Remove Weapon Cards</option><option value="3">+40%[2 Race Card]</option><option value="4">+60%[3 Race Card]</option><option value="5">+80%[4 Race Card]</option><option value="6">+61%[2 Race/1 Size Cards]</option><option value="7">+68%[2 Race/1 Element Cards]</option><option value="8">+84%[3 Race/1 Size Cards]</option><option value="9">+96%[2 Race/2 Element Cards]</option><option value="10">+110%[2 AK/2 Race Cards]</option><option value="11">+110%[3 AK/1 Race Cards]</option><option value="12">+110%[3 AK/1 Element Cards]</option><option value="13">2 Size Cards</option><option value="14">3 Size Cards</option><option value="15">4 Size Cards</option><option value="16">Elemental + Star Crumb</option><option value="17">Elemental + 2 Star Crumbs</option><option value="18">3 Star Crumbs</option><option value="19">+40 ATK[2 Andre Cards]</option><option value="20">+60 ATK[3 Andre Cards]</option><option value="21">+80 ATK[4 Andre Cards]</option><option value="22">+60 ATK[2 Zipper Bear Cards]</option><option value="23">+90 ATK[3 Zipper Bear Cards]</option><option value="24">+120 ATK[4 Zipper Bear Cards]</option><option value="25">2 Sold. Skeleton Cards</option><option value="26">3 Sold. Skeleton Cards</option><option value="27">4 Sold. Skeleton Cards</option><option value="28">+40 HIT[2 Mummy Cards]</option><option value="29">+60 HIT[3 Mummy Cards]</option><option value="30">+80 HIT[4 Mummy Cards]</option><option value="31">+60%[2 Orc Lady Cards]</option><option value="32">+92%[2 Orc Lady/1 Hydra Cards]</option><option value="33">+128%[3 Orc Lady/1 Hydra Cards]</option><option value="34">+20%[2 Archer Skeleton Cards]</option><option value="35">+30%[3 Archer Skeleton Cards]</option><option value="36">+40%[4 Archer Skeleton Cards]</option><option value="37">2 Fabre Cards</option><option value="38">3 Fabre Cards</option><option value="39">4 Fabre Cards</option><option value="40">2 Drops Cards</option><option value="41">3 Drops Cards</option><option value="42">4 Drops Cards</option><option value="43">+50%[2 Abysmal Knight Cards]</option><option value="44">+75%[3 Abysmal Knight Cards]</option><option value="45">+100%[4 Abysmal Knight Cards]</option><option value="46">2 Crit Dmg+10%,Crit+7 Cards</option><option value="47">3 Crit Dmg+10%,Crit+7 Cards</option><option value="48">4 Crit Dmg+10%,Crit+7 Cards</option><option value="49">Swordsman Set</option><option value="50">Thief Set</option><option value="51">Aco Set</option><option value="52">Archer Set</option><option value="53">Mage Set</option><option value="54">Merchant Set</option><option value="55">Crusader Set</option><option value="56">Rogue Set</option><option value="57">Monk Set</option><option value="58">Bard/Dancer Set</option><option value="59">Sage Set</option><option value="60">Alchemist Set</option></select></td>
+</tr>
+
+<!-- Weapon Cards -->
+<tr>
+<td class="calc"><span id="nm031">Cards: </span><select name="A_weapon1_card1" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><!--<option value="201">Element Stone (Water)</option><option value="202">Element Stone (Earth)</option><option value="203">Element Stone (Fire)</option><option value="204">Element Stone (Wind)</option><option value="1">All Race +20%</option><option value="2">All Element +20%</option><option value="3">All Size +15%,Atk+5</option><option value="106">*Star Crumb</option><option value="31">Abysmal Knight</option><option value="25">Anacondaq</option><option value="11">Andre</option><option value="107">Archer Skeleton</option><option value="223">Assaulter</option><option value="356">Aster</option><option value="463">Atroce</option><option value="305">Baby Garm</option><option value="45">Baphomet</option><option value="355">Beetle King</option><option value="361">Bloody Knight</option><option value="217">Bloody Murderer</option><option value="465">Bow Guardian</option><option value="163">Breeze</option><option value="15">Caramel</option><option value="265">Caterpillar</option><option value="160">Cecil Damon</option><option value="499">Centipede Larva</option><option value="325">Chepet</option><option value="259">Crab</option><option value="156">Crit Dmg+10%,Crit+7</option><option value="279">Cruiser</option><option value="311">Dark Priest</option><option value="169">Death Word</option><option value="28">Desert Wolf</option><option value="20">Deviace</option><option value="329">Diabolic</option><option value="427">Dolor of Thanatos</option><option value="42">Doppelganger</option><option value="47">Dracula</option><option value="21">Drainliar</option><option value="32">Drake</option><option value="343">Driller</option><option value="5">Drops</option><option value="462">Drosera</option><option value="215">Dullahan</option><option value="19">Earth Petite</option><option value="244">Elder</option><option value="158">Eremes Guile</option><option value="4">Fabre</option><option value="359">Fake Angel</option><option value="110">Familiar</option><option value="8">Female Thief Bug</option><option value="17">Flora</option><option value="253">Seal</option><option value="263">Gig</option><option value="14">Goblin</option><option value="286">Goblin Archer</option><option value="288">Goblin Leader</option><option value="287">Goblin Steamrider</option><option value="39">Golem</option><option value="277">Gryphon</option><option value="167">Hill Wind</option><option value="498">Hillsrion</option><option value="6">Hornet</option><option value="159">Howard Alt-Eisen</option><option value="46">Hunter Fly</option><option value="13">Hydra</option><option value="255">Incantation Samurai</option><option value="235">Injustice</option><option value="26">Kaho</option><option value="289">Kobold Archer</option><option value="290">Kobold Leader</option><option value="164">Lady Solace</option><option value="168">Laurell Weinder</option><option value="382">Lava Golem</option><option value="219">Lord of the Dead</option><option value="7">Lunatic</option><option value="165">Maero of Thanatos</option><option value="37">Magnolia</option><option value="23">Mandragora</option><option value="398">Mao Guai</option><option value="35">Marina</option><option value="166">Memory of Thanatos</option><option value="157">Metaling</option><option value="36">Metaller</option><option value="30">Minorous</option><option value="328">Mobster</option><option value="40">Mummy</option><option value="380">Mutant Dragonoid</option><option value="466">Necromancer</option><option value="345">Nereid</option><option value="252">Orc Lady</option><option value="27">Orc Skeleton</option><option value="353">Panzer Goblin</option><option value="12">Peco Peco Egg</option><option value="360">Phendark</option><option value="44">Phreeoni</option><option value="171">Pitman</option><option value="33">Plankton</option><option value="170">Red Ferus</option><option value="111">Requiem</option><option value="390">Rotar Zairo</option><option value="22">Santa Poring</option><option value="109">Savage Babe</option><option value="16">Scorpion</option><option value="254">Shellfish</option><option value="43">Sidewinder</option><option value="428">Skeggiold</option><option value="29">Skeleton Worker</option><option value="9">Skeleton</option><option value="34">Snake</option><option value="162">Sniper[MVP]</option><option value="41">Soldier Skeleton</option><option value="366">Stone Shooter</option><option value="313">Stormy Knight</option><option value="18">Strouf</option><option value="464">Sword Guardian</option><option value="233">The Paper</option><option value="296">Tri Joint</option><option value="323">Turtle General</option><option value="24">Vadon</option><option value="363">Valkyrie Randgris</option><option value="161">Whitesmith[MVP]</option><option value="10">Wolf</option><option value="38">Zenorc</option><option value="326">Zipper Bear</option><option value="319">Zombie Master</option><option value="509">Rata</option>-->
+</select></td>
+<td class="calc"><select name="A_weapon1_card2" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><!--<option value="1">All Race +20%</option><option value="2">All Element +20%</option><option value="3">All Size +15%,Atk+5</option><option value="106">*Star Crumb</option><option value="31">Abysmal Knight</option><option value="25">Anacondaq</option><option value="11">Andre</option><option value="107">Archer Skeleton</option><option value="223">Assaulter</option><option value="356">Aster</option><option value="463">Atroce</option><option value="305">Baby Garm</option><option value="45">Baphomet</option><option value="355">Beetle King</option><option value="361">Bloody Knight</option><option value="217">Bloody Murderer</option><option value="465">Bow Guardian</option><option value="163">Breeze</option><option value="15">Caramel</option><option value="265">Caterpillar</option><option value="160">Cecil Damon</option><option value="499">Centipede Larva</option><option value="325">Chepet</option><option value="259">Crab</option><option value="156">Crit Dmg+10%,Crit+7</option><option value="279">Cruiser</option><option value="311">Dark Priest</option><option value="169">Death Word</option><option value="28">Desert Wolf</option><option value="20">Deviace</option><option value="329">Diabolic</option><option value="427">Dolor of Thanatos</option><option value="42">Doppelganger</option><option value="47">Dracula</option><option value="21">Drainliar</option><option value="32">Drake</option><option value="343">Driller</option><option value="5">Drops</option><option value="462">Drosera</option><option value="215">Dullahan</option><option value="19">Earth Petite</option><option value="244">Elder</option><option value="158">Eremes Guile</option><option value="4">Fabre</option><option value="359">Fake Angel</option><option value="110">Familiar</option><option value="8">Female Thief Bug</option><option value="17">Flora</option><option value="253">Seal</option><option value="263">Gig</option><option value="14">Goblin</option><option value="286">Goblin Archer</option><option value="288">Goblin Leader</option><option value="287">Goblin Steamrider</option><option value="39">Golem</option><option value="277">Gryphon</option><option value="167">Hill Wind</option><option value="498">Hillsrion</option><option value="6">Hornet</option><option value="159">Howard Alt-Eisen</option><option value="46">Hunter Fly</option><option value="13">Hydra</option><option value="255">Incantation Samurai</option><option value="235">Injustice</option><option value="26">Kaho</option><option value="289">Kobold Archer</option><option value="290">Kobold Leader</option><option value="164">Lady Solace</option><option value="168">Laurell Weinder</option><option value="382">Lava Golem</option><option value="219">Lord of the Dead</option><option value="7">Lunatic</option><option value="165">Maero of Thanatos</option><option value="37">Magnolia</option><option value="23">Mandragora</option><option value="398">Mao Guai</option><option value="35">Marina</option><option value="166">Memory of Thanatos</option><option value="157">Metaling</option><option value="36">Metaller</option><option value="30">Minorous</option><option value="328">Mobster</option><option value="40">Mummy</option><option value="380">Mutant Dragonoid</option><option value="466">Necromancer</option><option value="345">Nereid</option><option value="252">Orc Lady</option><option value="27">Orc Skeleton</option><option value="353">Panzer Goblin</option><option value="12">Peco Peco Egg</option><option value="360">Phendark</option><option value="44">Phreeoni</option><option value="171">Pitman</option><option value="33">Plankton</option><option value="170">Red Ferus</option><option value="111">Requiem</option><option value="390">Rotar Zairo</option><option value="22">Santa Poring</option><option value="109">Savage Babe</option><option value="16">Scorpion</option><option value="254">Shellfish</option><option value="43">Sidewinder</option><option value="428">Skeggiold</option><option value="29">Skeleton Worker</option><option value="9">Skeleton</option><option value="34">Snake</option><option value="162">Sniper[MVP]</option><option value="41">Soldier Skeleton</option><option value="366">Stone Shooter</option><option value="313">Stormy Knight</option><option value="18">Strouf</option><option value="464">Sword Guardian</option><option value="233">The Paper</option><option value="296">Tri Joint</option><option value="323">Turtle General</option><option value="24">Vadon</option><option value="363">Valkyrie Randgris</option><option value="161">Whitesmith[MVP]</option><option value="10">Wolf</option><option value="38">Zenorc</option><option value="326">Zipper Bear</option><option value="319">Zombie Master</option>-->
+</select></td>
+<td class="calc"><select name="A_weapon1_card3" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><!--<option value="1">All Race +20%</option><option value="2">All Element +20%</option><option value="3">All Size +15%,Atk+5</option><option value="106">*Star Crumb</option><option value="31">Abysmal Knight</option><option value="25">Anacondaq</option><option value="11">Andre</option><option value="107">Archer Skeleton</option><option value="223">Assaulter</option><option value="356">Aster</option><option value="463">Atroce</option><option value="305">Baby Garm</option><option value="45">Baphomet</option><option value="355">Beetle King</option><option value="361">Bloody Knight</option><option value="217">Bloody Murderer</option><option value="465">Bow Guardian</option><option value="163">Breeze</option><option value="15">Caramel</option><option value="265">Caterpillar</option><option value="160">Cecil Damon</option><option value="499">Centipede Larva</option><option value="325">Chepet</option><option value="259">Crab</option><option value="156">Crit Dmg+10%,Crit+7</option><option value="279">Cruiser</option><option value="311">Dark Priest</option><option value="169">Death Word</option><option value="28">Desert Wolf</option><option value="20">Deviace</option><option value="329">Diabolic</option><option value="427">Dolor of Thanatos</option><option value="42">Doppelganger</option><option value="47">Dracula</option><option value="21">Drainliar</option><option value="32">Drake</option><option value="343">Driller</option><option value="5">Drops</option><option value="462">Drosera</option><option value="215">Dullahan</option><option value="19">Earth Petite</option><option value="244">Elder</option><option value="158">Eremes Guile</option><option value="4">Fabre</option><option value="359">Fake Angel</option><option value="110">Familiar</option><option value="8">Female Thief Bug</option><option value="17">Flora</option><option value="253">Seal</option><option value="263">Gig</option><option value="14">Goblin</option><option value="286">Goblin Archer</option><option value="288">Goblin Leader</option><option value="287">Goblin Steamrider</option><option value="39">Golem</option><option value="277">Gryphon</option><option value="167">Hill Wind</option><option value="498">Hillsrion</option><option value="6">Hornet</option><option value="159">Howard Alt-Eisen</option><option value="46">Hunter Fly</option><option value="13">Hydra</option><option value="255">Incantation Samurai</option><option value="235">Injustice</option><option value="26">Kaho</option><option value="289">Kobold Archer</option><option value="290">Kobold Leader</option><option value="164">Lady Solace</option><option value="168">Laurell Weinder</option><option value="382">Lava Golem</option><option value="219">Lord of the Dead</option><option value="7">Lunatic</option><option value="165">Maero of Thanatos</option><option value="37">Magnolia</option><option value="23">Mandragora</option><option value="398">Mao Guai</option><option value="35">Marina</option><option value="166">Memory of Thanatos</option><option value="157">Metaling</option><option value="36">Metaller</option><option value="30">Minorous</option><option value="328">Mobster</option><option value="40">Mummy</option><option value="380">Mutant Dragonoid</option><option value="466">Necromancer</option><option value="345">Nereid</option><option value="252">Orc Lady</option><option value="27">Orc Skeleton</option><option value="353">Panzer Goblin</option><option value="12">Peco Peco Egg</option><option value="360">Phendark</option><option value="44">Phreeoni</option><option value="171">Pitman</option><option value="33">Plankton</option><option value="170">Red Ferus</option><option value="111">Requiem</option><option value="390">Rotar Zairo</option><option value="22">Santa Poring</option><option value="109">Savage Babe</option><option value="16">Scorpion</option><option value="254">Shellfish</option><option value="43">Sidewinder</option><option value="428">Skeggiold</option><option value="29">Skeleton Worker</option><option value="9">Skeleton</option><option value="34">Snake</option><option value="162">Sniper[MVP]</option><option value="41">Soldier Skeleton</option><option value="366">Stone Shooter</option><option value="313">Stormy Knight</option><option value="18">Strouf</option><option value="464">Sword Guardian</option><option value="233">The Paper</option><option value="296">Tri Joint</option><option value="323">Turtle General</option><option value="24">Vadon</option><option value="363">Valkyrie Randgris</option><option value="161">Whitesmith[MVP]</option><option value="10">Wolf</option><option value="38">Zenorc</option><option value="326">Zipper Bear</option><option value="319">Zombie Master</option>-->
+</select></td>
+<td class="calc"><select name="A_weapon1_card4" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><!--<option value="1">All Race +20%</option><option value="2">All Element +20%</option><option value="3">All Size +15%,Atk+5</option><option value="106">TOP10 Ranked</option><option value="31">Abysmal Knight</option><option value="25">Anacondaq</option><option value="11">Andre</option><option value="107">Archer Skeleton</option><option value="223">Assaulter</option><option value="356">Aster</option><option value="463">Atroce</option><option value="305">Baby Garm</option><option value="45">Baphomet</option><option value="355">Beetle King</option><option value="361">Bloody Knight</option><option value="217">Bloody Murderer</option><option value="465">Bow Guardian</option><option value="163">Breeze</option><option value="15">Caramel</option><option value="265">Caterpillar</option><option value="160">Cecil Damon</option><option value="499">Centipede Larva</option><option value="325">Chepet</option><option value="259">Crab</option><option value="156">Crit Dmg+10%,Crit+7</option><option value="279">Cruiser</option><option value="311">Dark Priest</option><option value="169">Death Word</option><option value="28">Desert Wolf</option><option value="20">Deviace</option><option value="329">Diabolic</option><option value="427">Dolor of Thanatos</option><option value="42">Doppelganger</option><option value="47">Dracula</option><option value="21">Drainliar</option><option value="32">Drake</option><option value="343">Driller</option><option value="5">Drops</option><option value="462">Drosera</option><option value="215">Dullahan</option><option value="19">Earth Petite</option><option value="244">Elder</option><option value="158">Eremes Guile</option><option value="4">Fabre</option><option value="359">Fake Angel</option><option value="110">Familiar</option><option value="8">Female Thief Bug</option><option value="17">Flora</option><option value="253">Seal</option><option value="263">Gig</option><option value="14">Goblin</option><option value="286">Goblin Archer</option><option value="288">Goblin Leader</option><option value="287">Goblin Steamrider</option><option value="39">Golem</option><option value="277">Gryphon</option><option value="167">Hill Wind</option><option value="498">Hillsrion</option><option value="6">Hornet</option><option value="159">Howard Alt-Eisen</option><option value="46">Hunter Fly</option><option value="13">Hydra</option><option value="255">Incantation Samurai</option><option value="235">Injustice</option><option value="26">Kaho</option><option value="289">Kobold Archer</option><option value="290">Kobold Leader</option><option value="164">Lady Solace</option><option value="168">Laurell Weinder</option><option value="382">Lava Golem</option><option value="219">Lord of the Dead</option><option value="7">Lunatic</option><option value="165">Maero of Thanatos</option><option value="37">Magnolia</option><option value="23">Mandragora</option><option value="398">Mao Guai</option><option value="35">Marina</option><option value="166">Memory of Thanatos</option><option value="157">Metaling</option><option value="36">Metaller</option><option value="30">Minorous</option><option value="328">Mobster</option><option value="40">Mummy</option><option value="380">Mutant Dragonoid</option><option value="466">Necromancer</option><option value="345">Nereid</option><option value="252">Orc Lady</option><option value="27">Orc Skeleton</option><option value="353">Panzer Goblin</option><option value="12">Peco Peco Egg</option><option value="360">Phendark</option><option value="44">Phreeoni</option><option value="171">Pitman</option><option value="33">Plankton</option><option value="170">Red Ferus</option><option value="111">Requiem</option><option value="390">Rotar Zairo</option><option value="22">Santa Poring</option><option value="109">Savage Babe</option><option value="16">Scorpion</option><option value="254">Shellfish</option><option value="43">Sidewinder</option><option value="428">Skeggiold</option><option value="29">Skeleton Worker</option><option value="9">Skeleton</option><option value="34">Snake</option><option value="162">Sniper[MVP]</option><option value="41">Soldier Skeleton</option><option value="366">Stone Shooter</option><option value="313">Stormy Knight</option><option value="18">Strouf</option><option value="464">Sword Guardian</option><option value="233">The Paper</option><option value="296">Tri Joint</option><option value="323">Turtle General</option><option value="24">Vadon</option><option value="363">Valkyrie Randgris</option><option value="161">Whitesmith[MVP]</option><option value="10">Wolf</option><option value="38">Zenorc</option><option value="326">Zipper Bear</option><option value="319">Zombie Master</option>-->
+</select></td>
+</tr>
+
+<!-- Weapon Cards for 2nd hand (Assassin Class) -->
+<tr>
+<td class="calc"><span id="spanA_weapon2"></span></td>
+<td class="calc"><span id="spanA_weapon2seiren"></span></td>
+<td class="calc"></td>
+<td class="calc"><span id="spanA_weapon2_CardShort"></span></td>
+</tr>
+<tr>
+<td class="calc"><span id="nA_weapon2_c1"></span></td>
+<td class="calc"><span id="nA_weapon2_c2"></span></td>
+<td class="calc"><span id="nA_weapon2_c3"></span></td>
+<td class="calc"><span id="nA_weapon2_c4"></span></td>
+</tr>
+
+<!-- Kris Enchantment -->
+<!-- <tr name="A_KEAll" id="KE_TextAll" style="visibility:hidden"> -->
+<tr>
+<td class="calc">
+<span id="A_KEText11"></span>
+<select name="A_KE11" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Kris Enchantment 1)
+	</option><option value="1">DEF+2
+	</option><option value="2">DEF+3
+	</option><option value="3">DEF+4
+	</option><option value="11">MDEF+2
+	</option><option value="12">MDEF+3
+	</option><option value="13">MDEF+4
+	</option><option value="21">HP+100
+	</option><option value="22">HP+200
+	</option><option value="23">HP+300
+	</option><option value="31">SP+50
+	</option><option value="41">VIT+1
+	</option><option value="42">VIT+2
+	</option><option value="43">VIT+3
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="61">DEX+1
+	</option><option value="62">DEX+2
+	</option><option value="63">DEX+3
+	</option><option value="71">LUK+1
+	</option><option value="72">LUK+2
+	</option><option value="73">LUK+3
+	</option><option value="81">MATK+1%
+	</option><option value="82">MATK+2%
+	</option><option value="91">ATK+3%
+</option></select>
+</td>
+<td class="calc">
+<span id="A_KEText12"></span>
+<select name="A_KE12" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Kris Enchantment 2)
+	</option><option value="1">DEF+2
+	</option><option value="2">DEF+3
+	</option><option value="3">DEF+4
+	</option><option value="11">MDEF+2
+	</option><option value="12">MDEF+3
+	</option><option value="13">MDEF+4
+	</option><option value="21">HP+100
+	</option><option value="22">HP+200
+	</option><option value="23">HP+300
+	</option><option value="31">SP+50
+	</option><option value="41">VIT+1
+	</option><option value="42">VIT+2
+	</option><option value="43">VIT+3
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="61">DEX+1
+	</option><option value="62">DEX+2
+	</option><option value="63">DEX+3
+	</option><option value="71">LUK+1
+	</option><option value="72">LUK+2
+	</option><option value="73">LUK+3
+	</option><option value="81">MATK+1%
+	</option><option value="82">MATK+2%
+	</option><option value="91">ATK+3%
+</option></select>
+</td>
+
+<!-- Kris Enchantment for 2nd hand (Assassin Class) -->
+<td class="calc">
+<span id="A_KEText21"></span>
+<select name="A_KE21" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Kris Enchantment 1)
+	</option><option value="1">DEF+2
+	</option><option value="2">DEF+3
+	</option><option value="3">DEF+4
+	</option><option value="11">MDEF+2
+	</option><option value="12">MDEF+3
+	</option><option value="13">MDEF+4
+	</option><option value="21">HP+100
+	</option><option value="22">HP+200
+	</option><option value="23">HP+300
+	</option><option value="31">SP+50
+	</option><option value="41">VIT+1
+	</option><option value="42">VIT+2
+	</option><option value="43">VIT+3
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="61">DEX+1
+	</option><option value="62">DEX+2
+	</option><option value="63">DEX+3
+	</option><option value="71">LUK+1
+	</option><option value="72">LUK+2
+	</option><option value="73">LUK+3
+	</option><option value="81">MATK+1%
+	</option><option value="82">MATK+2%
+	</option><option value="91">ATK+3%
+</option></select>
+</td>
+<td class="calc">
+<span id="A_KEText22"></span>
+<select name="A_KE22" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Kris Enchantment 2)
+	</option><option value="1">DEF+2
+	</option><option value="2">DEF+3
+	</option><option value="3">DEF+4
+	</option><option value="11">MDEF+2
+	</option><option value="12">MDEF+3
+	</option><option value="13">MDEF+4
+	</option><option value="21">HP+100
+	</option><option value="22">HP+200
+	</option><option value="23">HP+300
+	</option><option value="31">SP+50
+	</option><option value="41">DEX+1
+	</option><option value="42">DEX+2
+	</option><option value="43">DEX+3
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="71">LUK+1
+	</option><option value="72">LUK+2
+	</option><option value="73">LUK+3
+	</option><option value="81">MATK+1%
+	</option><option value="82">MATK+2%
+	</option><option value="91">ATK+3%
+</option></select>
+</td>
+</tr>
+
+<!-- Malangdo Enchantment -->
+<!-- <tr name="A_MEAll" id="ME_TextAll" style="visibility:hidden"> -->
+<tr>
+<td class="calc">
+<span id="A_METext11"></span>
+<select name="A_ME11" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Malangdo Enchantment 1)
+	</option><option value="1">HP+100
+	</option><option value="2">HP+200
+	</option><option value="3">HP+300
+	</option><option value="11">SP+50
+	</option><option value="12">SP+100
+	</option><option value="21">STR+1
+	</option><option value="22">STR+2
+	</option><option value="23">STR+3
+	</option><option value="31">AGI+1
+	</option><option value="32">AGI+2
+	</option><option value="33">AGI+3
+	</option><option value="41">VIT+1
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="61">DEX+1
+	</option><option value="62">DEX+2
+	</option><option value="63">DEX+3
+	</option><option value="71">LUK+1
+	</option><option value="83">ASPD+3%
+	</option><option value="91">Fighting Spirit 1
+	</option><option value="92">Fighting Spirit 2
+	</option><option value="93">Fighting Spirit 3
+	</option><option value="94">Fighting Spirit 4
+	</option><option value="95">Fighting Spirit 5
+	</option><option value="96">Fighting Spirit 6
+	</option><option value="97">Fighting Spirit 7
+	</option><option value="98">Fighting Spirit 8
+	</option><option value="101">Sharp 1
+	</option><option value="102">Sharp 2
+	</option><option value="103">Sharp 3
+	</option><option value="104">Sharp 4
+	</option><option value="105">Sharp 5
+	</option><option value="111">Expert Archer 1
+	</option><option value="112">Expert Archer 2
+	</option><option value="113">Expert Archer 3
+	</option><option value="114">Expert Archer 4
+	</option><option value="115">Expert Archer 5
+	</option><option value="116">Expert Archer 6
+	</option><option value="121">Spell 1
+	</option><option value="122">Spell 2
+	</option><option value="123">Spell 3
+	</option><option value="124">Spell 4
+	</option><option value="125">Spell 5
+	</option><option value="126">Spell 6
+</option></select>
+</td>
+<td class="calc">
+<span id="A_METext12"></span>
+<select name="A_ME12" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Malangdo Enchantment 2)
+	</option><option value="1">HP+100
+	</option><option value="2">HP+200
+	</option><option value="3">HP+300
+	</option><option value="11">SP+50
+	</option><option value="12">SP+100
+	</option><option value="21">STR+1
+	</option><option value="22">STR+2
+	</option><option value="23">STR+3
+	</option><option value="31">AGI+1
+	</option><option value="32">AGI+2
+	</option><option value="33">AGI+3
+	</option><option value="41">VIT+1
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="61">DEX+1
+	</option><option value="62">DEX+2
+	</option><option value="63">DEX+3
+	</option><option value="71">LUK+1
+	</option><option value="83">ASPD+3%
+	</option><option value="91">Fighting Spirit 1
+	</option><option value="92">Fighting Spirit 2
+	</option><option value="93">Fighting Spirit 3
+	</option><option value="94">Fighting Spirit 4
+	</option><option value="95">Fighting Spirit 5
+	</option><option value="96">Fighting Spirit 6
+	</option><option value="97">Fighting Spirit 7
+	</option><option value="98">Fighting Spirit 8
+	</option><option value="101">Sharp 1
+	</option><option value="102">Sharp 2
+	</option><option value="103">Sharp 3
+	</option><option value="104">Sharp 4
+	</option><option value="105">Sharp 5
+	</option><option value="111">Expert Archer 1
+	</option><option value="112">Expert Archer 2
+	</option><option value="113">Expert Archer 3
+	</option><option value="114">Expert Archer 4
+	</option><option value="115">Expert Archer 5
+	</option><option value="116">Expert Archer 6
+	</option><option value="121">Spell 1
+	</option><option value="122">Spell 2
+	</option><option value="123">Spell 3
+	</option><option value="124">Spell 4
+	</option><option value="125">Spell 5
+	</option><option value="126">Spell 6
+</option></select>
+</td>
+
+<!-- Malangdo Enchantment for 2nd hand (Assassin Class) -->
+<td class="calc">
+<span id="A_METext21"></span>
+<select name="A_ME21" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Malangdo Enchantment 1)
+	</option><option value="1">HP+100
+	</option><option value="2">HP+200
+	</option><option value="3">HP+300
+	</option><option value="11">SP+50
+	</option><option value="12">SP+100
+	</option><option value="21">STR+1
+	</option><option value="22">STR+2
+	</option><option value="23">STR+3
+	</option><option value="31">AGI+1
+	</option><option value="32">AGI+2
+	</option><option value="33">AGI+3
+	</option><option value="41">VIT+1
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="61">DEX+1
+	</option><option value="62">DEX+2
+	</option><option value="63">DEX+3
+	</option><option value="71">LUK+1
+	</option><option value="83">ASPD+3%
+	</option><option value="91">Fighting Spirit 1
+	</option><option value="92">Fighting Spirit 2
+	</option><option value="93">Fighting Spirit 3
+	</option><option value="94">Fighting Spirit 4
+	</option><option value="95">Fighting Spirit 5
+	</option><option value="96">Fighting Spirit 6
+	</option><option value="97">Fighting Spirit 7
+	</option><option value="98">Fighting Spirit 8
+	</option><option value="101">Sharp 1
+	</option><option value="102">Sharp 2
+	</option><option value="103">Sharp 3
+	</option><option value="104">Sharp 4
+	</option><option value="105">Sharp 5
+	</option><option value="111">Expert Archer 1
+	</option><option value="112">Expert Archer 2
+	</option><option value="113">Expert Archer 3
+	</option><option value="114">Expert Archer 4
+	</option><option value="115">Expert Archer 5
+	</option><option value="116">Expert Archer 6
+	</option><option value="121">Spell 1
+	</option><option value="122">Spell 2
+	</option><option value="123">Spell 3
+	</option><option value="124">Spell 4
+	</option><option value="125">Spell 5
+	</option><option value="126">Spell 65
+	</option><option value="126">Spell 6
+</option></select>
+</td>
+<td class="calc">
+<span id="A_METext22"></span>
+<select name="A_ME22" style="visibility:hidden" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Malangdo Enchantment 2)
+	</option><option value="1">HP+100
+	</option><option value="2">HP+200
+	</option><option value="3">HP+300
+	</option><option value="11">SP+50
+	</option><option value="12">SP+100
+	</option><option value="21">STR+1
+	</option><option value="22">STR+2
+	</option><option value="23">STR+3
+	</option><option value="31">AGI+1
+	</option><option value="32">AGI+2
+	</option><option value="33">AGI+3
+	</option><option value="41">VIT+1
+	</option><option value="51">INT+1
+	</option><option value="52">INT+2
+	</option><option value="53">INT+3
+	</option><option value="61">DEX+1
+	</option><option value="62">DEX+2
+	</option><option value="63">DEX+3
+	</option><option value="71">LUK+1
+	</option><option value="83">ASPD+3%
+	</option><option value="91">Fighting Spirit 1
+	</option><option value="92">Fighting Spirit 2
+	</option><option value="93">Fighting Spirit 3
+	</option><option value="94">Fighting Spirit 4
+	</option><option value="95">Fighting Spirit 5
+	</option><option value="96">Fighting Spirit 6
+	</option><option value="97">Fighting Spirit 7
+	</option><option value="98">Fighting Spirit 8
+	</option><option value="101">Sharp 1
+	</option><option value="102">Sharp 2
+	</option><option value="103">Sharp 3
+	</option><option value="104">Sharp 4
+	</option><option value="105">Sharp 5
+	</option><option value="111">Expert Archer 1
+	</option><option value="112">Expert Archer 2
+	</option><option value="113">Expert Archer 3
+	</option><option value="114">Expert Archer 4
+	</option><option value="115">Expert Archer 5
+	</option><option value="116">Expert Archer 6
+	</option><option value="121">Spell 1
+	</option><option value="122">Spell 2
+	</option><option value="123">Spell 3
+	</option><option value="124">Spell 4
+	</option><option value="125">Spell 5
+	</option><option value="126">Spell 6
+</option></select>
+</td>
+</tr>
+
+<!-- Equip Refinement -->
+<tr>
+<td class="calc">
+<select name="A_HEAD_DEF_PLUS" onchange="StAllCalc()">
+	<option selected="selected" value="0">+0
+	</option><option value="1">+1
+	</option><option value="2">+2
+	</option><option value="3">+3
+	</option><option value="4">+4
+	</option><option value="5">+5
+	</option><option value="6">+6
+	</option><option value="7">+7
+	</option><option value="8">+8
+	</option><option value="9">+9
+	</option><option value="10">+10
+</option></select>
+
+<select name="A_head1" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+	<option selected="selected" value="142">(No Upper Headgear)
+	</option>
+	<!--<option value="1266">AFK Hat
+	</option><option value="882">Academy Completion Hat
+	</option><option value="881">Academy Freshman Hat
+	</option><option value="191">Aerial
+	</option><option value="1267">Afro Wig
+	</option><option value="459">Alice Doll
+	</option><option value="1268">Angel Blessing
+	</option><option value="664">Angel's Kiss
+	</option><option value="810">Angeling Hat
+	</option><option value="813">Angeling Heartpin
+	</option><option value="1271">Anniversary Hat
+	</option><option value="1258">Anubis Hat
+	</option><option value="1274">Aquarius Crown
+	</option><option value="1275">Aquarius Diadem
+	</option><option value="1272">Aries Crown
+	</option><option value="1273">Aries Diadem
+	</option><option value="1296">Ashura Fairy Hat
+	</option><option value="1297">Australian Flag Hat
+	</option><option value="1298">Autumn Leaves [0]
+	</option><option value="1299">Autumn Leaves [1]
+	</option><option value="673">Ayam
+	</option><option value="1183">Baby Angel
+	</option><option value="570">Baby Chick
+	</option><option value="1301">Baby Dragon Hat
+	</option><option value="849">Balloon Hat
+	</option><option value="507">Banana Hat
+	</option><option value="176">Bandana
+	</option><option value="1303">Bandit Hat
+	</option><option value="787">Baseball Cap
+	</option><option value="369">Beanie
+	</option><option value="871">Bell Ribbon
+	</option><option value="1028">Bennit Doll Hat
+	</option><option value="671">Beret
+	</option><option value="851">Bf Recruiter Cap
+	</option><option value="1304">Bf Recruiter Hat
+	</option><option value="1054">Bijofnil Wings
+	</option><option value="786">Bird Nest
+	</option><option value="533">Bird's Nest Hat
+	</option><option value="803">Black Cat
+	</option><option value="367">Black Cat Ears
+	</option><option value="1305">Black Ribbon
+	</option><option value="1123">Black Tea Kochakaden Hat
+	</option><option value="363">Blue Fish
+	</option><option value="171">Blue Hairband
+	</option><option value="779">Blue Mage Hat
+	</option><option value="1312">Blue Night Cap
+	</option><option value="885">Blue Ribbon
+	</option><option value="177">Bomb Wick
+	</option><option value="237">Bongun Hat
+	</option><option value="1022">Bread Bag
+	</option><option value="675">Bride Mask
+	</option><option value="1180">Bride's Corolla
+	</option><option value="505">Bucket Hat
+	</option><option value="178">Bunny Band
+	</option><option value="568">Bunny Hairband
+	</option><option value="1040">Bunny Top Hat
+	</option><option value="1243">Cactus Hat
+	</option><option value="158">Cake Hat
+	</option><option value="1070">Canada Dry Sakura Mist Cap
+	</option><option value="1276">Cancer Crown
+	</option><option value="1277">Cancer Diadem
+	</option><option value="149">Candle
+	</option><option value="1278">Capricorn Crown
+	</option><option value="1279">Capricorn Diadem
+	</option><option value="783">Captain Hat
+	</option><option value="1032">Carmen Miranda Hat
+	</option><option value="1178">Cat Hair Foot
+	</option><option value="1027">Clarice Doll Hat
+	</option><option value="815">Classic Hat
+	</option><option value="1015">Coca-Cola Can
+	</option><option value="1018">Coca-Cola Cap
+	</option><option value="875">Coppola
+	</option><option value="1152">Corona Torch
+	</option><option value="375">Cowboy Hat
+	</option><option value="1127">Crab Nipper Hairpin
+	</option><option value="151">Crescent Hairpin
+	</option><option value="460">Crescent Helm
+	</option><option value="1125">Crown Parrot
+	</option><option value="376">Crown of Ancient Queen
+	</option><option value="1074">Cruiser Cap
+	</option><option value="1060">Cute Santa Hat
+	</option><option value="1050">Dark Knight Mask [Type A]
+	</option><option value="1306">Dark Knight Mask [Type B]
+	</option><option value="1265">Dark Randgris Helm
+	</option><option value="1208">Darkness Helm
+	</option><option value="532">Decorative Geographer
+	</option><option value="366">Decorative Mushroom
+	</option><option value="891">Defolty Doll Hat
+	</option><option value="785">Deviling Hat
+	</option><option value="1064">Diadem
+	</option><option value="1226">Dorothy Doll Hat
+	</option><option value="1034">Dragon Helm
+	</option><option value="680">Dragon Skull
+	</option><option value="565">Dress Hat
+	</option><option value="355">Drooping Cat
+	</option><option value="789">Drooping Fox
+	</option><option value="212">Ear Muffs
+	</option><option value="791">Earpad Hat
+	</option><option value="1245">Eddga Hat
+	</option><option value="213">Egg Shell
+	</option><option value="784">Elephant hat
+	</option><option value="1130">Emperor's Laurel Crown
+	</option><option value="1241">Engineer's Hat
+	</option><option value="1043">Executioner Hood
+	</option><option value="152">Fancy Flower
+	</option><option value="1014">Fanta Grape Can
+	</option><option value="1013">Fanta Orange Can
+	</option><option value="1072">Fanta Zero Lemon Can
+	</option><option value="1073">Fantastic Wig
+	</option><option value="1063">Fish Head Hat
+	</option><option value="569">Flapping Angel Wings
+	</option><option value="182">Flower Band
+	</option><option value="1181">Flower Fairy
+	</option><option value="358">Flower Hairpin
+	</option><option value="1075">Flower Hat
+	</option><option value="1017">Flower Tea Cap
+	</option><option value="1254">Flying Evil Wing
+	</option><option value="895">Friend Recruiter Hat
+	</option><option value="1185">Frog Hat
+	</option><option value="172">Funeral Hat
+	</option><option value="502">Galapago Cap
+	</option><option value="1280">Gemini Crown
+	</option><option value="1281">Gemini Diadem
+	</option><option value="852">Gf Recruiter Cap
+	</option><option value="351">Giant Ribbon
+	</option><option value="866">Gold Tiara
+	</option><option value="1067">Grand-Peco Hairband
+	</option><option value="190">Green Feeler
+	</option><option value="1222">Gryphon Hat
+	</option><option value="812">Guild recruit Cap
+	</option><option value="811">Guildsman Cap
+	</option><option value="148">Hairband
+	</option><option value="150">Halo
+	</option><option value="1019">Happy Wig
+	</option><option value="179">Hat
+	</option><option value="146">Heart Hairbin
+	</option><option value="1068">Helmet of the Abyss
+	</option><option value="1012">Her National Treasury
+	</option><option value="1145">Hermode's cap
+	</option><option value="456">Hibiscus
+	</option><option value="600">Holy Marcher Hat
+	</option><option value="1204">Hood of Necromancer
+	</option><option value="886">Hopping Filir
+	</option><option value="1149">Horn Helmet
+	</option><option value="1253">Hukke's Blackcat Ears
+	</option><option value="1039">Hyegun Hat
+	</option><option value="1318">I Love China
+	</option><option value="1244">Ice Hat
+	</option><option value="1239">Imp Hat
+	</option><option value="1227">Incarnation of Morocc Hat (Human)
+	</option><option value="192">Indian Fillet
+	</option><option value="1317">Jaguar Hat
+	</option><option value="1251">Jasper Crest
+	</option><option value="896">Jumping Poring
+	</option><option value="457">Kabuki Mask
+	</option><option value="195">Kafra Band
+	</option><option value="1146">Katyusha Flowers
+	</option><option value="458">Kawaii Ribbon
+	</option><option value="574">Kettle Hat
+	</option><option value="189">Kitty Band
+	</option><option value="826">Knit Hat Earmuffs
+	</option><option value="1223">Lady Tanee Hat
+	</option><option value="1261">Large Bapho Horns [DEF Version]
+	</option><option value="1066">Large Hibiscus
+	</option><option value="528">Laurel Crown
+	</option><option value="809">Leaf Hat
+	</option><option value="864">Leaves
+	</option><option value="1282">Leo Crown
+	</option><option value="1283">Leo Diadem
+	</option><option value="1284">Libra Crown
+	</option><option value="1285">Libra Diadem
+	</option><option value="1225">Lilia Doll Hat
+	</option><option value="602">Lily Crown
+	</option><option value="1021">Little Angel Doll
+	</option><option value="444">Lord Kaho's Horn
+	</option><option value="1062">Luise's Santa Hat
+	</option><option value="1220">Lunatic Hat
+	</option><option value="455">Magic Eyes
+	</option><option value="1155">Magic Rabbit Hat
+	</option><option value="672">Magistrate Hat
+	</option><option value="1124">Magnolia Hat
+	</option><option value="531">Maiden's Twin Ribbon
+	</option><option value="1033">Marvelous Wig
+	</option><option value="164">Mini Propeller
+	</option><option value="1218">Moon Rabbit Hat
+	</option><option value="238">Munak Hat
+	</option><option value="508">Mystic Rose
+	</option><option value="676">Mythical Lion Mask
+	</option><option value="1182">Neck Tie
+	</option><option value="884">Neko Mimi Kafra
+	</option><option value="1150">New Cowboy Hat
+	</option><option value="1247">Noah's Hat
+	</option><option value="1129">Noble Hat
+	</option><option value="562">Note Headphones
+	</option><option value="1128">Notice Board
+	</option><option value="519">Novice False Eggshell
+	</option><option value="227">Nut Shell
+	</option><option value="1029">Pagdayaw
+	</option><option value="1016">Paper Bag Hat
+	</option><option value="1036">Parade Hat
+	</option><option value="370">Party Hat
+	</option><option value="572">Peco Peco Hairband
+	</option><option value="1248">Phantom Thief's Hat
+	</option><option value="872">Phoenix Crown
+	</option><option value="1230">Pig's Piggybank
+	</option><option value="1153">Pinwheel Hat
+	</option><option value="1286">Pisces Crown
+	</option><option value="1287">Pisces Diadem
+	</option><option value="782">Pointed Hat (white)
+	</option><option value="143">Poo Poo Hat
+	</option><option value="1059">Poring Cake Hat
+	</option><option value="167">Pretend Murdered
+	</option><option value="564">Pumpkin Hat
+	</option><option value="1046">Pumpkin Hat 2008
+	</option><option value="1024">Pumpkin Hat2007
+	</option><option value="500">Puppy Hairband
+	</option><option value="529">Puppy Hat
+	</option><option value="1264">Purple Cowboy Hat
+	</option><option value="1151">Quati Hat
+	</option><option value="679">Rabbit Doll
+	</option><option value="1224">Rabbit Ear
+	</option><option value="1011">Radio Antenna
+	</option><option value="223">Rainbow Eggshell
+	</option><option value="681">Ramen Hat
+	</option><option value="180">Red Bandana
+	</option><option value="501">Red Bonnet
+	</option><option value="1184">Red Comb
+	</option><option value="1126">Red Hat
+	</option><option value="1214">Red Marcher Hat
+	</option><option value="506">Renown Detective Cap
+	</option><option value="165">Ribbon
+	</option><option value="867">Ring of Money Spirit
+	</option><option value="1288">Sagittarius Crown
+	</option><option value="1289">Sagittarius Diadem
+	</option><option value="209">Sakkat
+	</option><option value="1229">Sakura Yuu Township
+	</option><option value="760">Sales Banner
+	</option><option value="160">Santa Hat
+	</option><option value="870">Santa Poring Cap
+	</option><option value="566">Satellite Hat
+	</option><option value="1044">Scarves
+	</option><option value="1215">Scooter Helm
+	</option><option value="1290">Scorpio Crown
+	</option><option value="1291">Scorpio Diadem
+	</option><option value="373">Sea Otter Hat
+	</option><option value="1055">Shaman Hair Ornaments
+	</option><option value="802">Shark Hat
+	</option><option value="956">Shining Bulb Hairband
+	</option><option value="1045">Shiny Wig
+	</option><option value="804">Ship Captain's Hat
+	</option><option value="788">Silver Tiara
+	</option><option value="1069">Sky Hat
+	</option><option value="1242">Sleeper Hat
+	</option><option value="360">Smokie Leaf
+	</option><option value="892">Sorin Doll Hat
+	</option><option value="1228">Southern Cross
+	</option><option value="161">Stellar
+	</option><option value="174">Stop Post
+	</option><option value="372">Straw Hat
+	</option><option value="169">Striped Hairband
+	</option><option value="173">Sunflower
+	</option><option value="504">Super Novice Hat
+	</option><option value="1292">Taurus Crown
+	</option><option value="1293">Taurus Diadem
+	</option><option value="1071">Tea and Cherrymilk Hat
+	</option><option value="371">Teddybear Hat
+	</option><option value="890">Telling Doll Hat
+	</option><option value="1219">Tiara Samambaia
+	</option><option value="450">Tiger Mask
+	</option><option value="1048">Tiraya Bonnet
+	</option><option value="865">Triple Poring Hat
+	</option><option value="877">True Love
+	</option><option value="1154">True Love
+	</option><option value="356">Tulip Hairpin
+	</option><option value="1020">Umbrella Hat
+	</option><option value="186">Unicorn Horn
+	</option><option value="868">Valkyrie Feather Band
+	</option><option value="758">Vanilmirth Hat
+	</option><option value="1294">Virgo Crown
+	</option><option value="1295">Virgo Diadem
+	</option><option value="893">W Doll Hat
+	</option><option value="1205">Wandering Wolf Hat
+	</option><option value="144">Wedding Veil
+	</option><option value="682">Whisper Mask
+	</option><option value="790">Wig
+	</option><option value="1260">Wild Rose Hat
+	</option><option value="1035">Wind Guidepost
+	</option><option value="573">Windmill Hairpin
+	</option><option value="1031">Wings of Victory
+	</option><option value="503">Winter Hat
+	</option><option value="232">Wonder Nutshell
+	</option><option value="354">X Hairpin
+	</option><option value="761">Yellow Mage Hat
+	</option><option value="1065">Yoyo Cap-->
+</select>
+</td>
+<td class="calc">
+<select name="A_head1_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+	</option><option selected="selected" value="0">(No Card)
+	</option><option value="221">Archangeling
+	</option><option value="332">Bacsojin
+	</option><option value="474">Banshee
+	</option><option value="179">Blue Acidus
+	</option><option value="298">Carat
+	</option><option value="339">Clock Tower Manager
+	</option><option value="114">Coco
+	</option><option value="273">Cramp
+	</option><option value="320">Dark Illusion
+	</option><option value="510">Dark Pinguicula
+	</option><option value="51">Deviruchi
+	</option><option value="342">Dryad
+	</option><option value="511">Duneyrr
+	</option><option value="49">Elder Willow
+	</option><option value="337">Evil Nymph
+	</option><option value="284">Evil Snake Lord
+	</option><option value="176">Gemini-S58
+	</option><option value="116">Ghoul
+	</option><option value="303">Giant Hornet
+	</option><option value="213">Gibbet
+	</option><option value="117">Giearth
+	</option><option value="274">Grand Peco
+	</option><option value="424">High Wizard[MVP]
+	</option><option value="175">Holden
+	</option><option value="234">Incubus
+	</option><option value="472">Isilla
+	</option><option value="177">Kathryne Keyron
+	</option><option value="357">Kiel D-01
+	</option><option value="473">Knocker
+	</option><option value="397">Leaf Cat
+	</option><option value="387">Leib Olmai
+	</option><option value="178">Lord Knight[MVP]
+	</option><option value="118">Marduk
+	</option><option value="426">Margaretha Sorin
+	</option><option value="115">Martin
+	</option><option value="374">Maya Purple
+	</option><option value="119">Mistress
+	</option><option value="376">Myst Case
+	</option><option value="50">Nightmare
+	</option><option value="52">Orc Hero
+	</option><option value="347">Permeter
+	</option><option value="120">Pharaoh
+	</option><option value="512">Phylla
+	</option><option value="509">Rata
+	</option><option value="513">Rhyncho
+	</option><option value="383">Rideword
+	</option><option value="180">Seyren Windsor
+	</option><option value="113">Stainer
+	</option><option value="309">Stalactic Golem
+	</option><option value="174">Ungoliant
+	</option><option value="471">Vanberk
+	</option><option value="425">Vesper
+	</option><option value="48">Willow
+	</option><option value="239">Wootan Fighter
+	</option><option value="238">Wootan Shooter
+</select>
+</td>
+<td class="calc"></td>
+<td class="calc"></td>
+</tr>
+
+<tr>
+<td class="calc">
+<select style="margin-left: 51px" name="A_head2" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+<option selected="selected" value="243">(No Middle Headgear)</option><option value="385">Angel Wing Ears</option><option value="260">Angled Glasses</option><option value="384">Annoyed Mask</option><option value="887">Black Frame Glasses</option><option value="874">Blank Eyes</option><option value="247">Blush</option><option value="1263">Blush of Groom</option><option value="677">Censor Bar</option><option value="1221">Cube Mask</option><option value="1037">Darkness Eyes</option><option value="246">Diver Goggles</option><option value="381">Evil Wing Ears</option><option value="248">Eye Patch</option><option value="254">Geek Glasses</option><option value="244">Glasses</option><option value="386">Goblin Leader Mask</option><option value="678">Hahoe Mask</option><option value="1316">Hockey Mask</option><option value="1147">Ifrit Ear</option><option value="1207">Jaguar Face</option><option value="880">Mask of the Goddess</option><option value="888">Mischievous Fairy</option><option value="251">Monocle</option><option value="264">Mr. Smile</option><option value="1023">Odin Mask</option><option value="805">Peco Wing Ears</option><option value="383">Poker Face</option><option value="258">Purple Glasses</option><option value="571">Red Glasses</option><option value="1252">Robo Eye</option><option value="362">Small Ribbons</option><option value="245">Sunglasses</option><option value="382">Surprised Mask</option><option value="452">Takius Blindfold</option><option value="1144">Tiger Face</option><option value="873">Tongue-Sticking Mask</option><option value="1132">White Fox Mask</option><option value="1038">Wings of Reginleif</option></select>
+</td>
+<td class="calc">
+<select name="A_head2_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><option value="221">Archangeling</option><option value="332">Bacsojin</option><option value="474">Banshee</option><option value="179">Blue Acidus</option><option value="298">Carat</option><option value="339">Clock Tower Manager</option><option value="114">Coco</option><option value="273">Cramp</option><option value="320">Dark Illusion</option><option value="510">Dark Pinguicula</option><option value="51">Deviruchi</option><option value="342">Dryad</option><option value="511">Duneyrr</option><option value="49">Elder Willow</option><option value="337">Evil Nymph</option><option value="284">Evil Snake Lord</option><option value="176">Gemini-S58</option><option value="116">Ghoul</option><option value="303">Giant Hornet</option><option value="213">Gibbet</option><option value="117">Giearth</option><option value="274">Grand Peco</option><option value="424">High Wizard[MVP]</option><option value="175">Holden</option><option value="234">Incubus</option><option value="472">Isilla</option><option value="177">Kathryne Keyron</option><option value="357">Kiel D-01</option><option value="473">Knocker</option><option value="397">Leaf Cat</option><option value="387">Leib Olmai</option><option value="178">Lord Knight[MVP]</option><option value="118">Marduk</option><option value="426">Margaretha Sorin</option><option value="115">Martin</option><option value="374">Maya Purple</option><option value="119">Mistress</option><option value="376">Myst Case</option><option value="50">Nightmare</option><option value="52">Orc Hero</option><option value="347">Permeter</option><option value="120">Pharaoh</option><option value="512">Phylla</option><option value="509">Rata</option><option value="513">Rhyncho</option><option value="383">Rideword</option><option value="180">Seyren Windsor</option><option value="113">Stainer</option><option value="309">Stalactic Golem</option><option value="174">Ungoliant</option><option value="471">Vanberk</option><option value="425">Vesper</option><option value="48">Willow</option><option value="239">Wootan Fighter</option><option value="238">Wootan Shooter</option></select>
+</td><td class="calc"></td><td class="calc"></td>
+</tr>
+
+<tr>
+<td class="calc"><select style="margin-left: 51px" name="A_head3" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+<option selected="selected" value="268">(No Lower Headgear)</option><option value="1256">4 Leaf Clover In Mouth</option><option value="1270">Angry Mouth</option><option value="776">Angry Snarl</option><option value="775">Baby Pacifier</option><option value="1302">Bandit Beard</option><option value="1216">Captain's Pipe</option><option value="272">Clown Nose</option><option value="774">Crunch Toast</option><option value="889">Fish in Mouth</option><option value="273">Flu Mask</option><option value="270">Gangster Mask</option><option value="806">Gangster Scarf</option><option value="1262">Gentleman's Pipe</option><option value="277">Grampa Beard</option><option value="1231">Letter Poring</option><option value="807">Ninja Scroll</option><option value="1250">Pirate Dagger</option><option value="773">Red Cup</option><option value="1148">Red Nose</option><option value="1025">Reindeer Nose</option><option value="1026">Santa's Beard</option><option value="1313">Spiked Scarf</option><option value="1188">Stick Candy?</option><option value="1049">Sweet Candy</option><option value="1319">Well-Chewed Pencil</option></select>
+</td>
+<td class="calc">
+</td><td class="calc"></td><td class="calc"></td>
+</tr>
+
+<tr>
+<td class="calc">
+<select name="A_BODY_DEF_PLUS" onchange="StAllCalc()">
+	<option selected="selected" value="0">+0
+	</option><option value="1">+1
+	</option><option value="2">+2
+	</option><option value="3">+3
+	</option><option value="4">+4
+	</option><option value="5">+5
+	</option><option value="6">+6
+	</option><option value="7">+7
+	</option><option value="8">+8
+	</option><option value="9">+9
+	</option><option value="10">+10
+</option></select>
+<select name="A_body" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+	<option selected="selected" value="279">(No Armor)
+	</option><option value="771">Adventure Novice Suit
+	</option><option value="283">Adventure Suit
+	</option><option value="808">Angel dress
+	</option><option value="683">Angelic Protection
+	</option><option value="859">Brynhild
+	</option><option value="281">Cotton Shirt
+	</option><option value="282">Leather Jacket
+	</option><option value="290">Novice Breastplate
+	</option><option value="288">Pantie
+	</option><option value="518">Tattered Novice Ninja Suit
+</option></select>
+</td>
+<td class="calc">
+<select name="A_body_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+	<option selected="selected" value="0">(No Card)
+	</option><option value="476">Agav
+	</option><option value="194">Alicel
+	</option><option value="282">Aliza
+	</option><option value="191">Ancient Mimic
+	</option><option value="134">Angeling
+	</option><option value="224">Anolian
+	</option><option value="232">Antonio
+	</option><option value="225">Apocalypse
+	</option><option value="190">Archdam
+	</option><option value="133">Argiope
+	</option><option value="69">Baby Desert Wolf
+	</option><option value="281">Baby Leopard
+	</option><option value="500">Banshee Master
+	</option><option value="135">Bathory
+	</option><option value="364">Brilight
+	</option><option value="479">Byorgue
+	</option><option value="264">Chimera
+	</option><option value="280">Clock
+	</option><option value="132">Cornutus
+	</option><option value="275">Creamy Fear
+	</option><option value="321">Dark Frame
+	</option><option value="330">Demon Fungus
+	</option><option value="422">Detardeurus
+	</option><option value="198">Dimik
+	</option><option value="214">Disguise
+	</option><option value="131">Dokebi
+	</option><option value="334">Earth Deleter
+	</option><option value="477">Echio
+	</option><option value="187">Egnigem Cenia
+	</option><option value="501">Entweihen Crothen[MVP]
+	</option><option value="75">Evil Druid
+	</option><option value="199">Frus
+	</option><option value="301">Geographer
+	</option><option value="136">Ghostring
+	</option><option value="302">Giant Spider
+	</option><option value="475">Gloom Under Night
+	</option><option value="283">Goat
+	</option><option value="276">Grizzly
+	</option><option value="349">Garm
+	</option><option value="421">High Priest[MVP]
+	</option><option value="261">Karakasa
+	</option><option value="268">Killer Mantis
+	</option><option value="299">Kraben
+	</option><option value="478">Ktullanux
+	</option><option value="220">Loli Ruri
+	</option><option value="285">Majoruros
+	</option><option value="137">Marc
+	</option><option value="184">Mineral
+	</option><option value="196">Mistress of Shelter
+	</option><option value="344">Nightmare Terror
+	</option><option value="197">Observation
+	</option><option value="185">Obsidian
+	</option><option value="138">Orc Lord
+	</option><option value="130">Pasana
+	</option><option value="73">Peco Peco
+	</option><option value="367">Pest
+	</option><option value="65">Picky
+	</option><option value="183">Porcellio
+	</option><option value="64">Poring
+	</option><option value="71">Pupa
+	</option><option value="420">RSX-0806
+	</option><option value="192">Red Novus
+	</option><option value="186">Remover
+	</option><option value="68">Rocker
+	</option><option value="72">Roda Frog
+	</option><option value="384">Rybio
+	</option><option value="129">Sandman
+	</option><option value="293">Sasquatch
+	</option><option value="70">Savage
+	</option><option value="308">Skel. Prisoner
+	</option><option value="195">Skogul
+	</option><option value="333">Sky Deleter
+	</option><option value="317">Solider
+	</option><option value="74">Steel Chonhon
+	</option><option value="291">Succubus
+	</option><option value="66">Super Picky
+	</option><option value="128">Swordfish
+	</option><option value="392">Tao Gunka
+	</option><option value="67">Thief Bug
+	</option><option value="189">Venatu
+	</option><option value="182">Venomous
+	</option><option value="181">Waste Stove
+	</option><option value="240">Wooden Golem
+	</option><option value="331">Wraith Dead
+	</option><option value="193">Yellow Novus
+</option></select>
+</td>
+<td class="calc"><select name="A_HSE" onchange="StAllCalc()"><option selected="selected" value="0">(Hidden Slot Enchant, Armor)</option><option value="1">STR+1</option><option value="2">STR+2</option><option value="3">STR+3</option><option value="11">AGI+1</option><option value="12">AGI+2</option><option value="13">AGI+3</option><option value="21">VIT+1</option><option value="22">VIT+2</option><option value="23">VIT+3</option><option value="31">INT+1</option><option value="32">INT+2</option><option value="33">INT+3</option><option value="41">DEX+1</option><option value="42">DEX+2</option><option value="43">DEX+3</option><option value="51">LUK+1</option><option value="52">LUK+2</option><option value="53">LUK+3</option></select>
+</td>
+<td style="visibility: hidden;" class="calc">
+<select name="A_HSE_HEAD1" onchange="StAllCalc()">
+	<option selected="selected" value="0">(Hidden Slot Enchant, Headgear)
+	</option><option value="1">STR+1
+	</option><option value="2">STR+2
+	</option><option value="3">STR+3
+	</option><option value="11">AGI+1
+	</option><option value="12">AGI+2
+	</option><option value="13">AGI+3
+	</option><option value="21">VIT+1
+	</option><option value="22">VIT+2
+	</option><option value="23">VIT+3
+	</option><option value="31">INT+1
+	</option><option value="32">INT+2
+	</option><option value="33">INT+3
+	</option><option value="41">DEX+1
+	</option><option value="42">DEX+2
+	</option><option value="43">DEX+3
+	</option><option value="51">LUK+1
+	</option><option value="52">LUK+2
+	</option><option value="53">LUK+3
+</option></select>
+</td>
+</tr>
+<tr>
+<td class="calc">
+<select style="visibility: visible;" name="A_LEFT_DEF_PLUS" onchange="StAllCalc()">
+	<option selected="selected" value="0">+0
+	</option><option value="1">+1
+	</option><option value="2">+2
+	</option><option value="3">+3
+	</option><option value="4">+4
+	</option><option value="5">+5
+	</option><option value="6">+6
+	</option><option value="7">+7
+	</option><option value="8">+8
+	</option><option value="9">+9
+	</option><option value="10">+10
+</option></select>
+<select style="visibility: visible;" name="A_left" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+<option selected="selected" value="305">(No Shield)</option><option value="690">Angelic Guard</option><option value="306">Guard</option><option value="510">Novice Guard</option><option value="511">Novice Shield</option></select>
+</td><td class="calc" id="ID_C4">
+<select style="visibility: visible;" name="A_left_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><!--<option value="231">Alice</option><option value="55">Ambernite</option><option value="245">Ancient Mummy</option><option value="54">Andre Egg</option><option value="122">Anubis</option><option value="502">Aqua Elemental</option><option value="222">Arclouze</option><option value="124">Argos</option><option value="58">Bigfoot</option><option value="503">Centipede</option><option value="504">Cornus</option><option value="506">Dark Shadow</option><option value="173">Despero of Thanatos</option><option value="505">Draco</option><option value="307">Enchanted Peach Tree</option><option value="241">Executioner</option><option value="470">Flame Skull</option><option value="126">Golden Thief Bug</option><option value="348">High Orc</option><option value="467">Hodremlin</option><option value="62">Horn</option><option value="61">Khalitzburg</option><option value="507">Luciola Vespa</option><option value="127">Maya</option><option value="63">Medusa</option><option value="123">Megalodon</option><option value="272">Mi Gao</option><option value="125">Munak</option><option value="469">Muscipular</option><option value="375">Mysteltainn</option><option value="57">Orc Warrior</option><option value="358">Parasite</option><option value="368">Penomena</option><option value="154">Race Reduction 30%</option><option value="59">Rafflesia</option><option value="468">Seeker</option><option value="60">Sky Petite</option><option value="121">Soldier Andre</option><option value="310">Sting</option><option value="396">Tamruan</option><option value="508">Tatacho</option><option value="172">Teddy Bear</option><option value="56">Thara Frog</option><option value="53">Thief Bug Egg</option><option value="249">Tirfing</option><option value="306">Zherlthsh</option></select>-->
+</td><td class="calc"></td><td class="calc"></td>
+</tr>
+<tr>
+<td class="calc">
+<select name="A_SHOULDER_DEF_PLUS" onchange="StAllCalc()">
+	<option selected="selected" value="0">+0
+	</option><option value="1">+1
+	</option><option value="2">+2
+	</option><option value="3">+3
+	</option><option value="4">+4
+	</option><option value="5">+5
+	</option><option value="6">+6
+	</option><option value="7">+7
+	</option><option value="8">+8
+	</option><option value="9">+9
+	</option><option value="10">+10
+</option></select>
+<select name="A_shoulder" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+<option selected="selected" value="311">(No Garment)</option><option value="698">Angelic Cardigan</option><option value="957">Asprika</option><option value="312">Hood</option><option value="513">Novice Manteau</option><option value="512">Somber Novice Hood</option><option value="699">Undershirt</option></select>
+</td><td class="calc"><select name="A_shoulder_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><option value="405">Aliot</option><option value="404">Assassin Cross Eremes[MVP]</option><option value="78">Baphomet Jr.</option><option value="327">Choco</option><option value="402">Chung E</option><option value="79">Condor</option><option value="394">Deviling</option><option value="341">Dragon Fly</option><option value="340">Dragon Tail</option><option value="80">Dustiness</option><option value="243">Eclipse</option><option value="139">Frilldora</option><option value="267">Giant Whisper</option><option value="346">Harpy</option><option value="83">Hode</option><option value="86">Isis</option><option value="82">Jakk</option><option value="258">Kapha</option><option value="482">Kasa</option><option value="401">Kavach Icarus</option><option value="483">Magmaring</option><option value="84">Marionette</option><option value="81">Marse</option><option value="372">Mastering</option><option value="87">Myst</option><option value="271">Ninetails</option><option value="400">Noxious</option><option value="403">Orc Baby</option><option value="85">Orc Zombie</option><option value="352">Punk</option><option value="77">Raydric</option><option value="480">Roween</option><option value="481">Salamander</option><option value="338">Toad</option><option value="294">Vagabond Wolf</option><option value="369">Vocal</option><option value="295">Wanderer</option><option value="76">Whisper</option><option value="393">Yao Jun</option></select>
+</td>
+<td class="calc"><select name="A_acces1" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+<option selected="selected" value="326">(No Accessory)</option><option value="777">Accuracy Gauntlet</option><option value="1118">Acolyte Figure</option><option value="1120">Archer Figure</option><option value="1030">Aumdura's Benefit</option><option value="883">Badge Academy</option><option value="339">Belt</option><option value="347">Brisingamen</option><option value="329">Clip</option><option value="1051">Dark Knight Belt [Type A]</option><option value="1309">Dark Knight Belt [Type B]</option><option value="1052">Dark Knight Glove [Type A]</option><option value="1310">Dark Knight Glove [Type B]</option><option value="441">Diamond Ring</option><option value="437">Flower Ring</option><option value="517">Goddess of Fortune's Cursed Brooch</option><option value="440">Gold Ring</option><option value="730">Lesser Elemental Ring</option><option value="1119">Magician Figure</option><option value="848">Marvelous Pendant</option><option value="348">Meginjard</option><option value="1122">Merchant Figure</option><option value="523">Nile Rose</option><option value="336">Novice Armlet</option><option value="1116">Novice Figure</option><option value="1195">Ring of Wisdom King</option><option value="1057">Shaman Earring</option><option value="1056">Shaman Ring</option><option value="439">Silver Ring</option><option value="438">Skull Ring</option><option value="1259">Skull Ring [1]</option><option value="727">Spiritual Ring</option><option value="1117">Swordman Figure</option><option value="454">The Sign</option><option value="1121">Thief Figure</option></select>
+</td><td class="calc"><select name="A_acces1_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><option value="230">Alligator</option><option value="412">Anopheles</option><option value="188">Armeyer Dinzie</option><option value="416">Baroness of Retribution</option><option value="141">Beelzebub</option><option value="411">Beholder</option><option value="365">Blazzer</option><option value="350">Bloody Butterfly</option><option value="370">Bongun</option><option value="270">Cookie</option><option value="146">Creamy</option><option value="417">Dragon Egg</option><option value="324">Dumpling Kid</option><option value="414">Errende Ebeece</option><option value="262">Galapago</option><option value="490">Galion</option><option value="256">Gargoyle</option><option value="489">Gazeti</option><option value="335">Greatest General</option><option value="410">Gremlin</option><option value="418">Grove</option><option value="354">Heater</option><option value="495">Hellhound</option><option value="389">Hermit Plant</option><option value="150">Horong</option><option value="419">Hydrolancer</option><option value="216">Hylozoist</option><option value="492">Ifrit</option><option value="493">Imp</option><option value="226">Li Me Mang Ryang</option><option value="151">Joker</option><option value="103">Kobold</option><option value="97">Kukre</option><option value="218">Lude</option><option value="101">Mantis</option><option value="371">Marin</option><option value="143">Marine Sphere</option><option value="378">Mimic</option><option value="104">Muka</option><option value="148">Obeaune</option><option value="250">Orc Archer</option><option value="152">Osiris</option><option value="248">Owl Baron</option><option value="247">Owl Duke</option><option value="105">Phen</option><option value="149">Pirate Skel</option><option value="415">Plasma</option><option value="142">Poison Spore</option><option value="251">Poison Toad</option><option value="147">Poporing</option><option value="212">Quve</option><option value="494">Ragged Zombie</option><option value="386">Raydric Archer</option><option value="316">Sage Worm</option><option value="297">Sea-Otter</option><option value="260">Shinobi</option><option value="488">Siroma</option><option value="315">Sleeper</option><option value="145">Smokie</option><option value="487">Snowier</option><option value="96">Spore</option><option value="314">Spring Rabbit</option><option value="491">Stapo</option><option value="312">Stem Worm</option><option value="336">Taoist Hermit</option><option value="98">Tarou</option><option value="292">Tengu</option><option value="236">Violy</option><option value="144">Vitata</option><option value="413">Whikebine Tres</option><option value="237">Wind Ghost</option><option value="99">Wormtail</option><option value="385">Wraith</option><option value="102">Yoyo</option><option value="100">Zerom</option><option value="395">Zho Pu Long</option></select></td>
+</tr>
+<tr>
+<td class="calc">
+<select name="A_SHOES_DEF_PLUS" onchange="StAllCalc()">
+	<option selected="selected" value="0">+0
+	</option><option value="1">+1
+	</option><option value="2">+2
+	</option><option value="3">+3
+	</option><option value="4">+4
+	</option><option value="5">+5
+	</option><option value="6">+6
+	</option><option value="7">+7
+	</option><option value="8">+8
+	</option><option value="9">+9
+	</option><option value="10">+10
+</option></select>
+<select name="A_shoes" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+<option selected="selected" value="317">(No Footgear)</option><option value="710">Angel's Reincarnation</option><option value="516">Novice Shoes</option><option value="515">Novice Slippers</option><option value="320">Sandles</option><option value="323">Shackles</option></select>
+</td><td class="calc"><select name="A_shoes_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><option value="229">Alarm</option><option value="227">Am Mut</option><option value="228">Amon Ra</option><option value="246">Ancient Worm</option><option value="266">Cat O' Nine Tails</option><option value="88">Chonchon</option><option value="269">Christmas Cookie</option><option value="322">Dark Lord</option><option value="95">Eddga</option><option value="94">Eggyra</option><option value="242">Explosion</option><option value="486">Fallen Bishop</option><option value="304">Firelock Soldier</option><option value="362">Freezer</option><option value="257">Gajomart</option><option value="423">General Egnigem Cenia[MVP]</option><option value="407">Gold Acidus</option><option value="408">Green Ferus</option><option value="278">Gullinbursti</option><option value="484">Ice Titan</option><option value="399">Iron Fist</option><option value="409">Lady Tanee</option><option value="89">Male Thief Bug</option><option value="90">Matyr</option><option value="381">Megalith</option><option value="351">Merman</option><option value="377">Mini Demon</option><option value="379">Miyabi Doll</option><option value="140">Moonlight Flower</option><option value="406">Odium of Thanatos</option><option value="388">Raggler</option><option value="300">Skeleton General</option><option value="91">Sohee</option><option value="92">Verit</option><option value="391">Wild Rose</option><option value="93">Zombie</option><option value="318">Zombie Prisoner</option><option value="485">Zombie Slaughter</option></select></td>
+<td class="calc"><select name="A_acces2" onchange="StAllCalc()|ClickB_Item(this[this.selectedIndex].value)">
+<option selected="selected" value="326">(No Accessory)</option><option value="777">Accuracy Gauntlet</option><option value="1118">Acolyte Figure</option><option value="1120">Archer Figure</option><option value="1030">Aumdura's Benefit</option><option value="883">Badge Academy</option><option value="339">Belt</option><option value="347">Brisingamen</option><option value="329">Clip</option><option value="1051">Dark Knight Belt [Type A]</option><option value="1309">Dark Knight Belt [Type B]</option><option value="1052">Dark Knight Glove [Type A]</option><option value="1310">Dark Knight Glove [Type B]</option><option value="441">Diamond Ring</option><option value="437">Flower Ring</option><option value="517">Goddess of Fortune's Cursed Brooch</option><option value="440">Gold Ring</option><option value="730">Lesser Elemental Ring</option><option value="1119">Magician Figure</option><option value="848">Marvelous Pendant</option><option value="348">Meginjard</option><option value="1122">Merchant Figure</option><option value="523">Nile Rose</option><option value="336">Novice Armlet</option><option value="1116">Novice Figure</option><option value="1195">Ring of Wisdom King</option><option value="1057">Shaman Earring</option><option value="1056">Shaman Ring</option><option value="439">Silver Ring</option><option value="438">Skull Ring</option><option value="1259">Skull Ring [1]</option><option value="727">Spiritual Ring</option><option value="1117">Swordman Figure</option><option value="454">The Sign</option><option value="1121">Thief Figure</option></select>
+</td><td class="calc"><select name="A_acces2_card" onchange="StAllCalc()|Click_Card(this[this.selectedIndex].value)">
+<option selected="selected" value="0">(No Card)</option><option value="230">Alligator</option><option value="412">Anopheles</option><option value="188">Armeyer Dinzie</option><option value="416">Baroness of Retribution</option><option value="141">Beelzebub</option><option value="411">Beholder</option><option value="365">Blazzer</option><option value="350">Bloody Butterfly</option><option value="370">Bongun</option><option value="270">Cookie</option><option value="146">Creamy</option><option value="417">Dragon Egg</option><option value="324">Dumpling Kid</option><option value="414">Errende Ebeece</option><option value="262">Galapago</option><option value="490">Galion</option><option value="256">Gargoyle</option><option value="489">Gazeti</option><option value="335">Greatest General</option><option value="410">Gremlin</option><option value="418">Grove</option><option value="354">Heater</option><option value="495">Hellhound</option><option value="389">Hermit Plant</option><option value="150">Horong</option><option value="419">Hydrolancer</option><option value="216">Hylozoist</option><option value="492">Ifrit</option><option value="493">Imp</option><option value="226">Li Me Mang Ryang</option><option value="151">Joker</option><option value="103">Kobold</option><option value="97">Kukre</option><option value="218">Lude</option><option value="101">Mantis</option><option value="371">Marin</option><option value="143">Marine Sphere</option><option value="378">Mimic</option><option value="104">Muka</option><option value="148">Obeaune</option><option value="250">Orc Archer</option><option value="152">Osiris</option><option value="248">Owl Baron</option><option value="247">Owl Duke</option><option value="105">Phen</option><option value="149">Pirate Skel</option><option value="415">Plasma</option><option value="142">Poison Spore</option><option value="251">Poison Toad</option><option value="147">Poporing</option><option value="212">Quve</option><option value="494">Ragged Zombie</option><option value="386">Raydric Archer</option><option value="316">Sage Worm</option><option value="297">Sea-Otter</option><option value="260">Shinobi</option><option value="488">Siroma</option><option value="315">Sleeper</option><option value="145">Smokie</option><option value="487">Snowier</option><option value="96">Spore</option><option value="314">Spring Rabbit</option><option value="491">Stapo</option><option value="312">Stem Worm</option><option value="336">Taoist Hermit</option><option value="98">Tarou</option><option value="292">Tengu</option><option value="236">Violy</option><option value="144">Vitata</option><option value="413">Whikebine Tres</option><option value="237">Wind Ghost</option><option value="99">Wormtail</option><option value="385">Wraith</option><option value="102">Yoyo</option><option value="100">Zerom</option><option value="395">Zho Pu Long</option></select></td>
+</tr>
+</tbody></table>
+<br>
+
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: 60%;">
+<tbody><tr><td colspan="10" class="subheader">
+<div style="float: left; padding: 3px;"><span id="nm080">Item Data</span></div>
+<div style="float: right; padding-right: 3px;"><input id="lab3" name="ITEM_SW" onclick="ClickB_Item('SW')" type="checkbox"><label for="lab3"><span id="nm081">Show</span></label></div>
+</td></tr>
+<tr>
+<td id="ITEM0" class="calc" bgcolor="#DDDDFF" width="13%"></td>
+<td id="ITEM_DATA" class="calc" width="7%"></td>
+<td id="ITEM1" class="calc" bgcolor="#DDDDFF" width="13%"></td>
+<td id="ITEM_SLOT" class="calc" width="7%"></td>
+<td id="ITEM2" class="calc" bgcolor="#DDDDFF" width="13%"></td>
+<td id="ITEM_W_LV" class="calc" width="7%"></td>
+<td id="ITEM3" class="calc" bgcolor="#DDDDFF" width="13%"></td>
+<td id="ITEM_LV" class="calc" width="7%"></td>
+<td id="ITEM4" class="calc" bgcolor="#DDDDFF" width="13%"></td>
+<td id="ITEM_WAIT" class="calc" width="7%"></td>
+</tr>
+<tr>
+<td colspan="10" id="B_SETUMEI" class="calc">
+</td>
+</tr>
+</tbody></table>
+<br>
+<table style="border-collapse: collapse;"><tbody>
+<tr><td style="width: 50%;padding-left:0px;" valign="top">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse;">
+<tbody><tr><td colspan="4" class="subheader"><div style="float: left; padding: 3px;"><span id="nm033">Passive / Duration Skills</span></div><div style="clear: left;"></div></td></tr>
+<tr>
+<td id="P_Skill0"></td><td id="P_Skill0s"></td>
+<td id="P_Skill1"></td><td id="P_Skill1s"></td>
+</tr><tr>
+<td id="P_Skill2"></td><td id="P_Skill2s"></td>
+<td id="P_Skill3"></td><td id="P_Skill3s"></td>
+</tr><tr>
+<td id="P_Skill4"></td><td id="P_Skill4s"></td>
+<td id="P_Skill5"></td><td id="P_Skill5s"></td>
+</tr><tr>
+<td id="P_Skill6"></td><td id="P_Skill6s"></td>
+<td id="P_Skill7"></td><td id="P_Skill7s"></td>
+</tr><tr>
+<td id="P_Skill8"></td><td id="P_Skill8s"></td>
+<td id="P_Skill9"></td><td id="P_Skill9s"></td>
+</tr><tr>
+<td id="P_Skill10"></td><td id="P_Skill10s"></td>
+<td id="P_Skill11"></td><td id="P_Skill11s"></td>
+</tr><tr>
+<td id="P_Skill12"></td><td id="P_Skill12s"></td>
+<td id="P_Skill13"></td><td id="P_Skill13s"></td>
+</tr><tr>
+<td id="P_Skill14"></td><td id="P_Skill14s"></td>
+<td id="P_Skill15"></td><td id="P_Skill15s"></td>
+</tr>
+</tbody></table>
+
+</td><td style="width: 50%;padding-right:0px;" valign="top">
+
+<div id="SIENSKILL">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse;">
+<tbody><tr><td id="A2TD" colspan="4" class="subheader"><div style="float: left; padding: 3px;">Supportive / Party Skills <span id="A2used"></span></div>
+<div style="float: right; padding-right: 3px;"><input id="lab4" name="A2_SKILLSW" onclick="Click_SkillSW()" type="checkbox"><label for="lab4"><span id="nm035">Show </span></label></div>
+<div style="clear: both;"></div>
+</td></tr>
+</tbody></table>
+</div>
+
+
+</td></tr>
+</tbody></table>
+
+</td></tr>
+</tbody></table>
+</div>
+
+<div class="topic" style="margin-left: 6.5px;">
+<h3 style="font-size:15px">Monster Combat Simulator</h3>
+<table><tbody><tr><td>&nbsp;</td><td>
+
+<br>
+<span id="nm036">Attack Skills: </span><select name="A_ActiveSkill" onchange="ClickActiveSkill()"><option selected="selected" value="0">Basic Attack</option></select>
+<select name="A_ActiveSkillLV" style="visibility:hidden">
+	<option selected="selected" value="1">1</option></select>
+&nbsp;&nbsp;<span id="AASkillName"></span><span id="AASkill"></span><br>
+
+<input value="Calculate" onclick="calc()" type="button">
+<br>
+<br>
+
+<table style="width: auto;" align="left">
+<tbody><tr><td>
+	<!-- Monster picture -->
+	<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: 300px;">
+		<tbody><tr><td align="center" valign="middle" height="150" id="B_Enemy_picture" >
+		<!-- <img src="https://panel.talonro.com/images/monster/1219.gif" alt="no picture available =("> -->
+		<!-- Disable monster picture -->
+		<img src="no picture available =(" alt="no picture available =(">
+		</td></tr></tbody>
+	</table>
+</td></tr>
+<tr><td>
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: 300px;">
+<tbody>
+<tr><td colspan="4" class="subheader" bgcolor="#DDDDFF">
+<span id="nm037">Monster: </span>
+<select name="B_Enemy" onchange="calc()">
+<option selected="selected" value="144">Abysmal Knight</option><option value="408">Acidus [Blue]</option><option value="407">Acidus [Gold]</option><option value="462">Agav</option><option value="11">Alarm</option><option value="13">Alice</option><option value="432">Alicel</option><option value="433">Aliot</option><option value="431">Aliza</option><option value="12">Alligator</option><option value="549">Alnoldi</option><option value="10">Am Mut</option><option value="19">Ambernite</option><option value="333">Amon Ra</option><option value="7">Anacondaq</option><option value="412">Ancient Mimic</option><option value="42">Ancient Mummy</option><option value="542">Ancient Tree</option><option value="43">Ancient Worm</option><option value="18">Andre</option><option value="41">Angeling</option><option value="566">Angra Mantis</option><option value="8">Anolian</option><option value="376">Anopheles</option><option value="14">Ant Egg</option><option value="17">Anthony</option><option value="140">Antique Firelock</option><option value="560">Antler Scaraba</option><option value="561">Antler Scaraba Egg</option><option value="484">Anubis</option><option value="9">Apocalypse</option><option value="538">Aqua Elemental</option><option value="0">Arc Angeling</option><option value="382">Archdam</option><option value="383">Archdam [Strong]</option><option value="1">Archer Skeleton</option><option value="5">Arclouse</option><option value="15">Argiope</option><option value="16">Argos</option><option value="362">Armeyer Dinze</option><option value="371">Assassin Cross Eremes [MVP]</option><option value="6">Assaulter</option><option value="240">Aster</option><option value="450">Atroce</option><option value="520">Aunoe</option><option value="573">BG Crystal</option><option value="574">BG Food Storage</option><option value="576">BG Guardian [Bow]</option><option value="575">BG Guardian [Master]</option><option value="487">Baba-Yaga</option><option value="189">Baby Desert Wolf</option><option value="102">Baby Leopard</option><option value="553">Banaspaty</option><option value="477">Banshee</option><option value="522">Banshee Master</option><option value="228">Baphomet</option><option value="523">Baphomet [Sealed Shrine]</option><option value="229">Baphomet Jr.</option><option value="415">Baroness of Retribution</option><option value="504">Barricades</option><option value="218">Bathory</option><option value="480">Beelzebub</option><option value="235">Beetle King</option><option value="397">Beholder</option><option value="521">Beholder Master</option><option value="239">Bigfoot</option><option value="99">Black Msuhroom</option><option value="259">Blazer</option><option value="227">Bloody Butterfly</option><option value="253">Bloody Knight</option><option value="331">Bloody Murderer</option><option value="2">Blue Plant</option><option value="158">Boa</option><option value="275">Bongun</option><option value="467">Bow Guardian</option><option value="541">Bradium Golem</option><option value="404">Breeze</option><option value="257">Brilight</option><option value="554">Butoijo</option><option value="470">Byorgue</option><option value="82">Caramel</option><option value="134">Carat</option><option value="81">Cat O' Nine Tails</option><option value="80">Caterpillar</option><option value="367">Cecil Damon</option><option value="500">Cecil Damon [Lv99]</option><option value="550">Cendrawasih</option><option value="531">Centipede</option><option value="530">Centipede Larva</option><option value="181">Chepet</option><option value="79">Chimera</option><option value="183">Choco</option><option value="184">Chonchon</option><option value="94">Christmas Gobin</option><option value="100">Clock</option><option value="514">Cobalt Mineral</option><option value="103">Coco</option><option value="551">Comodo</option><option value="121">Condor</option><option value="430">Constant</option><option value="88">Cookie[Green]</option><option value="87">Cookie [Red]</option><option value="529">Cornus</option><option value="71">Cornutus</option><option value="72">Crab</option><option value="90">Cramp</option><option value="92">Creamy</option><option value="93">Creamy Fear</option><option value="98">Cruiser</option><option value="417">Dame of Sentinel</option><option value="174">Dark Frame</option><option value="173">Dark Illusion</option><option value="175">Dark Lord</option><option value="537">Dark Pinguicula</option><option value="545">Dark Shadow</option><option value="190">Deadly Wraith</option><option value="413">Deathword</option><option value="195">Deleter [Earth]</option><option value="194">Deleter [Sky]</option><option value="187">Demon Pungus</option><option value="191">Deniro</option><option value="188">Desert Wolf</option><option value="420">Despero of Thanatos</option><option value="411">Detardeurus</option><option value="192">Deviace</option><option value="340">Deviling</option><option value="193">Deviruchi</option><option value="186">Diabolic</option><option value="392">Dimik [Earth]</option><option value="393">Dimik [Fire]</option><option value="389">Dimik [Neutral]</option><option value="391">Dimik [Water]</option><option value="390">Dimik [Wind]</option><option value="330">Disguise</option><option value="205">Dokebi</option><option value="555">Dolomedes</option><option value="419">Dolor of Thanatos</option><option value="206">Doppelganger</option><option value="536">Draco</option><option value="535">Draco Egg</option><option value="207">Dracula</option><option value="409">Dragon Egg</option><option value="209">Dragon Fly</option><option value="208">Dragon Tail</option><option value="213">Drainliar</option><option value="212">Drake</option><option value="211">Driller</option><option value="214">Drops</option><option value="448">Drosera</option><option value="210">Dryad</option><option value="329">Dullahan</option><option value="180">Dumpling Child</option><option value="544">Duneyrr</option><option value="177">Dustiness</option><option value="461">Echio</option><option value="37">Eclipse</option><option value="38">Eddga</option><option value="34">Eggrya</option><option value="357">Egnigem Cenia</option><option value="363">Egnigem Cenia [MVP]</option><option value="39">Elder</option><option value="40">Elder Willow</option><option value="44">Emperium</option><option value="145">Enchanted Peach Tree</option><option value="509">Entweihen Knothen</option><option value="365">Eremes Guile</option><option value="498">Eremes Guile [Lv99]</option><option value="359">Errende Ebecee</option><option value="22">Evil Druid</option><option value="198">Evil Nymph</option><option value="101">Evil Snake Lord</option><option value="35">Executioner</option><option value="36">Explosion</option><option value="242">Fabre</option><option value="243">Fabre [Novicegrounds]</option><option value="247">Fake Angel</option><option value="479">Fallen Bishop Hibram</option><option value="244">Familiar</option><option value="519">Fanat</option><option value="201">Female Thief Bug</option><option value="405">Ferus [Green]</option><option value="406">Ferus [Red]</option><option value="473">Flame Skull</option><option value="261">Flora</option><option value="255">Freezer</option><option value="258">Frilldora</option><option value="436">Frus</option><option value="69">Gajomart</option><option value="447">Gallion</option><option value="75">Galopago</option><option value="62">Gargoyle</option><option value="225">Garm</option><option value="339">Garm Baby</option><option value="394">Gate Controller</option><option value="453">Gazeti</option><option value="381">Gemini-S58</option><option value="135">General Skeleton</option><option value="136">Geographer</option><option value="104">Ghostring</option><option value="85">Ghoul</option><option value="138">Giant Hornet</option><option value="137">Giant Spider</option><option value="83">Giant Whisper</option><option value="328">Gibbet</option><option value="67">Giearth</option><option value="77">Gig</option><option value="463">Gloom Under Night</option><option value="105">Goat</option><option value="108">Goblin [Axe]</option><option value="110">Goblin [Dagger]</option><option value="109">Goblin [Flail]</option><option value="111">Goblin [Hammer]</option><option value="112">Goblin [Morning Star]</option><option value="113">Goblin Archer</option><option value="115">Goblin Leader</option><option value="114">Goblin Rider</option><option value="45">Golden Thief Bug</option><option value="106">Golem</option><option value="91">Grand Peco</option><option value="196">Greatest General</option><option value="398">Green Maiden</option><option value="295">Green Plant</option><option value="396">Gremlin</option><option value="96">Griphon</option><option value="95">Grizzly</option><option value="403">Grove</option><option value="503">Guardian Stone</option><option value="97">Gullinbrusti</option><option value="534">Hardrock Mammoth</option><option value="219">Harpy</option><option value="234">Heater</option><option value="515">Heavy Metaling</option><option value="517">Hell Apocalypse</option><option value="474">Hell Poodle</option><option value="483">Hellion Revenant</option><option value="318">Hermit Plant</option><option value="221">High Orc</option><option value="372">High Priest Margaretha [MVP]</option><option value="374">High Wizard Kathryne [MVP]</option><option value="379">Hill Wind</option><option value="378">Hill Wind [Spear]</option><option value="527">Hillslion</option><option value="327">Hirozoist</option><option value="269">Hode</option><option value="458">Hodremlin</option><option value="377">Holden</option><option value="273">Horn</option><option value="270">Hornet</option><option value="274">Horong</option><option value="369">Howard Alt-Eisen</option><option value="502">Howard Alt-Eisen [Lv99]</option><option value="232">Hunter Fly</option><option value="241">Hydra</option><option value="410">Hydrolancer</option><option value="455">Ice Titan</option><option value="451">Iceicle</option><option value="472">Ifrit</option><option value="466">Imp</option><option value="491">Incarnation of Morroc [Angel]</option><option value="492">Incarnation of Morroc [Golem]</option><option value="493">Incarnation of Morroc [Human]</option><option value="494">Incarnation of Morroc [Spirit]</option><option value="23">Incubus</option><option value="24">Injustice</option><option value="513">Iron Fist</option><option value="459">Isilla</option><option value="20">Isis</option><option value="139">Jakk</option><option value="338">Jing Guai</option><option value="141">Joker</option><option value="341">Kaho</option><option value="70">Kapha</option><option value="74">Karakasa</option><option value="468">Kasa</option><option value="368">Kathryne Keyron</option><option value="501">Katrinn Keyron [Lv99]</option><option value="360">Kavach Icarus</option><option value="66">Khalitzburg</option><option value="434">Kiel</option><option value="435">Kiel-D-01</option><option value="488">Kikimora</option><option value="84">Killer Mantis</option><option value="571">King Dramoh</option><option value="465">Knocker</option><option value="116">Kobold [Axe]</option><option value="117">Kobold [Hammer]</option><option value="118">Kobold [Morning Star]</option><option value="119">Kobold Archer</option><option value="120">Kobold Leader</option><option value="342">Kraben</option><option value="456">Ktullanux</option><option value="518">Kublin</option><option value="86">Kukre</option><option value="414">Lady Solace</option><option value="428">Lady Tanee</option><option value="361">Laurell Weinder</option><option value="308">Lava Golem</option><option value="345">Leaf Cat</option><option value="552">Leak</option><option value="485">Les</option><option value="315">Lieb Olmai</option><option value="568">Little Fatum</option><option value="326">Loli Ruri</option><option value="370">Lord Knight Seyren [MVP]</option><option value="332">Lord of the Dead</option><option value="526">Luciola Vespa</option><option value="324">Lude</option><option value="311">Lunatic</option><option value="418">Maero of Thanatos</option><option value="464">Magmaring</option><option value="223">Magnolia</option><option value="107">Majoruros</option><option value="200">Male Thief Bug</option><option value="290">Mandragora</option><option value="289">Mantis</option><option value="334">Mao Guai</option><option value="286">Marc</option><option value="288">Marduk</option><option value="366">Margaretha Sorin</option><option value="499">Margaretha Sorin [Lv99]</option><option value="278">Marin</option><option value="284">Marina</option><option value="285">Marine Sphere</option><option value="283">Marionette</option><option value="287">Marse</option><option value="277">Martin</option><option value="276">Martyr</option><option value="279">Mastering</option><option value="375">Mastersmith Howard [MVP]</option><option value="489">Mavka</option><option value="281">Maya</option><option value="282">Maya Purple</option><option value="306">Medusa</option><option value="303">Megalith</option><option value="304">Megladon</option><option value="422">Memory of Thanatos</option><option value="230">Merman</option><option value="346">Metaling</option><option value="305">Metaller</option><option value="335">Mi Gao</option><option value="298">Mimic</option><option value="569">Miming</option><option value="352">Mineral</option><option value="296">Mini Demon</option><option value="297">Minorous</option><option value="294">Mistress</option><option value="416">Mistress of Shelter</option><option value="299">Miyabi Doll</option><option value="185">Mobster</option><option value="31">Moonlight Flower</option><option value="301">Muka</option><option value="280">Mummy</option><option value="302">Munak</option><option value="449">Muscipular</option><option value="78">Mushroom [Thief Test]</option><option value="300">Mutant Dragonoid</option><option value="292">Myst</option><option value="293">Myst Case</option><option value="291">Mysteltainn</option><option value="532">Naga</option><option value="510">Naght Sieger</option><option value="478">Necromancer</option><option value="524">Nepenthes</option><option value="217">Neried</option><option value="546">Nidhoggr's Shadow</option><option value="215">Nightmare</option><option value="216">Nightmare Terror</option><option value="89">Ninetails</option><option value="401">Novus [Red]</option><option value="402">Novus [Yellow]</option><option value="348">Noxious</option><option value="60">Obeaune</option><option value="351">Obsidian</option><option value="421">Odium of Thanatos</option><option value="48">Ogretooth</option><option value="556">One-Horn Scaraba</option><option value="557">One-Horn Scaraba Egg</option><option value="49">Orc Archer</option><option value="429">Orc Baby</option><option value="54">Orc Hero</option><option value="55">Orc Lady</option><option value="56">Orc Lord</option><option value="51">Orc Skeleton</option><option value="50">Orc Warrior</option><option value="52">Orc Zombie</option><option value="57">Osiris</option><option value="47">Owl Baron</option><option value="46">Owl Duke</option><option value="233">Panzer Goblin</option><option value="246">Parasite</option><option value="567">Parus</option><option value="224">Pasana</option><option value="262">Pecopeco</option><option value="263">Pecopeco Egg</option><option value="265">Penomena</option><option value="220">Permitter</option><option value="264">Pest</option><option value="251">Petite [Earth]</option><option value="250">Petite [Sky]</option><option value="245">Pharaoh</option><option value="248">Phen</option><option value="249">Phendark</option><option value="442">Photon Cannon [Blue]</option><option value="441">Photon Cannon [Green]</option><option value="443">Photon Cannon [Red]</option><option value="444">Photon Cannon [Yellow]</option><option value="256">Phreeoni</option><option value="539">Phylla</option><option value="238">Picky</option><option value="149">Picky [Super]</option><option value="236">Piere</option><option value="525">Pinguicula</option><option value="577">Piranha</option><option value="222">Pirate Skel</option><option value="350">Pitman</option><option value="254">Plankton</option><option value="423">Plasma [Blue]</option><option value="425">Plasma [Green]</option><option value="426">Plasma [Purple]</option><option value="424">Plasma [Red]</option><option value="427">Plasma [Yellow]</option><option value="267">Poison Spore</option><option value="53">Poison Toad</option><option value="565">Pom Spider</option><option value="271">Poporing</option><option value="347">Porcellio</option><option value="272">Poring</option><option value="231">Punk</option><option value="252">Pupa</option><option value="564">Queen Scaraba</option><option value="325">Quove</option><option value="356">RSX-0806</option><option value="400">Rafflesia</option><option value="475">Ragged Zombie</option><option value="317">Raggler</option><option value="562">Rake Scaraba</option><option value="563">Rake Scaraba Egg</option><option value="543">Rata</option><option value="313">Raydric</option><option value="314">Raydric Archer</option><option value="3">Red Mushroom</option><option value="570">Red Eruma</option><option value="4">Red Plant</option><option value="380">Remover</option><option value="316">Requiem</option><option value="540">Rhyncho</option><option value="309">Rideword</option><option value="320">Rocker</option><option value="321">Roda Frog</option><option value="319">Rotar Zairo</option><option value="446">Roween</option><option value="310">Rybio</option><option value="163">Sage Worm</option><option value="471">Salamander</option><option value="61">Samurai Spectre</option><option value="131">Sandman</option><option value="130">Santa Poring</option><option value="125">Sasquatch</option><option value="495">Satan Morroc</option><option value="127">Savage</option><option value="128">Savage Babe</option><option value="150">Scorpion</option><option value="133">Sea Otter</option><option value="58">Seal</option><option value="460">Seeker</option><option value="364">Seyren Windsor</option><option value="497">Seyron Windsor [Lv99]</option><option value="59">Shellfish</option><option value="68">Shining Plant</option><option value="73">Shinobi</option><option value="122">Sidewinder</option><option value="572">Siorava</option><option value="452">Siroma</option><option value="438">Skeggiold [Black]</option><option value="511">Skeggiold [Black] Slave</option><option value="439">Skeggiold [Blue]</option><option value="512">Skeggiold [Blue] Slave</option><option value="147">Skel Prisoner</option><option value="148">Skel Worker</option><option value="146">Skeleton</option><option value="437">Skogul</option><option value="162">Sleeper</option><option value="161">Smokie</option><option value="373">Sniper Cecil [MVP]</option><option value="454">Snowier</option><option value="167">Sohee</option><option value="169">Soldier Skeleton</option><option value="168">Solider</option><option value="160">Spore</option><option value="159">Spring Rabbit</option><option value="151">Stainer</option><option value="152">Stalactic Golem</option><option value="445">Stapo</option><option value="153">Steel Chonchon</option><option value="155">Stem Worm</option><option value="154">Sting</option><option value="260">Stone Shooter</option><option value="156">Stormy Knight</option><option value="157">Strauf</option><option value="123">Sucubus</option><option value="469">Sword Guardian</option><option value="166">Swordfish</option><option value="344">Tamruan</option><option value="343">Tao Gunka</option><option value="197">Taoist Hermit</option><option value="179">Tarou</option><option value="528">Tatacho</option><option value="355">Teddy Bear</option><option value="533">Tendrillion</option><option value="124">Tengu</option><option value="178">Thara Frog</option><option value="21">The Paper</option><option value="199">Thief Bug</option><option value="202">Thiefbug Egg</option><option value="506">Thorn of Bone</option><option value="507">Thorn of Magic</option><option value="508">Thorn of Purity</option><option value="505">Thorn of Recovery</option><option value="203">Toad</option><option value="204">Tower Keeper</option><option value="132">Tri Joint</option><option value="482">Tristan III</option><option value="176">Turtle General</option><option value="558">Two-Horn Scaraba</option><option value="559">Two-Horn Scaraba Egg</option><option value="354">Ungoliant</option><option value="226">Vadon</option><option value="126">Vagabond Wolf</option><option value="481">Valkyrie</option><option value="440">Valkyrie Randgris</option><option value="457">Vanberk</option><option value="387">Venatu [Earth]</option><option value="386">Venatu [Fire]</option><option value="384">Venatu [Neutral]</option><option value="385">Venatu [Water]</option><option value="388">Venatu [Wind]</option><option value="349">Venomus</option><option value="266">Verit</option><option value="395">Vesper</option><option value="25">Violy</option><option value="237">Vitata</option><option value="268">Vocal</option><option value="129">Wanderer</option><option value="353">Waste Stove</option><option value="358">Whikebine Tres</option><option value="26">Whisper</option><option value="143">White Herb</option><option value="399">White Lady</option><option value="323">Wild Rose</option><option value="27">Willow</option><option value="28">Wind Ghost</option><option value="65">WoE Guardian [Bow]</option><option value="63">WoE Guardian [Master]</option><option value="64">WoE Guardian [Soldier]</option><option value="33">Wolf</option><option value="486">Wood Goblin</option><option value="32">Wooden Golem</option><option value="30">Wootan Fighter</option><option value="29">Wootan Shooter</option><option value="322">Wormtail</option><option value="496">Wounded Morroc</option><option value="312">Wraith</option><option value="337">Yao Jun</option><option value="76">Yellow Plant</option><option value="307">Yoyo</option><option value="516">Zakudam</option><option value="142">Zealtous</option><option value="164">Zenorc</option><option value="165">Zerom</option><option value="336">Zhu Po Long</option><option value="182">Zipper Bear</option><option value="490">Zmey Gorynych</option><option value="170">Zombie</option><option value="172">Zombie Master</option><option value="171">Zombie Prisoner</option><option value="476">Zombie Slaughter</option>
+</select>
+</td></tr>
+<tr>
+<td>More info</td><td id="B_Enemy_mobdb"><a href="https://panel.talonro.com/mobdb,1219.html" target="_blank"><b>MobDB</b></a></td>
+<td colspan="2">
+<select name="ENEMY_SORT" onchange="EnemySort()|calc()">
+	<option selected="selected" value="0">Alphabetical
+	</option><option value="1">By attribute
+	</option><option value="2">By race
+	</option><option value="3">By 100%Hit
+	</option><option value="4">By 95%Flee
+	</option><option value="5">By BaseExp
+	</option><option value="6">By JobExp
+	</option><option value="7">By MaxATK
+</option></select>
+</td>
+</tr>
+<tr>
+<td id="nm038">HP</td><td id="B_6">36140</td><td id="nm039">BaseExp</td><td id="B_16">8469</td>
+</tr>
+<tr>
+<td id="nm040">ATK</td><td><span id="B_12">1600</span><span id="nm041">~</span><span id="B_13">2150</span></td><td id="nm042">JobExp</td><td id="B_17">6268</td>
+</tr>
+<tr>
+<td id="nm043">DEF</td><td><span id="B_14">55</span><span id="B_AA"> + </span><span id="B_23">64</span><span id="B_AC">~</span><span id="B_24">72</span></td><td id="nm044">Race</td><td id="B_2">Demi-Human</td>
+</tr>
+<tr>
+<td id="nm045">MDEF</td><td><span id="B_15">50</span><span id="B_AB"> + </span><span id="B_25">57</span></td><td id="nm046">Element</td><td id="B_3"><b><font color="black">Shadow</font>4</b></td>
+</tr>
+<tr>
+<td id="nm047">Perfect Hit</td><td id="B_21">167</td><td id="nm048">Size</td><td id="B_4">Large</td>
+</tr>
+<tr>
+<td id="nm049">95% Dodge</td><td id="B_22">289</td>
+<td id="B_26" colspan="2">
+</td>
+</tr>
+<tr><td class="subheader" bgcolor="#DDDDFF">By Place</td>
+<td colspan="3" class="subheader" bgcolor="#DDDDFF"><select name="ENEMY_SORT2" onchange="EnemySort()|calc()"><option selected="selected" value="0">All Regions</option><option value="1">Abyss Lake Dungeon</option><option value="2">Amatsu</option><option value="3">Ant Hell</option><option value="4">Ayothaya</option><option value="5">Battlegrounds</option><option value="6">Bibilan</option><option value="7">Bio Labs</option><option value="8">Bitfrost</option><option value="9">Clock Tower</option><option value="10">Coal Mine</option><option value="11">Comodo Caves</option><option value="12">Comodo Fields</option><option value="13">Culverts</option><option value="14">Dewata</option><option value="15">Dimensional Crack</option><option value="16">Einbroch Dungeon</option><option value="17">Einbroch Fields</option><option value="18">El Dicastes</option><option value="19">Endless Tower Finale</option><option value="20">Geffenia</option><option value="21">Geffen Dungeon</option><option value="22">Geffen Fields</option><option value="23">Glast Heim</option><option value="24">Glast Heim Dungeons</option><option value="25">Gonryun</option><option value="26">Guild Dungeon [Aldebaran]</option><option value="27">Guild Dungeon [Arunafeltz]</option><option value="28">Guild Dungeon [Geffen]</option><option value="29">Guild Dungeon [Payon]</option><option value="30">Guild Dungeon [Prontera]</option><option value="31">Guild Dungeon [Schwartzvald]</option><option value="32">Hidden Temple</option><option value="33">Hugel Fields</option><option value="34">Ice Cave</option><option value="35">Juperos Dungeon</option><option value="36">Kiel Dungeon</option><option value="37">Lighthalzen Fields</option><option value="38">Louyang</option><option value="39">Lutie &amp; Toy Factory</option><option value="40">Magma Dungeon</option><option value="41">Malangdo</option><option value="42">Manuk</option><option value="43">Morroc Fields</option><option value="44">Moscovia</option><option value="45">Mt. Mjolnir</option><option value="46">Nameless Island</option><option value="47">Nidhoggr's Nest</option><option value="48">Niflheim</option><option value="49">Odins Shrine</option><option value="50">Orc Dungeon</option><option value="51">Payon Dungeon</option><option value="52">Payon Fields</option><option value="53">Poring Island</option><option value="54">Prontera Fields</option><option value="55">Pyramid</option><option value="56">Rachel Fields</option><option value="57">Rachel Sanctuary</option><option value="58">Scaraba Hole</option><option value="59">Sphinx</option><option value="60">Splendide</option><option value="61">Sunken Ship</option><option value="62">Thanatos Tower</option><option value="63">Thors Volcano</option><option value="64">Turtle Island</option><option value="65">Umbala Dungeon</option><option value="66">Umbala Fields</option><option value="67">Veins Fields</option><option value="68">War of Emperium</option><option value="69">Yuno Fields</option></select></td>
+</tr>
+</tbody></table>
+
+</td></tr>
+</tbody></table>
+
+
+<table style="margin-top: 3px;border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;" align="left">
+<tbody><tr><td colspan="2" class="subheader" bgcolor="#DDDDFF"><div style="float: left; padding: 3px;"><span id="nm052">Combat Results</span></div></td></tr>
+<tr>
+<td id="nm053">Hit Ratio</td><td><span id="BattleHIT">5</span><span id="nm067">%</span></td>
+</tr><tr>
+<td id="nm054">Dodge Ratio</td><td><span id="BattleFLEE">6.04</span><span id="nm068">%</span></td>
+</tr><tr>
+<td id="CRIATKname">Critical Damage</td><td id="CRIATK">1</td>
+</tr><tr>
+<td id="CRInumname">Critical Rate</td><td id="CRInum">0%</td>
+</tr><tr>
+<td id="bSUBname"></td><td id="bSUB"></td>
+</tr><tr>
+<td id="bSUB2name">Time/Hit<br></td><td id="bSUB2">0.996s<br></td>
+</tr><tr>
+<td id="nm055">Minimum Damage</td><td id="strID_0">1</td>
+</tr><tr>
+<td id="nm056">Average Damage</td><td id="strID_1">1</td>
+</tr><tr>
+<td id="nm057">Maximum Damage</td><td id="strID_2">1</td>
+</tr><tr>
+<td id="nm058">Damage Per Second</td><td id="AveSecondATK">0.05</td>
+</tr><tr>
+<td id="nm059">Minimum Number of Hits</td><td id="MinATKnum">Over 10000 Hits</td>
+</tr><tr>
+<td id="nm060">Average Number of Hits</td><td id="AveATKnum">Over 10000 Hits</td>
+</tr><tr>
+<td id="nm061">Maximum Number of Hits</td><td id="MaxATKnum"><font size="2">Infinite (no 100% Hit)</font></td>
+</tr><tr>
+<td id="nm062">Average Battle Duration</td><td id="BattleTime">Too High to Calculate</td>
+</tr><tr>
+<td id="nm063">Base Exp Per Hit</td><td id="AtkBaseExp">Immesurable</td>
+</tr><tr>
+<td id="nm064">Job Exp Per Hit</td><td id="AtkJobExp">Immesurable</td>
+</tr><tr>
+<td id="nm065">Average Damage Recieved</td><td id="B_AveAtk">1875 (1600~2150)</td>
+</tr><tr>
+<td id="nm066">Average Damage Recieved (w/dodge)</td><td id="B_Ave2Atk">1761.66 Damage</td>
+</tr><tr>
+<td id="nm086" colspan="2"><center>-- Special Skills --</center></td>
+</tr><tr>
+<td id="nm087">Earthquake</td><td id="B_EQ">Not Available</td>
+</tr><tr>
+<td id="nm088">Hell's Judgment</td><td id="B_HJ"></td>
+</tr>
+</tbody>
+</table>
+<table style="width: auto;" align="left">
+<tbody>
+<tr><td id="MONSTER_KYOUKA" >
+<!--Monster Buffs-->
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;" align="left">
+<tbody>
+	<tr><td id="AKTD" colspan="2" class="subheader" bgcolor="#DDDDFF">
+	<div style="float: left; padding: 3px;">Monster Buffs <span id="AKused"></span></div>
+	<div style="float: right; padding-right: 3px;"><input id="lab5" name="B_KYOUKASW" onclick="Click_EnemyKyoukaSW()" type="checkbox"><label for="lab5"><span id="nm084">Show</span></label></div>
+	<div style="clear: both;"></div>
+	</td></tr>
+</tbody>
+</table>
+</td></tr>
+<tr><td id="MONSTER_IJYOU">
+<!--Monster Stats-->
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;" align="left">
+<tbody>
+	<tr><td id="AITD" colspan="6" class="subheader" bgcolor="#DDDDFF">
+		<div style="float: left; padding: 3px;">Monster Debuffs <span id="AIused"></span></div>
+		<input id="lab6" name="B_IJYOUSW" onclick="Click_IjyouSW()" type="checkbox">
+		<label for="lab6"><span id="nm051">Show</span></label>
+	</td></tr>
+</tbody>
+</table>
+</td></tr>
+<tr><td id="MONSTER_SKILLS">
+<!--Monster Skills-->
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;" align="left">
+<tbody>
+	<tr><td colspan="6" class="subheader" bgcolor="#DDDDFF">
+		<div style="float: left; padding: 3px;">Monster Skills</div>
+		<input id="lab7" name="B_ENSKSW" onclick="Click_EnemySkillsSW()" type="checkbox">
+		<label for="lab7"><span id="nm090">Show</span></label>
+	</td></tr>
+</tbody>
+</table>
+</td></tr>
+</tbody>
+</table>
+
+</td></tr>
+</tbody></table>
+</div>
+
+<!--Buffs, Items-->
+<div class="topic" style="margin-left: 6.5px;">
+<h3 style="font-size:15px">Buffs, items and other stuff</h3>
+<table><tbody><tr><td>&nbsp;</td><td>
+
+<div style="clear: both;"></div>
+
+<center>--<span id="nm082"><font size="2"><b>Anything below this line will only be saved via URL</b></font></span>--</center><br>
+
+<div id="SP_SIEN04" style="float: left;">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;">
+<tbody>
+	<tr>
+		<td style="background-image: url(&quot;images/th.png&quot;);" id="A6TD" colspan="6" class="subheader" bgcolor="#DDDDFF">
+			<div style="float: left; padding: 3px;">Miscellaneous Effects <span id="A6used"></span></div>
+			<div style="float: right; padding-right: 3px;">
+				<input lab="13" name="A6_SKILLSW" onclick="Click_Skill6SW()" type="checkbox"><label for="lab13">Show</label>
+			</div>
+		</td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+<div id="SP_SIEN02" style="float: left;">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;">
+<tbody>
+	<tr>
+		<td style="background-image: url(&quot;images/th.png&quot;);" id="A4TD" colspan="4" class="subheader" bgcolor="#DDDDFF">
+		<div style="float: left; padding: 3px;">Guild Skills <span id="A4used"></span></div>
+		<div style="float: right; padding-right: 3px;">
+			<input id="lab8" name="A4_SKILLSW" onclick="Click_Skill4SW()" type="checkbox"><label for="lab8">Show</label>
+		</div>
+		<div style="clear: both;"></div>
+		</td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+<div id="SP_SIEN03" style="float: left;">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;">
+<tbody>
+	<tr>
+		<td style="background-image: url(&quot;images/th.png&quot;);" id="A5TD" colspan="4" class="subheader" bgcolor="#DDDDFF">
+			<div style="float: left; padding: 3px;">Gospel Effects <span id="A5used"></span></div>
+			<div style="float: right; padding-right: 3px;">
+				<input id="lab9" name="A5_SKILLSW" onclick="Click_Skill5SW()" type="checkbox"><label for="lab9">Show</label>
+			</div>
+			<div style="clear: both;"></div>
+		</td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+<div style="clear: both;">
+
+<div id="SP_SIEN01" style="float: left;">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;">
+<tbody>
+	<tr>
+		<td style="background-image: url(&quot;images/th.png&quot;);" id="A3TD" colspan="6" class="subheader" bgcolor="#DDDDFF">
+			<div style="float: left; padding: 3px;">Music and Dance Skills <span id="A3used"></span></div>
+			<div style="float: right; padding-right: 3px;">
+				<input id="lab10" name="A3_SKILLSW" onclick="Click_Skill3SW()" type="checkbox"><label for="lab10">Show</label>
+			</div>
+			<div style="clear: both;"></div>
+		</td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+<div id="SP_SIEN05" style="float: left;">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;">
+<tbody>
+	<tr>
+		<td style="background-image: url(&quot;images/th.png&quot;);" id="A7TD" colspan="6" class="subheader" bgcolor="#DDDDFF">
+			<div style="float: left; padding: 3px;">Items (Food / Etc.) <span id="A7used"></span></div>
+			<div style="float: right; padding-right: 3px;">
+				<input id="lab11" name="A7_SKILLSW" onclick="Click_Skill7SW()" type="checkbox"><label for="lab11">Show</label>
+			</div>
+			<div style="clear: both;"></div>
+		</td>
+	</tr>
+</tbody>
+</table>
+</div>
+
+<div style="clear: both;">
+
+<div id="ID_SQI_Bonus">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;"><tbody><tr><td style="background-image: url(&quot;images/th.png&quot;);" id="SQI_Bonus_TD" colspan="1" class="subheader" bgcolor="#DDDDFF"><div style="float: left; padding: 3px;">SQI-Bonus<span id="SQI_Bonus_used"></span></div><div style="float: right; padding-right: 3px;"><input id="lab15" name="SQI_Bonus_SW" onclick="Click_SQI_Bonus_SW()" type="checkbox"><label for="lab15">Show</label></div><div style="clear: both;"></div></td></tr></tbody></table>
+</div>
+
+<br>
+<hr>
+<center><font size="2">--<span id="nm100"><b>NOTHING below this line will be saved!</b></span>--</font></center><br>
+<div id="ID_ETC">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;"><tbody><tr><td style="background-image: url(&quot;images/th.png&quot;);" id="A8TD" colspan="2" class="subheader" bgcolor="#DDDDFF"><div style="float: left; padding: 3px;">Additional Effects <span id="A8used"></span></div><div style="float: right; padding-right: 3px;"><input id="lab14" name="A8_SKILLSW" onclick="Click_Skill8SW()" type="checkbox"><label for="lab14">Show</label></div><div style="clear: both;"></div></td></tr></tbody></table>
+</div>
+<div id="ID_ARG">
+<table style="border: 1px solid rgb(153, 153, 153); border-collapse: collapse; width: auto;"><tbody><tr><td style="background-image: url(&quot;images/th.png&quot;);" id="A9_TD" colspan="1" class="subheader" bgcolor="#DDDDFF"><div style="float: left; padding: 3px;">Manual Edits<span id="A9_used"></span></div><div style="float: right; padding-right: 3px;"><input id="lab12" name="A9_SKILLSW" onclick="Click_Skill9SW()" type="checkbox"><label for="lab12">Show</label></div><div style="clear: both;"></div></td></tr></tbody></table>
+</div>
+
+<br>
+<hr>
+<font size="2"><span id="nm077">Minimum Delay Between Active Skills:</span></font>&nbsp;&nbsp;
+<select name="Conf01">
+<option value="10">0.1s (10 per second)[eAthena's Default]</option>
+<option value="15">0.15s</option>
+<option value="20">0.2s (5 per second)</option>
+<option value="25">0.25s (4 per second)</option>
+<option value="30">0.3s</option>
+<option selected="selected" value="33">0.33s (3 per second) [TalonRO's Default]</option>
+<option value="40">0.4s</option>
+<option value="50">0.5s (2 per second)</option>
+</select>
+<input value="Set" onclick="SaveCookieConf()" type="button"> <span id="set" style="visibility:hidden"></span><br>
+
+<!--<font color="#AAAAFF" size="1">(Version 0.8.3)</font>-->
+<span id="PR1"></span>
+
+</div></div></td></tr></tbody></table>
+</div>
+
+<div class="topic" align="right" style="margin-left: 6.5px"><div style="margin-right: 5px;line-height: 165%;">
+Ragnarok Online (c) Gravity Corp. &amp; Lee Myoungjin(studio DTDS), all Rights Reserved<br>
+Original simulator created by <a href="http://roratorio.2-d.jp/ro/">ROratorio</a><br>
+Translated and adapted by <a href="http://rode.doddlercon.com/">Doddler</a><br>
+Old updates/translations by <a href="http://calcx.wushuang.ws/">Gandi</a><br>
+Remade/Updated by <a href="http://games4nerds.comuf.com/RMS/RMS%20Non-Official%20RO%20Calc.html">Triper</a><br>
+Adjusted to TalonRO by FlynnQ
+</div></div>
+
+</div>
+<script type="text/javascript" src="js/monster.js"></script>
+<script type="text/javascript" src="js/card.js"></script>
+<script type="text/javascript" src="js/foot.js"></script>
+</form>
+		<!-- Piwik -->
+		<script type="text/javascript">
+		  var _paq = _paq || [];
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+			var u="//analytics.talonro.com/";
+			_paq.push(['setTrackerUrl', u+'piwik.php']);
+			_paq.push(['setSiteId', 5]);
+			var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+			g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
+		<!-- End Piwik Code -->
+</body></html>
