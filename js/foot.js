@@ -6939,7 +6939,7 @@ function EnemySort(){
 	
 	// NattWara - start, No Sort for default order
 	// Used for Ancient Tower, default order = Order of encounter Stage 1 - Stage 30
-	if (eval(document.calcForm.ENEMY_SORT.value) == 8) {
+	if (eval(document.calcForm.ENEMY_SORT.value) == 10) {
 		var x = new Array();
 
 		for(var i=0;i<=EnemyNum;i++){
@@ -6961,7 +6961,7 @@ function EnemySort(){
 	for(var i=0;i<len;i++)
 		document.calcForm.B_Enemy.options[0] = null;
 
-	ESNum= [1,3,2,21,22,16,17,13,100];
+	ESNum = [1,3,2,21,22,16,17,13,14,15,100];
 
 	var wES2 = eval(document.calcForm.ENEMY_SORT.value);
 
