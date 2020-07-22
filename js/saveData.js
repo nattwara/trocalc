@@ -133,11 +133,22 @@ function loadBuild(d_key, d_value){
 }
 
 function getSlotIndex(slot_key){
-	return parseInt(slot_key.substr(3,slot_key.length));
+	
+	for (var index in document.getElementsByName("A_SaveSlot")[0].options) {
+		if (document.getElementsByName("A_SaveSlot")[0].options[index].value == slot_key) {
+			return index;
+		}
+	}
+	return -1;
+	//return parseInt(slot_key.substr(3,slot_key.length));
 }
 
 function getSlotName(slot_key){
-	return getSlotElem(slot_key).innerText;
+	if (getSlotElem(slot_key)) {
+		return getSlotElem(slot_key).innerText;
+	} else {
+		return "ERROR, PLEASE CANCEL";
+	}
 }
 
 function getSlotElem(slot_key){
@@ -145,7 +156,7 @@ function getSlotElem(slot_key){
 }
 
 function getSlotNum(slot_key){
-	return getSlotIndex(slot_key) + 1;
+	return getSlotIndex(slot_key);
 }
 
 function deleteCurrentBuild() {
