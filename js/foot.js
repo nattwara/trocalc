@@ -7938,7 +7938,7 @@ function LoadCookie3(){
 	//old
 	//for(k=1;k<=19;k++){
 	//new
-	for(k = 0; k < document.getElementsByName("A_SaveSlot")[0].length; k++){
+	for(k = 0; k < 100; k++){
 		
 		cookieNum = "num" + insertLeadingZero(k);
 		SaveData = document.cookie.split("; ");
