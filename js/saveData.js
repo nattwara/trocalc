@@ -77,6 +77,7 @@ function importData(loaded_data){
 									"Overwrite": function() {
 										$(this).dialog("close");
 										// Overwrite
+										document.getElementById("load_dialog").innerHTML = "Loading...";
 										loadBuild(key, l_data[key]);
 									},
 									"Skip": function() {
@@ -88,6 +89,7 @@ function importData(loaded_data){
 										$(this).dialog("close");
 										overwrite_all = true;
 										// Overwrite
+										document.getElementById("load_dialog").innerHTML = "Loading...";
 										loadBuild(key, l_data[key]);
 									},
 									"Skip All": function() {
@@ -100,6 +102,7 @@ function importData(loaded_data){
 							});
 						} else {
 							// overwrite_all is true
+							document.getElementById("load_dialog").innerHTML = "Loading...";
 							loadBuild(key, l_data[key]);
 						}
 						
@@ -112,6 +115,7 @@ function importData(loaded_data){
 						
 					} else { 
 						// doesn't exist in b_data, load the new build
+						document.getElementById("load_dialog").innerHTML = "Loading...";
 						loadBuild(key, l_data[key]);
 					}
 				}
@@ -140,7 +144,6 @@ function getSlotIndex(slot_key){
 		}
 	}
 	return -1;
-	//return parseInt(slot_key.substr(3,slot_key.length));
 }
 
 function getSlotName(slot_key){
