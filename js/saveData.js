@@ -75,21 +75,21 @@ function importData(loaded_data){
 								position: { my: "center top+100", at: "center top+100"},
 								buttons: {
 									"Overwrite": function() {
-										$(this).dialog("close");
 										// Overwrite
 										document.getElementById("load_dialog").innerHTML = "Loading...";
+										$(this).dialog("close");
 										loadBuild(key, l_data[key]);
 									},
 									"Skip": function() {
 										$(this).dialog("close");
 										d_action = "continue"; 
-										//continue;
+										// Continue;
 									},
 									"Overwrite All": function() {
+										// Overwrite All
+										document.getElementById("load_dialog").innerHTML = "Loading...";
 										$(this).dialog("close");
 										overwrite_all = true;
-										// Overwrite
-										document.getElementById("load_dialog").innerHTML = "Loading...";
 										loadBuild(key, l_data[key]);
 									},
 									"Skip All": function() {
