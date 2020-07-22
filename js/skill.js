@@ -439,6 +439,7 @@ SkillOBJ = [
 [437,10,"Ground Drift"],
 [438,10,"Final Strike [Max HP-1]"],
 [439,5,"Tarot Card of Fate"],
+[440,1,"Wink of Charm"],
 ];
 
 JobSkillPassOBJ = [
@@ -532,9 +533,9 @@ JobSkillActiveOBJ = [
 [0],
 [0],
 [0],
-[  0,331,333,335,337,339,305,132,999],
-[  0,331,333,335,337,339,305,132,317,318,999],
-[  0,373,374,375,132,999],
+[  0,331,333,335,337,339,305,999],
+[  0,331,333,335,337,339,305,317,318,999],
+[  0,373,374,375,999],
 [  0,407,408,409,410,412,413,414,415,394,395,396,398,400,401,405,438,999],
 [  0,418,419,423,428,429,430,431,432,434,435,436,437,999],
 ];
@@ -594,44 +595,51 @@ InsertSkill = [
 [51,1,130,10],//custom TalonRO SQI Bonus - Evangelist = Frost Nova lv 10
 [52,1,308,1],//custom TalonRO SQI Bonus - Mjolnir = Charge Attack lv 1
 [53,1,173,3],//custom TalonRO SQI Bonus - Tome of Ymir = Strip Shield lv 3
-[54,0,171,1],//custom TalonRO Kraken Card = Raid lv 1
+[54,1,171,1],//custom TalonRO Kraken Card = Raid lv 1
+[55,1,130,1],
+[56,1,132,3],
+[57,1,6,1],
+[58,0,227,1],
+[59,0,33,1],
+[60,1,53,4],
 ];
 
 
 
 
 AutoSpellSkill = [
-[0,0,0,0,0,0],
-[1,1,54,3,10,1],
-[2,1,51,3,10,1],
-[3,0,49,1,1,1],
-[4,1,57,3,10,1],
-[5,1,102,3,0,1],
-[6,1,56,3,10,1],
-[7,1,47,3,10,1],
-[8,1,52,3,10,1],
-[9,1,126,1,0,1],
-[10,0,8,1,3,1],
-[11,0,100,1,1,1],
-[12,0,25,1,5,6],
-[13,0,25,1,0,1],
-[14,1,52,5,0,1],
-[15,0,27,1,0,1],
-[16,1,128,3,3,1],
-[17,0,236,2,3,1],
-[18,0,95,1,3,6],
-[19,0,30,5,0,6],
-[20,1,261,3,0,1],
-[21,1,70,5,0,1],
-[22,1,303,5,0,1],
-[23,1,413,5,0,1],
-[24,0,230,5,0,1],
-[25,0,231,5,0,1],
-[26,0,232,5,0,1],
-[27,0,233,5,0,1],
-[28,1,126,3,0,1],
-[29,1,130,3,0,6],
-[30,1,430,5,0,1],
+//ID - Gets called in second spot(221(effect),1(ID)), autocast id = 1 by default, skill Id,Skill Lvl, chance %, attacktype(1atkbased,2shortrange,3longrange,4magical,5attacking,6receivingATKbased,0 by default, 0=low chance, 1=medium chance, 2=high chance)
+[0,0,0,0,0,0], //there's a chance to cast the skill [Basic Attack]Lv 0
+[1,1,54,3,10,1], //When performing a ATK based attack, there's a 10 % chance to cast the skill [Cold Bolt]Lv 3
+[2,1,51,3,10,1], //When performing a ATK based attack, there's a 10 % chance to cast the skill [Fire Bolt]Lv 3
+[3,0,49,1,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Stone Curse]Lv 1
+[4,1,57,3,10,1], //When performing a ATK based attack, there's a 10 % chance to cast the skill [Thunder Storm]Lv 3
+[5,1,102,3,10,1,], //When performing a ATK based attack, there's a 10 % chance to cast the skill [Turn Undead]Lv 3
+[6,1,56,3,10,1], //When performing a ATK based attack, there's a 10 % chance to cast the skill [Lightning Bolt]Lv 3
+[7,1,47,3,10,1], //When performing a ATK based attack, there's a 10 % chance to cast the skill [Soul Strike]Lv 3
+[8,1,52,3,10,1], //When performing a ATK based attack, there's a 10 % chance to cast the skill [Fire Ball]Lv 3
+[9,1,126,1,0,1], //When performing a ATK based attack, there's a chance to cast the skill [Jupitel Thunder]Lv 1
+[10,0,8,3,3,1], //When performing a ATK based attack, there's a 3 % chance to cast the skill [Provoke]Lv 1
+[11,0,100,1,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Gloria]Lv 1
+[12,0,25,1,5,6], //When recieving ATK based damage, there's a 5 % chance to cast the skill [Heal]Lv 1
+[13,0,25,1,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Heal]Lv 1
+[14,1,52,5,3,1], //When performing a ATK based attack, there's a 3 % chance to cast the skill [Fire Ball]Lv 5
+[15,0,27,1,0,1], //When performing a ATK based attack, there's a chance to cast the skill [Increase AGI]Lv 1
+[16,1,128,3,1,1], //When performing a ATK based attack, there's a 3 % chance to cast the skill [Water Ball]Lv 3
+[17,0,236,2,1,1], //When performing a ATK based attack, there's a 3 % chance to cast the skill [Deluge]Lv 2
+[18,0,95,1,3,6], //When recieving ATK based damage, there's a 3 % chance to cast the skill [Status Recovery]Lv 1
+[19,0,30,5,3,1], //When performing a ATK based attack, there's a 3 % chance to cast the skill [Angelus]Lv 5
+[20,1,261,3,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Joint Beat]Lv 3
+[21,1,70,5,3,1], //When performing a ATK based attack, there's a 3 % chance to cast the skill [Pierce]Lv 5
+[22,1,303,5,0,1], //When performing a ATK based attack, there's a chance to cast the skill [Pulse Strike [Temp]]Lv 5
+[23,1,413,5,0,1], //When performing a ATK based attack, there's a chance to cast the skill [Wind Blade]Lv 5
+[24,0,230,5,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Flame Launcher]Lv 5
+[25,0,231,5,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Frost Weapon]Lv 5
+[26,0,232,5,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Lightning Loader]Lv 5
+[27,0,233,5,1,1], //When performing a ATK based attack, there's a 1 % chance to cast the skill [Seismic Weapon]Lv 5
+[28,1,126,3,5,1], //When performing a ATK based attack, there's a chance 5 % to cast the skill [Jupitel Thunder]Lv 3
+[29,1,130,3,5,6], //When recieving ATK based damage, there's a chance 5 % to cast the skill [Frost Nova]Lv 3
+[30,1,430,5,2,1], //
 [31,1,436,6,0,1],
 [32,1,52,1,15,1],
 [33,1,76,5,2,1],
@@ -648,14 +656,14 @@ AutoSpellSkill = [
 [44,1,193,5,2,1],
 [45,1,197,1,0.3,1],
 [46,0,103,1,2,1],
-[47,0,100,1,0,6],
-[48,0,1,1,0,1],
+[47,0,100,1,3,6],
+[48,1,1,1,30,6],
 [49,0,29,1,0,1],
 [50,1,102,1,0,10],
-[51,1,130,5,0,1],
-[52,1,125,3,0,1],
+[51,1,130,5,5,1],
+[52,1,125,3,3,1],
 [53,1,162,3,0,6],
-[54,0,172,1,0,1],
+[54,1,172,1,5,1],
 [55,0,28,3,0,1],
 [56,0,42,1,0,6],
 [57,0,98,10,0,6],
@@ -681,7 +689,7 @@ AutoSpellSkill = [
 [77,0,239,1,4,1],
 [78,1,6,1,0,1],
 [79,1,52,3,0,1],
-[80,0,174,1,0,1],
+[80,1,174,1,5,1],
 [81,0,32,1,0,6],
 [82,0,227,1,0,1],
 [83,0,267,1,0,10],
@@ -698,22 +706,22 @@ AutoSpellSkill = [
 [94,1,54,2,0,1],
 [95,1,162,5,0,1],
 [96,1,76,5,0,1],
-[97,0,231,1,0,1],
+[97,0,231,1,0.5,1],
 [98,0,90,3,0,1],
 [99,0,27,5,0,6],
 [100,0,209,5,0,6],
 [101,0,42,2,0,2],
-[102,0,25,1,0,6],
-[103,1,51,1,0,1],
-[104,1,54,1,0,1],
-[105,1,56,1,0,1],
+[102,0,25,1,1,6],
+[103,1,51,1,1,1],
+[104,1,54,1,1,1],
+[105,1,56,1,1,1],
 [106,0,101,1,0,1],
-[107,0,209,1,0,6],
+[107,0,209,1,5,1],
 [108,1,193,5,0,1],
 [109,1,51,3,0,1],
 [110,1,54,3,0,1],
 [111,1,56,3,0,1],
-[112,1,312,5,0,10],
+[112,1,312,5,2,10], //When recieving ATK based or magical damage, there's a 2% chance to cast the skill [Dark Strike] Lv5
 [113,1,436,6,0,1],
 [114,1,51,5,10,1],	//custom TalonRO rental Fireblend = Firebolt lv 5 (10%)
 [115,1,51,6,5,1],	//custom TalonRO SQI Bonus - Djinn = Firebolt lv 6 (5%)
@@ -724,9 +732,68 @@ AutoSpellSkill = [
 [119,1,132,1,1,1],
 [120,1,124,2,2,4], //custom TalonRO Telekinetic Orb Sightrasher lv 3 on magic (2%)
 [121,1,124,3,3,4], //custom TalonRO Mental Stick & Telekinetic Orb combo Sightrasher lv 3 on magic (3%)
-[122,1,319,1,1,1], //custom TalonRO Sura's Rampage lv1 Heaven's Drive (1%) on physical attack
-[123,1,193,1,1,1], //custom TalonRO Sura's Rampage lv1 Investigate (1%) on physical attack
+[122,1,319,1,10,1], //custom TalonRO Sura's Rampage lv1 Heaven's Drive (10%) on physical attack
+[123,1,193,1,10,1], //custom TalonRO Sura's Rampage lv1 Investigate (10%) on physical attack
 [124,1,40,5,2,5], //custom TalonRO Catapult lv5 Double Strafe (2%) on attacking
 [125,1,260,2,10,1], //custom TalonRO Cannon Spear lv 2 Head Crush (10%) on physical attack
 [126,1,83,1,0.5,2], //custom TalonRO Krishna Sonic Blow lv 1 (small/0.5%) on physical melee attack
-]
+[127,1,51,5,1,5], //When performing a ATK/magic based attack, there's a low chance to cast the skill [Fire Bolt]Lv 5
+[128,1,27,1,5,4],
+[129,1,27,1,5,1],
+[130,1,440,1,0,1,0,1], //When dealing physical damage there is a chance to trigger Wink of Charm.
+[131,1,267,2,3,6,0], //When recieving ATK based damage, there's a low chance to cast the skill [Assumptio]Lv 2
+[132,1,131,2,1,1], //custom TalonRO Chilly Spell Book lv 2 Storm Gust (1%) on physical attack [NattWara]
+[133,1,51,3,3,1],
+[134,1,261,1,10,1],
+[135,1,54,1,10,6],
+[136,1,51,5,1,6],
+[137,1,130,1,1,6],
+[138,0,209,1,5,6],
+[139,1,76,5,1,1],
+[140,1,291,1,1,1], //[Custom TalonRO - 2018-07-26 - Valorous Battle Fist change of casting DSS 1% in normal attack]
+[141,1,409,2,5,1],
+[142,1,128,2,2,1], //When performing a ATK based attack, there's a 2 % chance to cast the skill [Water Ball]Lv 2
+[143,1,124,2,0,4], //When performing a magical attack, there's a chance to cast the skill [Sightrasher]Lv 2
+[144,1,25,3,5,6] //When recieving ATK based damage, there's a 5 % chance to cast the skill [Heal]Lv 3
+];
+//ID - Gets called in second spot(221(effect),1(ID)), autocast id = 1 by default, skill Id,Skill Lvl, chance %, attacktype(1atkbased,2shortrange,3longrange,4magical,5attacking,6receivingATKbased,0 by default, 0=low chance, 1=medium chance, 2=high chance)
+
+TRO_MAGICALSKILL_ELEMENTS = [
+  [0], //Neural
+  [54,55,128,130,131,320,410,412], //Water
+  [132,133], //Earth
+  [51,52,53,122,124,125,407,408,409], //Fire
+  [56,57,126,127,413,414,415], //Wind
+  [0], //Poison
+  [37,46,47,104,387], //Holy
+  [0], //Shadow
+  [277], //Ghost
+  [0], //Undead
+];
+HJ_MOBS = {
+	228:5, 	// Baphomet, Lv5
+	480:2, 	// Beelzebub, Lv2
+	207:10, // Dracula, Lv10
+	175:5,	// Dark Lord, Lv5
+	479:4,	// Fallen Bishop Hibram, Lv4
+	61:10,	// Incantation Samurai, Lv10
+	578:10,	// Kraken, Lv10
+	552:5,	// Leak, Lv5
+	332:10,	// Lord of Death, Lv10
+	546:2,	// Nidhoggr's Shadow, Lv2
+	690:10,	// Corrupted Soul, Lv10
+	496:5	// Wounded Morroc, Lv5
+}
+EQ_MOBS = {
+	492:1,	// Incarnation of Morroc [Golem], Lv1
+	534:2,	// Hardrock Mammoth, Lv2
+	578:2,	// Kraken, Lv2
+	546:3,	// Nidhoggr's Shadow, Lv3
+	56:5,	// Orc Lord, Lv5
+	228:5,	// Baphomet, Lv5
+	356:5,	// RSX-0806, Lv5
+	440:5,	// Valkyrie Randgris, Lv5
+	472:5,	// Ifrit, Lv5
+	495:10,	// Satan Morroc, Lv10
+	496:10	// Wounded Morroc, Lv10
+}

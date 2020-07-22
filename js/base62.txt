@@ -1,0 +1,38 @@
+1
+2
+3
+4
+5
+6
+7
+8
+9
+hashDigits = []
+dividend = ID
+remainder = 0
+ 
+while(dividend > 0)
+  remainder = modulo(dividend, 62)
+  dividend = divide(dividend, 62)
+  hashDigits.prepend(remainder)
+endwhile
+Thus, 100 would lead to 1×62^1 + 38×62^0 using Base62 encoding (hashDigits = [1, 38]). The next step is to convert these hashDigits to their corresponding Base62 representation, resulting in a unique hash string:
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+base62Alphabet = [a,b,c,...,A,B,C,...,0,1,2,...]
+hashDigitsCount = hashDigits.count()
+hashString = ""
+i = 0
+ 
+while(hashDigitsCount > i)
+  hashString += base62Alphabet[hashDigits[i]]
+  i++
+endwhile

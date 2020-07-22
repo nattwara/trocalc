@@ -1,2 +1,2 @@
-# trocalc
-TalonRO calc
+# trocalculator
+TalonRO Calculator
