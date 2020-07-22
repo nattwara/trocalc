@@ -189,7 +189,7 @@ function deleteAllBuild() {
 		buttons: {
 			"Yes": function() {
 				$(this).dialog("close");
-				for (i = 0; i < 50; i++) {
+				for (i = 0; i < document.getElementsByName("A_SaveSlot")[0].length; i++) {
 					document.cookie = "num" + insertLeadingZero(i) + "=;expires=Thu,01-Jan-70 00:00:01 GMT";
 					document.getElementsByName("A_SaveSlot")[0][i].innerText = "Save" + (i+1) + ": No Data";
 				}

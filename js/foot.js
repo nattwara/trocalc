@@ -7938,12 +7938,9 @@ function LoadCookie3(){
 	//old
 	//for(k=1;k<=19;k++){
 	//new
-	for(k=1;k<=100;k++){
-		cookieNum = "num0"+ (k-1);
-		if(k == 9)
-			cookieNum = "num0"+ k;
-		if(k >= 10)
-			cookieNum = "num"+ k;
+	for(k = 0; k < document.getElementsByName("A_SaveSlot")[0].length; k++){
+		
+		cookieNum = "num" + insertLeadingZero(k);
 		SaveData = document.cookie.split("; ");
 		wStr = "";
 
@@ -7974,15 +7971,15 @@ function LoadCookie3(){
 
 		if(1<= SaveData[0] && SaveData[0] <=45){
 			if(SaveData[63]==0)
-				document.calcForm.A_SaveSlot.options[k-1] = new Option("Save "+k +": " + JobName[SaveData[0]] + build_name,cookieNum);
+				document.calcForm.A_SaveSlot.options[k] = new Option("Save "+ (k+1) +": " + JobName[SaveData[0]] + build_name,cookieNum);
 			else
-				document.calcForm.A_SaveSlot.options[k-1] = new Option("Save"+k +": Baby "+JobName[SaveData[0]] + build_name,cookieNum);
+				document.calcForm.A_SaveSlot.options[k] = new Option("Save"+ (k+1) +": Baby "+JobName[SaveData[0]] + build_name,cookieNum);
 		}
 		else if(SaveData[0] == 999 || SaveData[0] == 0){
-			document.calcForm.A_SaveSlot.options[k-1] = new Option("Save"+k +": Novice" + build_name,cookieNum);
+			document.calcForm.A_SaveSlot.options[k] = new Option("Save"+ (k+1) +": Novice" + build_name,cookieNum);
 		}
 		else
-			document.calcForm.A_SaveSlot.options[k-1] = new Option("Save "+k +": No Data",cookieNum);
+			document.calcForm.A_SaveSlot.options[k] = new Option("Save "+ (k+1) +": No Data",cookieNum);
 	}
 }
 /*
