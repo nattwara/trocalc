@@ -188,6 +188,7 @@ ul li+b {
 }
 .ui-dialog {
     border: 2px solid #333;
+    background-color:#FFFFFF;
 }
 
 /* Hide the "No file choosen/file name tooltip of file input */
