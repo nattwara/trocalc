@@ -77,11 +77,11 @@ function importData(loaded_data){
 									"Overwrite": function() {
 										// Overwrite
 										document.getElementById("load_dialog").innerHTML = "Loading...";
-										$(this).dialog("close");
+										//$(this).dialog("close");
 										loadBuild(key, l_data[key]);
 									},
 									"Skip": function() {
-										$(this).dialog("close");
+										//$(this).dialog("close");
 										d_action = "continue"; 
 										// Continue;
 									},
