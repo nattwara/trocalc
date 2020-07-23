@@ -19,7 +19,7 @@ function exportSelectedBuild() {
 }
 
 function exportAllBuilds() {
-	let buildsList = document.cookie.split("; ");
+	let buildsList = document.cookie.split("; ").sort();
 	let b_data = {};
 
 	for(i=0;buildsList[i];i++){	
