@@ -502,7 +502,7 @@ cardOBJ = [
 ,[480,5,"Roween",0,9,5,11,3,41,10,115,15,0]
 ,[481,5,"Salamander",0,5122,40,5125,40,0]
 ,[482,5,"Kasa",0,221,92,221,93,0]
-,[483,5,"Magmaring",0,17,5,42,10,112,15,113,15,0]
+,[483,5,"Magmaring",0,17,5,42,10,112,15,0]
 ,[484,6,"Ice Titan","When receiving ATK based damage there is a 0.3% chance that you'll receive DEF + 10 for 10 seconds",3,2,0]
 ,[485,6,"Zombie Slaughter","The player recovers 50 HP each time a monster is killed with a ATK based attack",37,1,177,1,0]
 ,[486,4,"Fallen Bishop Hibram","Add a 100% chance of auto casting Level 2 Magic Mirror when the user receives Magical Damage",0] //custom TalonRO add autocast; removed matk stuff - diff position

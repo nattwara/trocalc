@@ -1,3 +1,18 @@
+[2020-07-20]
+- Fixed Bragi formula
+- Fixed MDEF armor enchantment
+- Fixed Magmaring critical bonus
+- Added Beach Towel, Cookie Hat and Black Tailed Ribbon
+- Fixed Valorous Carnage Katar Sonic Blow damage bonus when linked
+
+[2020-07-05]
+- Fixed Health Point computation
+- Fixed Triple Attack damage computation
+
+[2020-07-04]
+- Added Ancient Tower monsters
+- Fixed The Ring of Nibelugen damage formula
+
 [2020-06-21]
 - Fixed AR/FAR ASPD party buff
 - Fixed Eddga behaviour with MDEF

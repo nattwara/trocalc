@@ -662,6 +662,12 @@ function StAllCalc()
 			n_tok[17] += 20 * n_A_Weapon_ATKplus;
 	}
 	
+	if (n_A_PassSkill3[10] && n_A_WeaponLV == 4)
+		n_A_Weapon_ATK += 50 + 25 * n_A_PassSkill3[10];
+		
+	if (n_Nitou && n_A_PassSkill3[10] && n_A_Weapon2LV == 4)
+		n_A_Weapon2_ATK += 50 + 25 * n_A_PassSkill3[10];
+	
 	//Galaxy Circlet - [Loa] - 2018-07-03
 	if(EquipNumSearch(1163)){
 		n_tok[13] += n_A_HEAD_DEF_PLUS * 10;
@@ -779,11 +785,15 @@ function StAllCalc()
 	/*
 		VIT Glove#1706
 		[Every 10 points of VIT] MaxHP + 50
-		[Base VIT >= 80] DEF + 1
+		[Base VIT >= 80] DEF + 1 MaxHP + 1%
 	*/
 	
 	n_tok[13] += 50 * Math.floor(SU_VIT / 10) * EquipNumSearch(1706);
-	n_tok[18] += (SU_VIT >= 80 ? 1 : 0) * EquipNumSearch(1706);
+	if (SU_VIT >= 80 && EquipNumSearch(1706))
+	{
+		n_tok[15] += 1;
+		n_tok[18] += 1;
+	}
 	
 	/*
 		INT Glove#1707
@@ -1072,11 +1082,11 @@ function StAllCalc()
 	if(n_A_JOB == 20 && n_A_BaseLV == 99)
 		n_A_MaxHP += 2000;
 
-	if(n_Tensei)
-		n_A_MaxHP = Math.floor(n_A_MaxHP *125 /100);
+	if(n_Tensei) // Trans job health bonus
+		n_A_MaxHP = n_A_MaxHP * 1.25;
 	if(eval(A_youshi.checked))
-		n_A_MaxHP = Math.floor(n_A_MaxHP *70 /100);
-	n_A_MaxHP = Math.floor((n_A_MaxHP - wHPSL) * (100 + n_A_VIT) / 100);
+		n_A_MaxHP = n_A_MaxHP * 0.7;
+	n_A_MaxHP = (n_A_MaxHP - wHPSL) * (100 + n_A_VIT) / 100;
 
 
 	if(n_A_JOB == 41 && n_A_BaseLV >= 70){
@@ -1088,92 +1098,86 @@ function StAllCalc()
 			n_A_MaxHP = (2700 + 50 * (n_A_BaseLV-90)) * (100 + n_A_VIT) / 100;
 			if(SkillSearch(345))
 				n_A_MaxHP = n_A_MaxHP * 3;
-			n_A_MaxHP = Math.floor(n_A_MaxHP);
+			n_A_MaxHP = n_A_MaxHP;
 		}
 	}
 
 	if(n_A_JOB == 42 && n_A_BaseLV >= 70){
 		wKenseiHP = [3455,3524,3593,3663,3834,3806,3878,3951,4025,4500];
 		if(n_A_BaseLV <=79)
-			n_A_MaxHP = Math.floor((2670 + 10 * (n_A_BaseLV-70)) * (100 + n_A_VIT) / 100);
+			n_A_MaxHP = (2670 + 10 * (n_A_BaseLV-70)) * (100 + n_A_VIT) / 100;
 		else if(n_A_BaseLV <=89)
-			n_A_MaxHP = Math.floor((3000 + 20 * (n_A_BaseLV-80)) * (100 + n_A_VIT) / 100);
+			n_A_MaxHP = (3000 + 20 * (n_A_BaseLV-80)) * (100 + n_A_VIT) / 100;
 		else if(n_A_BaseLV <=99)
-			n_A_MaxHP = Math.floor(wKenseiHP[n_A_BaseLV-90] * (100 + n_A_VIT) / 100);
+			n_A_MaxHP = wKenseiHP[n_A_BaseLV-90] * (100 + n_A_VIT) / 100;
 	}
 
 	//[Custom TalonRO 2018-06-02 - Advanced Fin Helm Gives Maximum HP + 6 * Base Level] [Kato]
 	if(EquipNumSearch(1561)) {
-		n_A_MaxHP += 6 * n_A_BaseLV;
+		n_tok[13] += 6 * n_A_BaseLV;
 	}
 
-	n_A_MaxHP += SkillSearch(156) * 200;
-
-	w=0;
+	n_tok[13] += SkillSearch(156) * 200; // Faith#156
 	
 	// Jejeling card#561 - MaxHP + 200 * Base VIT / 10 
 	n_tok[13] += 200 * Math.floor(SU_VIT/10) * CardNumSearch(561);
 
-	w += n_tok[13];
-	w += StPlusCalc2(3);
-	w += StPlusCalc2(7);
-
 	if(n_A_BODY_DEF_PLUS >= 9 && CardNumSearch(225))
-		w += 800;
+		n_tok[13] += 800;
 	if(CardNumSearch(186))
-		w -= 40 * n_A_BODY_DEF_PLUS;
+		n_tok[13] -= 40 * n_A_BODY_DEF_PLUS;
 	if(EquipNumSearch(836))
-		w += n_A_BaseLV *10;
+		n_tok[13] += n_A_BaseLV *10;
 	if(n_A_Equip[8]==536){
 		wHPVS = n_A_JobSearch();
 		if(wHPVS==3 || wHPVS==4 || wHPVS==5)
-			w += 5 * n_A_BaseLV;
+			n_tok[13] += 5 * n_A_BaseLV;
 	}
 	if(n_A_JobSearch()==5)
-		w += CardNumSearch(474) * -100;
+		n_tok[13] += CardNumSearch(474) * -100;
 	if(n_A_JobSearch()==1)
-		w += 500 * CardNumSearch(477);
+		n_tok[13] += 500 * CardNumSearch(477);
 	if(EquipNumSearch(883) && n_A_BaseLV <= 79)
-		w += 400 * EquipNumSearch(883);
+		n_tok[13] += 400 * EquipNumSearch(883);
 	if(EquipNumSearch(1116) && n_A_JobSearch()==0)
-		w += 60;
+		n_tok[13] += 60;
 	if(EquipNumSearch(986))
-		w += 7 * n_A_BaseLV;
+		n_tok[13] += 7 * n_A_BaseLV;
 	if(n_A_Weapon_ATKplus >= 6 && EquipNumSearch(1168))
-		w -= 200;
+		n_tok[13] -= 200;
 	//custom TalonRO Chronos fix, +50 HP instead of SP each 2 refine levels
 	if(EquipNumSearch(1172))
-		w += 50 * Math.floor(n_A_Weapon_ATKplus / 2);
+		n_tok[13] += 50 * Math.floor(n_A_Weapon_ATKplus / 2);
 	//custom TalonRO Fancy Phantom Mask, +100 HP instead of SP each refine
 	if(EquipNumSearch(1487))
-		w += 100 * n_A_HEAD_DEF_PLUS;
+		n_tok[13] += 100 * n_A_HEAD_DEF_PLUS;
 	//custom TalonRO Geffenia Water Book, +800 HP if base INT is 99
 	if(EquipNumSearch(1520) && SU_INT == 99)
-		w += 800;
+		n_tok[13] += 800;
 	//custom TalonRO Kris enchant HP
 	var KEbonus = [A_KE11.value,A_KE12.value,A_KE21.value,A_KE22.value];
 	for (i=0;i<KEbonus.length;i++){
 		var wKE = KEbonus[i];
 		if(wKE){
 			if(131 <= wKE && wKE <= 139){
-				w += parseInt(wKE.substr(-1)) * 100;
+				n_tok[13] += parseInt(wKE.substr(-1)) * 100;
 			}
 		}
 	}
 
 	//tiraya bonnet + 20hp per refine - [Loa] 2018-07-02
 	if(EquipNumSearch(1048)){
-		w += n_A_HEAD_DEF_PLUS * 20;
+		n_tok[13] += n_A_HEAD_DEF_PLUS * 20;
 	}
   //[TalonRO Custom - Glorious Huuma Shuriken - + 150 HP per refine level] [Amor]
 	if(EquipNumSearch(1098)) {
-		w += (150 * n_A_Weapon_ATKplus);
+		n_tok[13] += (150 * n_A_Weapon_ATKplus);
 	}
 	//[Custom TalonRO 2018-06-15 - Malangdo Enchantment for MaxHP] [Kato]
 	for(i=0;i<tRO_MalangdoEnchantment.length;i++) {
 		var vME = tRO_MalangdoEnchantment[i];
 			if(vME >= 131 && vME <= 133) {
-					w += parseInt(vME.substr(-1)) * 100;
+					n_tok[13] += parseInt(vME.substr(-1)) * 100;
 			}
 	}
 
@@ -1181,7 +1185,7 @@ function StAllCalc()
 	for(i=0;i<tRO_BiolabArmorEnchantment.length;i++) {
 		var vBE = tRO_BiolabArmorEnchantment[i];
 			if(vBE >= 131 && vBE <= 133) {
-					w += parseInt(vBE.substr(-1)) * 100;
+					n_tok[13] += parseInt(vBE.substr(-1)) * 100;
 			}
 	}
 	/*
@@ -1190,55 +1194,53 @@ function StAllCalc()
 		MaxHP +1000
 	*/
 	if (EquipNumSearch(1079) && n_A_Weapon_ATKplus >= 7) {
-		w += 1000;
+		n_tok[13] += 1000;
 	}
 
-	n_A_MaxHP += w;
-
-	if(n_A_MaxHP < 1)
-		n_A_MaxHP = 1;
-
-	w=0;
-
-	w += n_tok[15];
+	// Apply flat MaxHP Bonus
+	n_A_MaxHP += n_tok[13];
+	n_A_MaxHP = Math.max(n_A_MaxHP, 1);
+	
+	if(SkillSearch(258)) // Berserk#258 MaxHP + 200%
+		n_tok[15] += 200;
 
 	if(SU_VIT >= 80 && CardNumSearch(267))
-		w += 3;
+		n_tok[15] += 3;
 
 	if(CardNumSearch(405)){
 		if(n_A_JobSearch()==1 || n_A_JobSearch()==2 || n_A_JobSearch()==6)
-			w += 5;
+			n_tok[15] += 5;
 	}
 	if(n_A_SHOES_DEF_PLUS >= 9 && CardNumSearch(304))
-		w += 10;
+		n_tok[15] += 10;
 	if(n_A_SHOES_DEF_PLUS <= 4 && CardNumSearch(407))
-		w += 4;
+		n_tok[15] += 4;
 	if(n_A_PassSkill5[1])
-		w += 100;
+		n_tok[15] += 100;
 	if(EquipNumSearch(715))
-		w -= n_A_SHOES_DEF_PLUS;
+		n_tok[15] -= n_A_SHOES_DEF_PLUS;
 	if(n_A_PassSkill3[3])
-		w += 5 + n_A_PassSkill3[3] * 2 + n_A_PassSkill3[33] + Math.floor(n_A_PassSkill3[23] /10);
+		n_tok[15] += 5 + n_A_PassSkill3[3] * 2 + n_A_PassSkill3[33] + Math.floor(n_A_PassSkill3[23] /10);
 
 	//Custom TalonRO - 2018-06-07 - Enhanced Corsair [1] - +1% MaxHP for refine 5 to 7 (total +3%), +2% MaxHP if refine 8+ [Nattwara]
 	if(EquipNumSearch(1657)){
 		if(n_A_HEAD_DEF_PLUS>4)
-			w += 1;
+			n_tok[15] += 1;
 
 		if(n_A_HEAD_DEF_PLUS>5)
-			w += 1;
+			n_tok[15] += 1;
 
 		if(n_A_HEAD_DEF_PLUS>6)
-			w += 1;
+			n_tok[15] += 1;
 
 		if(n_A_HEAD_DEF_PLUS>7)
-			w += 2;
+			n_tok[15] += 2;
 	}
 
 	//Bungisngis Card - hp 1% after lvl 5 refine
 	if(CardNumSearch(554) && n_A_card[8] == 554) {
 		if(n_A_HEAD_DEF_PLUS > 5){
-			w += n_A_HEAD_DEF_PLUS-5;
+			n_tok[15] += n_A_HEAD_DEF_PLUS-5;
 		}
 	}
 
@@ -1246,51 +1248,47 @@ function StAllCalc()
 	if(EquipNumSearch(1383))
 		//alert(n_A_JOB+","+n_A_JobSearch());
 		if(n_A_JOB==41)
-			w += 10;
+			n_tok[15] += 10;
 		else if(n_A_JOB==42)
-			w += 20;
+			n_tok[15] += 20;
 	//custom TalonRO SQI Bonus Eversong Greaves: [Taekwon] +10% MaxHP; [Taekwon Master] +20% MaxHP (the actual bonus)
 	if(EquipNumSearch(1383))
 		for(i=0;i<SQI_Bonus_Effect.length;i++)
 			if(SQI_Bonus_Effect[i]==73) {
 				//alert(n_A_JOB+","+n_A_JobSearch());
 				if(n_A_JOB==41)
-					w += 10;
+					n_tok[15] += 10;
 				else if(n_A_JOB==42)
-					w += 20;
+					n_tok[15] += 20;
 				break;
 			}
 
 	//custom TalonRO Lady Tanee Card: +1% HP per 8 base AGI
 	if(CardNumSearch(409))
-		w += Math.floor(SU_AGI / 8);
+		n_tok[15] += Math.floor(SU_AGI / 8);
 	if(SU_VIT >= 80 && EquipNumSearch(1526))
-		w += 5;
+		n_tok[15] += 5;
 
-		//[Custom TalonRO - Deviruchi Headphones (1426) -1% MHP] [Kato]
-		if(EquipNumSearch(1426))
-			w -= 1;
+	//[Custom TalonRO - Deviruchi Headphones (1426) -1% MHP] [Kato]
+	if(EquipNumSearch(1426))
+		n_tok[15] -= 1;
 
 	/*
 		Valorous Insane Battle Axe
 		[Refine level 7-10]
 		MaxHP +1% for each refine, up to a maximum of 10%.
 	*/
-	if (EquipNumSearch(905) && n_A_Weapon_ATKplus >= 7) {
-		w += n_A_Weapon_ATKplus;
+	if (EquipNumSearch(905) && n_A_Weapon_ATKplus >= 7)
+		n_tok[15] += n_A_Weapon_ATKplus;
+
+	// Manage Deluge MaxHP% bonus if [Water] armor is equipped
+	if(n_A_PassSkill6[0] == 1 && n_A_PassSkill6[1] && n_A_BodyZokusei == 1)
+	{
+		deluge_HP_bonus = [5,9,12,14,15];
+		n_tok[15] += deluge_HP_bonus[n_A_PassSkill6[1] - 1];
 	}
-
-	n_A_MaxHP = n_A_MaxHP * (100 + w)/100;
-
-	if(n_A_PassSkill6[0] == 1 && n_A_PassSkill6[1] >= 1 && n_A_BodyZokusei==1){
-		var dHP = [5,9,12,14,15];
-		n_A_MaxHP = n_A_MaxHP * (100 + dHP[n_A_PassSkill6[1]-1]) /100;
-	}
-	if(SkillSearch(258))
-		n_A_MaxHP *= 3;
-
-	n_A_MaxHP = Math.floor(n_A_MaxHP);
-
+	
+	n_A_MaxHP = Math.floor(n_A_MaxHP * (100 + n_tok[15]) / 100);
 
 	if(n_A_MaxHP>=100){
 		if(n_A_MaxHP>=10000)
@@ -1755,6 +1753,13 @@ function StAllCalc()
 	// Menblatt Wing Manteau#1696 [Every 2 Refine Level] MDEF + 1
 	if (EquipNumSearch(1696))
 		n_tok[19] += Math.floor(n_A_SHOULDER_DEF_PLUS / 2);
+	
+	// MDEF armor enchant
+	var wHSE = A_HSE.value;
+	if (wHSE){
+		if (111 <= wHSE && wHSE <= 119)
+			n_tok[19] += parseInt(wHSE.substr(-1));
+	}
 
 	n_A_MDEF = n_tok[19];
 
@@ -3323,7 +3328,7 @@ function StAllCalc()
 	if(w){
 		// custom TalonRO Poem of Bragi after cast delay
 		// "we strongly think that the stacking of Bragi with items that grant ACD reduction is something to avoid" - GM Team, applied only to PvM
-		if (n_A_PassSkill3[45] == 1) // PvP Mode
+		if (n_A_PassSkill3[45]) // PvP Mode
 			n_tok[74] += w * 3 + 20 * Math.floor(w / 10) + n_A_PassSkill3[32] * 2 + Math.floor(n_A_PassSkill3[29] / 5);
 		else // PvM Mode
 			n_tok[74] = w * 3 + n_A_PassSkill3[32] * 2 + Math.floor(n_A_PassSkill3[29] / 5); // Override all previous acd reduction bonus
@@ -3465,7 +3470,7 @@ function StAllCalc()
 	}
 
 	//[Custom TalonRO - 2018-06-01 - Palace Guard -1% ranged reduction per refine over 5] [Kato]
-	if(n_A_HEAD_DEF_PLUS >= 7 && EquipNumSearch(1545)){
+	if(n_A_HEAD_DEF_PLUS >= 6 && EquipNumSearch(1545)){
 		n_tok[25] -= (n_A_HEAD_DEF_PLUS - 5);
 	}
 

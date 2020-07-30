@@ -1770,7 +1770,9 @@ ItemOBJ = [
 ,[1719,100,0,0,0,0,0,0,"Pitch Dark Evil Druid Hat + Black Frame Glasses","",0,4,1,89,2,0]
 ,[1720,100,0,0,0,0,0,0,"Pitch Dark Evil Druid Hat + Dark Blinder","",0,5,1,9,5,0]
 ,[1721,51,0,0,0,0,10,50,"Dragonfly Monocle","","1% chance to autocast [Steal] Lv1 when attacking.<br><br>A stylish monocle, decorated with dragonfly wings.<br>When wearing this, you will be able to grab the precious items people have with them.",2,2,0]
-,[1722,50,0,0,0,1,10,10,"Black Tailed Ribbon","",0,78,5,60,5,0]
+,[1722,62,0,2,0,1,10,0,"Beach Towel","","A colorful beach towel used as protection from the sun.",9,7,19,3,60,4,0]
+,[1723,50,0,0,0,1,10,1,"Black Tailed Ribbon","","A jet-black ribbon.",19,5,60,5,78,5,0]
+,[1724,50,0,2,0,0,50,0,"Cookie Hat","","A Hat worn by Cookie Xmas [the idol of Toy Dungeon]. It covers the ears to protect from cold weather.",2,1,11,5,70,5,0]
 ];
 
 //Test code for finding the values in Skill.js AutoSpellSkill
@@ -3526,7 +3528,9 @@ ItemID = [
 ,[1719,2,21135,5401]
 ,[1720,2,21135,5104]
 ,[1721,1,18655]
-,[1722,1,5765]
+,[1722,1,2565]
+,[1723,1,5765]
+,[1724,1,5260]
 ];
 
 /*
@@ -4005,6 +4009,7 @@ function Item_Setumei(nC1,nC2)
    //Physical damage against specific monster
    if(370 <= nC1 && nC1 <=379)
       CBIstr += "Experience gained from [" + ZokuseiOBJ[nC1-370] +"] elements monsters " + wIS + nC2 +"%<BR>";
+   
    if(1000 <= nC1 && nC1 <=1999)
       CBIstr += wIS + nC2 + "% Physical damage inflicted against <b>" + MonsterOBJ[nC1-1000][1] + "</b><br>";
    //Incease Damage of skill by %
@@ -4165,6 +4170,7 @@ w_SE = [[737,436,475,"NULL"]
 ,[1719,1715,887,"NULL"] //Custom TalonRO - Pitch Dark Evil Druid Hat + Black Frame Glasses
 ,[1720,1715,643,"NULL"] //Custom TalonRO - Pitch Dark Evil Druid Hat + Dark Blinder
 ];
+
 SE_MAXnum = w_SE.length -1;
 for(var i=0;i<=SE_MAXnum;i++){
 	for(var k=1;w_SE[i][k] != "NULL";k++){
