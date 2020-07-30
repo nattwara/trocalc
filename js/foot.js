@@ -7076,6 +7076,11 @@ function SZ(wSTR){
 
 function SZ_2(wSTR){
 	var w = document.calcForm.ENEMY_SORT2.value;
+	
+	if (w == 0) {
+		return wSTR;
+	}
+	
 	wSTR_2 = [];
 	if(w != 0){
 		for(var j=0;MonMap[w][j] != "N";j++){
