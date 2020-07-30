@@ -996,7 +996,7 @@ for (let monid of MonsterOBJ) {
 }
 MonsterNoSort.push("N")
 
-var tiiki = ["All Regions","TEST DEF","Seals","GMC","Ancient Tower [BETA]","Ancient Tower","Abyss Lake Dungeon","Amatsu","Ant Hell","Ayothaya","Battlegrounds","Bibilan",
+var tiiki = ["All Regions","TEST DEF","Seals","GM Challenges","Ancient Tower [BETA]","Ancient Tower","Abyss Lake Dungeon","Amatsu","Ant Hell","Ayothaya","Battlegrounds","Bibilan",
 "Bio Labs","Bitfrost","Brasilis","Clock Tower","Coal Mine","Comodo Caves","Comodo Fields","Culverts","Dewata","Dimensional Crack","Eclage","Einbroch Dungeon",
 "Einbroch Fields","Elysian Garden","El Dicastes","Endless Tower Finale","Geffenia","Geffen Dungeon","Geffen Fields","Glast Heim","Glast Heim Dungeons","Gonryun",
 "Guild Dungeon [Aldebaran]","Guild Dungeon [Arunafeltz]","Guild Dungeon [Geffen]","Guild Dungeon [Payon]","Guild Dungeon [Prontera]",
