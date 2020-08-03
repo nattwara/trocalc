@@ -508,9 +508,12 @@ function BattleCalc999()
 				var san = [0,0,0];
 				for(var i=0;i<=2;i++){
 					san[i] = BattleCalc(n_A_DMG[i] * (wbairitu + wBC3_3danAtkBairitu),i) + EDP_DMG(i);
-					//custom TalonRO Sura's Rampage +10% Triple Attack damage
+					/*
+          //custom TalonRO Sura's Rampage +10% Triple Attack damage
 					if (EquipNumSearch(1512))
 						san[i] = san[i] * 1.1;
+          */
+					san[i] = san[i] * (1 + (StPlusCalc2(5187) +  StPlusCard(5187)) / 100);
 					san[i] = Math.floor(san[i] /3) *3;
 					if(n_B[19] == 5)
 						san[i] = 3;
@@ -3556,7 +3559,7 @@ with(document.calcForm){
 		myInnerHtml("SIENSKILL",str,0);
 		A2_SKILLSW.checked = 1;
 
-		name_CSSW_SKILL = ["Blessing","Increase AGI","Impositio Manus","Gloria","Angelus","Assumptio","Adrenaline Rush","Weapon Perfection","Power Thrust","Wind Walker","Spirit Spheres (GG Card)","Magnum Break Bonus","Aloevera","<Font size=2>Suffragium</Font>","<Font size=2>Providence</Font>","<Font size=2>Additional Buffs Found Below</Font>"];
+		name_CSSW_SKILL = ["Blessing","Increase AGI","Impositio Manus","Gloria","Angelus","Assumptio","Adrenaline Rush","Weapon Perfection","Power Thrust","Wind Walker","Spirit Spheres (GG Card)","Magnum Break Bonus","Aloevera","Suffragium","Providence","<Font size=2>Additional Buffs Found Below</Font>"];
 		html_CSSW_SKILL = new Array();
 		for(i=0;i<=15;i++)
 			myInnerHtml("AS"+i+"_1",name_CSSW_SKILL[i],0);
@@ -3834,7 +3837,7 @@ with(document.calcForm){
 			myInnerHtml("EN2_10",'<input type="checkbox" name="A3_Skill2_5" id="lab16" onChange="Click_A3(1)"></input>',0);
 			for(i=1;i<=200;i++)
 				A3_Skill2_2.options[i-1] = new Option(i,i);
-			for(i=1;i<=200;i++)
+			for(i=1;i<=250;i++)
 				A3_Skill2_3.options[i-1] = new Option(i,i);
 			for(i=0;i<=10;i++)
 				A3_Skill2_4.options[i] = new Option(i,i);
@@ -7290,7 +7293,6 @@ function calc()
 
 	n_A_DMG = [0,0,0];
 
-
 	if(n_A_workDEX>=n_A_Weapon_ATK || SkillSearch(155))
 		n_A_DMG[2] = n_A_ATK + n_A_WeaponLV_Maxplus + Math.floor((n_A_Weapon_ATK + wImp)* wCSize);
 	else
@@ -7443,7 +7445,8 @@ function calc()
 
 	for(var i=0;i<InnStr.length;i++)
 		myInnerHtml("strID_"+i,InnStr[i],0);
-
+	
+	KakutyouKansuu();
 }
 
 
@@ -7497,11 +7500,12 @@ function BattleCalc(w_atk,w_2)
 		debug_atk+="\n --- (BattleCalc) The Ring of Nibelungen ---";
 		debug_atk+="\nb_w_atk:"+w_atk;
 	}
+  /*
 	if(n_A_PassSkill3[10] && n_A_WeaponLV == 4)
 		w_atk += 50 + 25 * n_A_PassSkill3[10];
 	if(debug_dmg_avg)
 		debug_atk+="\na_w_atk:"+w_atk;
-
+  */
 	if(debug_dmg_avg)
 		debug_atk+="\nb_DemonBane:"+w_atk;
 	if(n_B[2] == 6 || (90 <= n_B[3] && n_B[3] <= 99)){
@@ -8037,7 +8041,7 @@ function BaiCI(wBaiCI)
 		[Refine Level 9~10]
 		Increases damage with [Sonic Blow] by 20%.
 	*/
-	if(n_A_Weapon_ATKplus >= 6 && n_A_ActiveSkill == 83 && EquipNumSearch(910)) {
+	if (n_A_Weapon_ATKplus >= 6 && (83 == n_A_ActiveSkill || 388 == n_A_ActiveSkill) && EquipNumSearch(910)) {
 		w1 += 10;
 		
 		if (n_A_Weapon_ATKplus >= 9)
@@ -8276,13 +8280,16 @@ function CastAndDelay(){
 		Bragi capped after cast delay reduction to 0.4s
 		Skills that have long delays that can't normally achieve our 0.3 second delay cap without Bragi
 		can only be reduced up to 0.4 second delay while under Bragi.
+
+		Delay is expressed in ms, flooring operation should take that into consideration
 	*/
-	acd_after_reduction = Math.floor(n_Delay[2] * (100 - n_tok[74])) / 100;
-	
 	if (n_A_PassSkill3[32])
-		n_Delay[2] = Math.max(acd_after_reduction, Math.min(n_Delay[2], 0.4));
+	{
+		bragi_acd_reduction = Math.max((n_Delay[2] - 0.4), 0) * n_tok[74];
+		n_Delay[2] = Math.floor(n_Delay[2] * 100 - bragi_acd_reduction) / 100;
+	}
 	else
-		n_Delay[2] = acd_after_reduction;
+		n_Delay[2] = Math.floor(n_Delay[2] * (100 - n_tok[74])) / 100;
 	
 	if(n_Delay[2] > wDelay){
 		wDelay = n_Delay[2];
@@ -8313,7 +8320,7 @@ function CastAndDelay(){
 	if(w == 1){
 		if(n_A_ActiveSkill == 0){
 			if(SkillSearch(187)){
-				strSUB2name += "Attack interval (normal)<BR>Attack Interval (Raging Trifecta Blow)<BR>";
+				strSUB2name += "Attack Interval (Normal)<BR>Attack Interval (Raging Trifecta Blow)<BR>";
 				strSUB2 += n_Delay[1] +"s<BR>"+ sandanDelay +"s<BR>";
 				wDelay = n_Delay[1] * w998A /100 + sandanDelay * wBC3_3danHatudouRitu / 100;
 

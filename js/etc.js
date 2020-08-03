@@ -722,6 +722,7 @@ EXTENDED_INFO = [
  ,[13,"Forge/Potion/EDP Creation Success Rates"]
  ,[14,"Strip Chance"]
  ,[15,"Cooking Success Rates"]
+ ,[17,"Drain Rate"]
 ];
 
 CARD_SHORTCUT = [

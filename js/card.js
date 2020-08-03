@@ -65,7 +65,7 @@ cardOBJ = [
 ,[43,1,"Sidewinder","Enable the use of [Double Attack]Lv 1 (with all weapons)<BR>If you know a level higher than 1, you will use that level instead",0]
 ,[44,1,"Phreeoni",0,8,100,0]
 ,[45,1,"Baphomet","All regular attacks become 3x3 splash damage like a Bowling Bash Effect Permanently",8,-10,0]
-,[46,1,"Hunter Fly","Enables a 3% chance of gaining 15% of the damage inflicted on an enemy as HP with each attack",0]
+,[46,1,"Hunter Fly","Enables a 3% chance of gaining 15% of the damage inflicted on an enemy as HP with each attack",380,3,381,15,0]
 ,[47,1,"Dracula","-1500 HP on unequip (not calced)",190,4,191,4,192,4,0] //custom TalonRO -4% dmg from all sizes
 ,[48,2,"Willow",0,14,80,0]
 ,[49,2,"Elder Willow",0,4,2,0]
@@ -181,7 +181,7 @@ cardOBJ = [
 ,[159,1,"Howard Alt-Eisen",0,8,30,12,-5,0]
 ,[160,1,"Cecil Damon",0,12,5,8,-30,0]
 ,[161,1,"Whitesmith","Add a low chance to cast Level 4 Meltdown when attacking",0] //custom TalonRO low chance for lv4 Meltdown
-,[162,1,"Sniper","When attacking with an ATK based attack, adds a 10% chance to absorb 20% of the damage inflicted on the enemy as HP",75,-10,0] //custom TalonRO 10% chance to absorb instead of 5%; HPregen -10% instead of -100%
+,[162,1,"Sniper","When attacking with an ATK based attack, adds a 10% chance to absorb 20% of the damage inflicted on the enemy as HP",380,10,381,20,75,-10,0] //custom TalonRO 10% chance to absorb instead of 5%; HPregen -10% instead of -100%
 ,[163,1,"Breeze",0,17,5,138,5,0]
 ,[164,1,"Solace","When equipped by a priest:<BR>When attacking with an ATK based attack, adds a chance to autocast [Grand Cross]Lv 5",0]
 ,[165,1,"Thanatos Maero",0,17,5,221,55,0]
@@ -376,7 +376,7 @@ cardOBJ = [
 ,[354,7,"Heater","<b>[Swordman Class]</b><br>Perfect Dodge +3",10,3,0]
 ,[355,1,"Beetle King","Regain 5 SP when killing a Fish race monster with a ATK based attack<BR>Drains 5 SP when the weapon is unequipped",0]
 ,[356,1,"Aster","+30% damage on [Shellfish]",1059,30,17,5,0]
-,[357,1,"Kiel D-01","Add a 10% chance of gaining 5% of the damage inflicted upon an enemy as SP with each attack. (not calced)<BR>Add a 10% chance of decreasing enemy's SP amount by 5% when attacking. (not calced)",0] //custom TalonRO - diff position
+,[357,1,"Kiel D-01","Add a 10% chance of gaining 5% of the damage inflicted upon an enemy as SP with each attack. (not calced)<BR>Add a 10% chance of decreasing enemy's SP amount by 5% when attacking. (not calced)",382,10,383,5,0] //custom TalonRO - diff position
 ,[358,3,"Parasite",0,60,5,18,1,0]
 ,[359,1,"False Angel","Regain 5 SP when killing a Angel race monster with a ATK based attack<BR>Drains 5 SP when the weapon is unequipped",0]
 ,[360,1,"Phendark","Regain 5 SP when killing a Demi-human race monster with a ATK based attack<BR>Drains 5 SP when the weapon is unequipped",0]

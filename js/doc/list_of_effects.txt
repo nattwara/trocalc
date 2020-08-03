@@ -542,7 +542,11 @@ Effect list:
 	377: Experience gained from [Shadow] elements monsters + [value]%
 	378: Experience gained from [Ghost] elements monsters + [value]%
 	379: Experience gained from [Undead] elements monsters + [value]%
-	380-999: (unused)
+	380: Chance of drain HP.
+	381: Amount of drain HP.
+	382: Chance of drain SP.
+	383: Amount of drain SP.
+	384-999: (unused)
 	1000-1999: + [value]% Physical damage inflicted against a specic monster (MonsterOBJ[ID - 1000])
 	2000-4999: (unused)
 	5000-6999: specific skill damage + [value]% (SkillOBJ[ID - 5000])

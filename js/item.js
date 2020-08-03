@@ -6,7 +6,7 @@
 /*
   ZoneSoldier - 6/2/2018
    id, display location, job that can use,(atk; def),lvl equip, slots, weight, lvl required to use, "name of item",  ?, "description", effect1, effect2, ..., 0 =?]
-   Example : [1535 = ID,62 = Location,0 = all jobs,0 = def(atk if its a weapon),0-default = equipment level,1 = slots, 0 = weight, 60 = Level required to use item,0 = ,"Beach Manteau" = Name of object,"" = ?,0 = description(No info added so left at 0),1 = STR,1 = 1 next to str value,4 = Int,1 = Int value 1 on site,63 = Fire resistance,10 = 10% resistance,0= end]
+   Example : [1535 = ID,62 = Location,0 = all jobs (more details in head.js),0 = def(atk if its a weapon),0-default = equipment level,1 = slots, 0 = weight, 60 = Level required to use item,0 = ,"Beach Manteau" = Name of object,"" = ?,0 = description(No info added so left at 0),1 = STR,1 = 1 next to str value,4 = Int,1 = Int value 1 on site,63 = Fire resistance,10 = 10% resistance,0= end]
    Location values:
    Weapons: 1 = Dagger, 2 = One-handed Sword, 3 = Two-handed Sword, 4 = One-handed Spear, 5 = Two-handed Spear, 6 = One-handed Axe, 7 = Two-handed Axe, 8 = Mace, 9 = Staff/Rod, 10 = Bow/CrossBow, 11 = 	Katar, 12 = Book, 13 = Knuckles, 	Instrument = 14, 15 = Whip, 16 = Shuriken, 17 = Revolver, 18 = Rifle, 19 = Shotgun, 20 = Gatling Gun, 21 = Gernade Launcher.
    Headgear: 50 = Upper Headgear, 51 = Middle Headgear, 52 = Lower Headgear
@@ -51,7 +51,7 @@ ItemOBJ = [
 ,[28,2,113,125,3,0,135,75,"Holy Avenger","",0,3,2,20,6,0]
 ,[29,2,1,130,3,"1 / 2",120,27,"Tsurugi","",0,0]
 ,[30,2,61,150,3,"0 / 2",150,27,"Flamberge","",0,0]
-,[31,2,1,85,4,0,120,40,"Solar Sword","","Regains 1% of the damage inflicted on his target as HP with each attack<BR>Drains 15 SP from his owner every 10 seconds",20,3,0]
+,[31,2,1,85,4,0,120,40,"Solar Sword","","Regains 1% of the damage inflicted on his target as HP with each attack<BR>Drains 15 SP from his owner every 10 seconds",380,100,381,1,20,3,0]
 ,[32,2,1,100,4,0,60,40,"Ice Falchion","","Freeze enemies by 5% chance when hit<br>Freeze its owner by 1% chance when used",20,1,220,1,221,1,0]
 ,[33,2,1,100,4,0,50,40,"Fireblend","",0,20,3,220,2,221,2,0]
 ,[34,2,1,150,4,"0 / 1",90,40,"Cutlus","",0,1,2,18,1,220,3,0]
@@ -602,7 +602,7 @@ ItemOBJ = [
 ,[579,1,1,85,4,0,0,0,"Moonlight Dagger [Rental]","","Regain 3 SP with each attack",16,10,193,1,0] //custom TalonRO Rental
 ,[580,12,0,135,3,0,0,0,"Sage's Diary [Rental]","",0,89,20,12,5,193,1,0] //custom TalonRO Rental
 ,[581,8,53,150,3,0,0,0,"Wrench [Rental]","","Small chance of randomly inflict Stun, Blind, Poison or Freeze Status with each melee attack",193,1,0] //custom TalonRO Rental
-,[582,2,1,120,4,0,0,0,"Solar Sword [Rental]","","Regains 1% of the damage inflicted on his target as HP with each attack<BR>Drains 15 SP from his owner every 10 seconds",20,3,193,1,0] //custom TalonRO Rental
+,[582,2,1,120,4,0,0,0,"Solar Sword [Rental]","","Regains 1% of the damage inflicted on his target as HP with each attack<BR>Drains 15 SP from his owner every 10 seconds",380,100,381,1,20,3,193,1,0] //custom TalonRO Rental
 ,[583,7,1,200,4,0,0,0,"Tomahawk [Rental]","",0,20,4,193,1,220,8,0] //custom TalonRO Rental
 ,[584,4,0,159,3,0,480,0,"Pole Axe [Rental]","",0,1,1,4,2,5,1,193,1,0] //custom TalonRO Rental
 ,[585,7,1,229,4,0,0,0,"Light Epsilon [Rental]","","Increases Movement Speed by 25%",20,6,1,10,36,3,193,1,220,4,0] //custom TalonRO Rental
@@ -847,7 +847,7 @@ ItemOBJ = [
 ,[824,100,0,0,0,0,0,0,0,"Mage Coat set",0,214,4,19,8,16,10,0]
 ,[825,9,55,30,3,0,50,50,"Radiant Wisdom","","When performing a Magical attack, there's a small chance to recover SP and HP",89,15,4,3,91,5,94,5,0]
 ,[826,50,0,0,0,0,50,0,"Phrygian Cap","",0,4,2,0]
-,[827,50,1,2,0,1,30,40,"Rideword Hat","","5% chance to absorb 8% HP on Physical attack<br>1% chance to absorb 4% SP on Physical attack<br>You lose 10 HP each 5 seconds when equipped ",0]
+,[827,50,1,2,0,1,30,40,"Rideword Hat","","5% chance to absorb 8% HP on Physical attack<br>1% chance to absorb 4% SP on Physical attack<br>You lose 10 HP each 5 seconds when equipped ",380,5,381,8,382,1,383,4,0]
 ,[828,50,82,5,0,1,25,0,"Dark Bashilrium","","Each refine increases resistance by 2%<br><b>Upper, Middle and Lower Headgear</b>",159,20,152,20,151,20,0]
 ,[829,60,1089,6,0,1,30,55,"Diablos Robe","",0,14,150,19,5,74,10,91,6,94,6,0]
 ,[830,60,1072,7,0,1,60,60,"Diablos Armor","",0,1,2,5,1,13,150,151,5,159,5,0]
@@ -1213,7 +1213,7 @@ ItemOBJ = [
 ,[1190,60,1072,7,0,1,100,85,"Bone Plate","","Adds a 1% chance to cause External Bleeding status ailment all enemies in a 5x5 area around you when taking ATK based damage",1,1,19,3,307,10,302,10,0]
 ,[1191,61,1079,5,0,1,180,65,"Bradium Shield","",0,13,500,5159,60,5384,60,2,-1,0]
 ,[1192,62,1001,5,0,1,100,0,"Dragon Manteau","",0,2,1,19,5,0]
-,[1193,62,1001,5,0,1,40,90,"Proxy Skin Fragment","","Increases SP by Level/3 + [Refine Rate * 10]<br>When dealing physical damage there's a 1% chance that you'll recover 1% of your damage as SP",19,3,61,3,62,3,63,3,64,3,65,3,66,3,67,3,68,3,69,3,0]
+,[1193,62,1001,5,0,1,40,90,"Proxy Skin Fragment","","Increases SP by Level/3 + [Refine Rate * 10]<br>When dealing physical damage there's a 1% chance that you'll recover 1% of your damage as SP",382,1,383,1,19,3,61,3,62,3,63,3,64,3,65,3,66,3,67,3,68,3,69,3,0]
 ,[1194,63,1001,4,0,0,50,60,"Life Tree Wooden Shoes","","Recover 30 HP every 10 seconds",15,10,3,2,19,3,92,5,93,5,95,5,0]
 ,[1195,64,0,0,0,0,10,0,"Ring of Wisdom","",0,13,50,14,20,0]
 ,[1196,64,0,0,0,1,10,70,"Eye Ring","",0,10,2,14,25,0]
@@ -1500,7 +1500,7 @@ ItemOBJ = [
 ,[1469,50,0,0,0,1,30,0,"Angeling Fur Hat","",0,7,1,80,1,89,1,0]
 ,[1470,50,0,5,0,0,50,20,"Wunderkammer","","When doing short range physical attacks, add a chance of auto casting various skills:<br>Monster Property/Sense<br>Identify<br>Pick Stone<br>Greed<br>Running<br>High Jump<br>First Aid<br>Back Sliding",19,10,193,1,0]
 ,[1471,100,0,0,0,0,0,0,"Wunderkammer & Lesser Elemental Ring combo",0,"Add a chance of auto casting Level 2 Weapon Perfection on the enemy when attacking",0] //Wunderkammer & Lesser Elemental Ring combo
-,[1472,1,0,107,3,1,70,30,"Kris","","Enable a 5% chance of gaining 10% of the damage inflicted on an enemy as HP with each attack",89,10,0]
+,[1472,1,0,107,3,1,70,30,"Kris","","Enable a 5% chance of gaining 10% of the damage inflicted on an enemy as HP with each attack",380,5,381,10,89,10,0]
 ,[1473,50,0,3,0,1,30,50,"Valkyrie Circlet","",0,1,1,19,3,36,10,47,10,0]
 ,[1474,51,0,0,0,0,10,10,"Patron of the Sea God","",0,61,5,0]
 ,[1475,51,0,0,0,0,50,10,"Imperial Feather","","If user's base AGI is 90 or higher: ASPD + 1%",12,1,64,5,0]
@@ -1597,7 +1597,7 @@ ItemOBJ = [
 ,[1555,100,0,0,0,0,0,0,"Aegir Helm + Aegir Cloak","","Recovers 10 SP every time you kill a Fish type monster.<BR><BR>Add a chance to drop Sushi or Raw Fish when killing a Fish type monster, which increases per refinement rate of Aegir Cloak.<BR><BR>Increases natural HP recovery by 5% per refinement rate of Aegir Cloak.<BR><BR>Sushi and Raw Fish's HP recovery increase by 5%.",0] //Aegir Helm + Aegir Cloak
 ,[1556,100,0,0,0,0,0,0,"Aegir Helm + Aegir Armor","","Decreases damage from [Fish] race monsters by 1% per refinement of Aegir Armor",55,10,0] //Aegir Helm + Aegir Armor
 ,[1557,100,0,0,0,0,0,0,"Aegir Helm + Aegir Armor + Aegir Cloak + Aegir Shoes","","",13,1000,14,100,125,20,35,50,175,50,61,30,0] //Aegir Set
-,[1558,52,0,0,0,0,10,0,"Blood Sucker","","When doing a physical attack, add a 2% chance to absorb 5% of your damage dealt as HP.",75,-100,76,-100,0]
+,[1558,52,0,0,0,0,10,0,"Blood Sucker","","When doing a physical attack, add a 2% chance to absorb 5% of your damage dealt as HP.",380,2,381,5,75,-100,76,-100,0]
 ,[1559,8,1,130,3,2,50,50,"Red Square Bag","","If user's base Str is 95 or higher: Causes Stun effect to enemies by 5% chance.<BR>Every time you kill a monster, low chance to drop random Potion.",13,200,5244,20,5248,20,0]
 ,[1560,50,0,2,0,0,0,0,"Reforged Lord Kaho's Horns","","<br />Reforged Horns Of Lord Kaho. You feel a strange power emitting from them but they are not quite complete yet.",1,5,4,5,5,5,19,5,193,1,0]
 ,[1561,51,51,2,0,0,30,65,"Advanced Fin Helm","","Additional Maximum HP + 6 * Base Level.",13,300,0]
@@ -4009,7 +4009,9 @@ function Item_Setumei(nC1,nC2)
    //Physical damage against specific monster
    if(370 <= nC1 && nC1 <=379)
       CBIstr += "Experience gained from [" + ZokuseiOBJ[nC1-370] +"] elements monsters " + wIS + nC2 +"%<BR>";
-   
+   /*When attacking with an ATK based attack, adds a (nC1 380/382)% chance to absorb (nC1 381/383)% of the damage inflicted on the enemy as (HP/SP)*/
+   if(380 <= nC1 && nC1 <=383)
+      CBIstr +="";
    if(1000 <= nC1 && nC1 <=1999)
       CBIstr += wIS + nC2 + "% Physical damage inflicted against <b>" + MonsterOBJ[nC1-1000][1] + "</b><br>";
    //Incease Damage of skill by %
