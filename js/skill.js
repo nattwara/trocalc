@@ -770,6 +770,7 @@ TRO_MAGICALSKILL_ELEMENTS = [
   [277], //Ghost
   [0], //Undead
 ];
+
 HJ_MOBS = {
 	228:5, 	// Baphomet, Lv5
 	480:2, 	// Beelzebub, Lv2
@@ -783,9 +784,12 @@ HJ_MOBS = {
 	546:2,	// Nidhoggr's Shadow, Lv2
 	690:10,	// Corrupted Soul, Lv10
 	496:5	// Wounded Morroc, Lv5
+			// Lost Dragon, Lv1
 }
+
 EQ_MOBS = {
 	492:1,	// Incarnation of Morroc [Golem], Lv1
+			// Lost Dragon, Lv1
 	534:2,	// Hardrock Mammoth, Lv2
 	578:2,	// Kraken, Lv2
 	546:3,	// Nidhoggr's Shadow, Lv3
@@ -794,6 +798,7 @@ EQ_MOBS = {
 	356:5,	// RSX-0806, Lv5
 	440:5,	// Valkyrie Randgris, Lv5
 	472:5,	// Ifrit, Lv5
+			// Gioia, Lv5
 	495:10,	// Satan Morroc, Lv10
 	496:10	// Wounded Morroc, Lv10
 }
