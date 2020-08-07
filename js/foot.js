@@ -3332,10 +3332,10 @@ function StAllCalc()
 		// "we strongly think that the stacking of Bragi with items that grant ACD reduction is something to avoid" - GM Team, applied only to PvM
 		if (n_A_PassSkill3[45]) // PvP Mode
 			//n_tok[74] += w * 3 + 20 * Math.floor(w / 10) + n_A_PassSkill3[32] * 2 + Math.floor(n_A_PassSkill3[29] / 5);
-			n_tok[74] += ((w * 3) + ((Math.floor(w / 10)) x 20) + Math.floor(n_A_PassSkill3[29] / 5) + (n_A_PassSkill3[32] * 2));
+			n_tok[74] += ((w * 3) + ((Math.floor(w / 10)) * 20) + Math.floor(n_A_PassSkill3[29] / 5) + (n_A_PassSkill3[32] * 2));
 		else // PvM Mode
 			//n_tok[74]  = w * 3 + n_A_PassSkill3[32] * 2 + Math.floor(n_A_PassSkill3[29] / 5); // Override all previous acd reduction bonus
-			n_tok[74] = ((w * 3) /* + ((Math.floor(w / 10)) x 20) */ + Math.floor(n_A_PassSkill3[29] / 5) + (n_A_PassSkill3[32] * 2)
+			n_tok[74] = ((w * 3) /* + ((Math.floor(w / 10)) * 20) */ + Math.floor(n_A_PassSkill3[29] / 5) + (n_A_PassSkill3[32] * 2)
 			);
 	}
 	
