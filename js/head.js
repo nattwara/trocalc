@@ -8283,28 +8283,18 @@ function CastAndDelay(){
 
 		Delay is expressed in ms, flooring operation should take that into consideration
 	*/
-	/*
-	if (n_A_PassSkill3[32])
-	{
-		let bragi_acd_reduction = Math.max((n_Delay[2] - 0.4), 0) * n_tok[74];
-		n_Delay[2] = Math.floor(n_Delay[2] * 100 - bragi_acd_reduction) / 100;
-	}
-	else {
-		n_Delay[2] = Math.floor(n_Delay[2] * (100 - n_tok[74])) / 100;
-	}
-	*/
-	if (n_A_PassSkill3[2])
-	{
-		let bragi_acd_reduction = wDelay * n_tok[74];
+	//if (n_A_PassSkill3[32])
+	if (n_A_PassSkill3[2]){
+		let bragi_acd_reduction = n_Delay[2] * n_tok[74];
 		let after_bragi_acd     = Math.floor(n_Delay[2] * (100 - bragi_acd_reduction)) / 100;
 		n_Delay[2] = Math.max(after_bragi_acd,0.4);
 		
 		//let bragi_acd_reduction = Math.max((n_Delay[2] - 0.4), 0) * n_tok[74];
 		//n_Delay[2] = Math.floor(n_Delay[2] * 100 - bragi_acd_reduction) / 100;
 	}
-	else {
-		n_Delay[2] = Math.floor(n_Delay[2] * (100 - n_tok[74])) / 100;
-	}
+	//else {
+	//	n_Delay[2] = Math.floor(n_Delay[2] * (100 - n_tok[74])) / 100;
+	//}
 	
 	if(n_Delay[2] > wDelay){
 		wDelay = n_Delay[2];
