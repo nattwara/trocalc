@@ -8283,13 +8283,24 @@ function CastAndDelay(){
 
 		Delay is expressed in ms, flooring operation should take that into consideration
 	*/
+	/*
 	if (n_A_PassSkill3[32])
 	{
-		bragi_acd_reduction = Math.max((n_Delay[2] - 0.4), 0) * n_tok[74];
+		let bragi_acd_reduction = Math.max((n_Delay[2] - 0.4), 0) * n_tok[74];
 		n_Delay[2] = Math.floor(n_Delay[2] * 100 - bragi_acd_reduction) / 100;
 	}
-	else
+	else {
 		n_Delay[2] = Math.floor(n_Delay[2] * (100 - n_tok[74])) / 100;
+	}
+	*/
+	if (n_A_PassSkill3[2])
+	{
+		let bragi_acd_reduction = Math.max((n_Delay[2] - 0.4), 0) * n_tok[74];
+		n_Delay[2] = Math.floor(n_Delay[2] * 100 - bragi_acd_reduction) / 100;
+	}
+	else {
+		n_Delay[2] = Math.floor(n_Delay[2] * (100 - n_tok[74])) / 100;
+	}
 	
 	if(n_Delay[2] > wDelay){
 		wDelay = n_Delay[2];
@@ -8301,8 +8312,6 @@ function CastAndDelay(){
 	}
 	if(n_A_ActiveSkill != 0 && n_A_ActiveSkill != 284){
 		n_Delay[4] = 0.33; // [Custom TalonRO 2016-06-02 - Added fixed TRO's Minimun Delay for Skills] [Kato]
-
-
 	}
 	if(n_Delay[4] > (wDelay + wCast)){
 		wDelay = n_Delay[4] - wCast;
