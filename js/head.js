@@ -8285,7 +8285,7 @@ function CastAndDelay(){
 	*/
 	//if (n_A_PassSkill3[32])
 	if (n_A_PassSkill3[2]){
-		let bragi_acd_reduction = n_Delay[2] * n_tok[74];
+		let bragi_acd_reduction = n_tok[74];
 		let after_bragi_acd     = Math.floor(n_Delay[2] * (100 - bragi_acd_reduction)) / 100;
 		n_Delay[2] = Math.max(after_bragi_acd,0.4);
 		
