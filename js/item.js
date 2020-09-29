@@ -824,7 +824,7 @@ ItemOBJ = [
 ,[801,64,1,0,0,0,20,75,"Belcarf","",0,5,2,4,1,0]
 ,[802,50,0,3,0,0,50,0,"Shark Hat","",0,19,1,1,1,2,2,41,5,61,10,0]
 ,[803,50,0,2,0,0,20,45,"Whikebine's Black Cat Ears","",0,9,10,10,3,70,10,0] //custom TalonRO
-,[804,50,0,3,0,0,30,60,"Ship Captain Hat","",0,5,1,25,7,13,100,0] //custom TalonRO
+,[804,50,0,3,0,"0 / 1",30,60,"Ship Captain Hat","",0,5,1,25,7,13,100,0] //custom TalonRO
 ,[805,51,0,1,0,0,10,70,"Peco-Peco Ears","",0,19,2,2,1,0]
 ,[806,52,0,0,0,0,10,60,"Gangster Scarf","","<b>[Rogue Class]</b><br>Enables the use of the skill [Gangster's Paradise]Lv 1",17,5,0]
 ,[807,52,0,0,0,0,20,60,"Ninja's Scroll","",0,89,1,0]
