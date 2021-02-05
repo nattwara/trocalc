@@ -1262,6 +1262,19 @@ function StAllCalc()
 					n_tok[15] += 20;
 				break;
 			}
+	//custom TalonRO SQI Bonus Eversong Greaves: [Taekwon] +10% MaxHP & +10% MaxSP; [Taekwon Master] +20% MaxHP & +20% MaxSP (the actual bonus)
+	if(EquipNumSearch(1733))
+		for(i=0;i<SQI_Bonus_Effect.length;i++)
+			if(SQI_Bonus_Effect[i]==235) {
+				//alert(n_A_JOB+","+n_A_JobSearch());
+				if(n_A_JOB==41)
+					n_tok[15] += 10;
+					n_tok[16] += 10;
+				else if(n_A_JOB==42)
+					n_tok[15] += 20;
+					n_tok[16] += 20;
+				break;
+			}	
 
 	//custom TalonRO Lady Tanee Card: +1% HP per 8 base AGI
 	if(CardNumSearch(409))
@@ -1919,6 +1932,12 @@ function StAllCalc()
 					n_A_HIT += 40;
 				break;
 			}
+	if(EquipNumSearch(1733))
+		//alert(n_A_JOB+","+n_A_JobSearch());
+		if(n_A_JOB==41)
+			n_A_HIT += 40;
+		break;
+			
 
 	if(SU_STR >= 90 && EquipNumSearch(442))
 		n_A_HIT += 10 * EquipNumSearch(442);
@@ -2610,6 +2629,11 @@ function StAllCalc()
 	if(EquipNumSearch(1080) && n_A_ActiveSkill == 308){
 		n_tok[73] -= 3 * n_A_Weapon_ATKplus;
 	}
+	
+	if (SQI_Bonus_Effect[i]==325 && n_A_ActiveSkill==73) {
+		n_tok[73] -= 50;
+	}
+	
 	//[TalonRO Custom - 2018-07-27 - Glorious Claymore - Refine +6 > Gives -10% [Bowling Bash] Casting Time] [Amor]
 	if(EquipNumSearch(1080) && n_A_ActiveSkill == 76){
 		if(n_A_Weapon_ATKplus >= 6) {
@@ -2865,6 +2889,13 @@ function StAllCalc()
 				n_A_MATK[2] += 50;
 				break;
 			}
+	if(EquipNumSearch(1729))
+		for(i=0;i<SQI_Bonus_Effect.length;i++)
+			if(SQI_Bonus_Effect[i]==203) {
+				n_A_MATK[0] += 50;
+				n_A_MATK[2] += 50;
+				break;
+			}
 	//custom TalonRO Magical Booster & Staff of Piercing Combo
 	if(EquipNumSearch(1430)& EquipNumSearch(645)){
 		n_tok[98] += 3 * n_A_Weapon_ATKplus;
@@ -3036,6 +3067,13 @@ function StAllCalc()
 					n_tok[12] += 30;
 				break;
 			}
+	if (EquipNumSearch(1733))
+
+				//alert(n_A_JOB+","+n_A_JobSearch());
+				if (n_A_JOB==41)
+					n_tok[12] += 30;
+				break;
+			
 
 	//custom TalonRO Alca Bringer: +3% ASPD every 2 refines
 	if (EquipNumSearch(1455))
@@ -3246,6 +3284,12 @@ function StAllCalc()
 		if(EquipNumSearch(84))
 			for(i=0;i<SQI_Bonus_Effect.length;i++)
 				if(SQI_Bonus_Effect[i]==106) {
+					w -= 30;
+					break;
+				}
+		if(EquipNumSearch(1742))
+			for(i=0;i<SQI_Bonus_Effect.length;i++)
+				if(SQI_Bonus_Effect[i]==268) {
 					w -= 30;
 					break;
 				}
@@ -3918,6 +3962,15 @@ function StAllCalc()
 	if (EquipNumSearch(927) && n_A_Weapon_ATKplus >= 8) {
 		n_tok[28] += 2 * n_A_Weapon_ATKplus;
 	}
+	
+	// Nibelungen (New) SQI Bonus - Increase damage on large size by 15% when using Brandish Spear
+	if(n_A_ActiveSkill == 308)
+		if(EquipNumSearch(1736))
+			for(i=0;i<SQI_Bonus_Effect.length;i++)
+				if(SQI_Bonus_Effect[i]==327) {
+					n_tok[29] += 15;
+					break;
+				}
 
 	/*
 		Curupira Card (need to be here before the n_tok[340] logic is applied)
@@ -4414,6 +4467,13 @@ function StPlusCalc()
 					wSPC_LUK += 15;
 				break;
 			}
+	if(EquipNumSearch(1733))
+
+				//alert(n_A_JOB+","+n_A_JobSearch());
+				if(n_A_JOB==42)
+					wSPC_LUK += 15;
+				break;
+			
 	//custom TalonRO SQI Bonus Eversong Greaves: [Taekwon Master] +10 DEX
 	if(EquipNumSearch(1383))
 		for(i=0;i<SQI_Bonus_Effect.length;i++)
@@ -4423,6 +4483,11 @@ function StPlusCalc()
 					wSPC_DEX += 10;
 				break;
 			}
+	if(EquipNumSearch(1733))
+		//alert(n_A_JOB+","+n_A_JobSearch());
+		if(n_A_JOB==42)
+			wSPC_DEX += 10;
+		break;
 	//custom King Poring Hat
 	if(EquipNumSearch(1444)){
 		wSPC_DEX += Math.floor(n_A_HEAD_DEF_PLUS/3);

@@ -1773,6 +1773,24 @@ ItemOBJ = [
 ,[1722,62,0,2,0,1,10,0,"Beach Towel","","A colorful beach towel used as protection from the sun.",9,7,19,3,60,4,0]
 ,[1723,50,0,0,0,1,10,1,"Black Tailed Ribbon","","A jet-black ribbon.",19,5,60,5,78,5,0]
 ,[1724,50,0,2,0,0,50,0,"Cookie Hat","","A Hat worn by Cookie Xmas [the idol of Toy Dungeon]. It covers the ears to protect from cold weather.",2,1,11,5,70,5,0]
+,[1725,11,0,180,4,4,150,0,"Twin Fang (New)","","<font color='blue'>SQI</font>",2,5,8,50,9,15,10,20,79,15,0] //custom TalonRO SQI
+,[1726,61,113,8,0,1,400,0,"Aegis Shield (New)*","","<font color='blue'>SQI</font>",1,3,3,5,4,3,19,5,0] //custom TalonRO SQI
+,[1727,10,110,200,4,3,150,0,"Artemis Bow (New)","","<font color='blue'>SQI</font>",4,15,6,20,0] //custom TalonRO SQI
+,[1728,15,117,190,4,3,70,0,"Belmont Whip (New)","","<font color='blue'>SQI</font>",2,10,5,15,6,4,20,3,0] //custom TalonRO SQI
+,[1729,1,50,150,4,3,150,0,"Blade of Angels (New)*","","<font color='blue'>SQI</font>",1,10,3,10,8,40,15,20,14,250,0] //custom TalonRO SQI
+,[1730,6,119,350,4,3,600,0,"Djinn (New)","","<font color='blue'>SQI</font>",5,15,6,20,20,2,194,1,0] //custom TalonRO SQI
+,[1731,14,0,190,4,3,100,0,"Electric Guitar (New)*","","<font color='blue'>SQI</font>",20,4,5,5,4,4,3,4,0]
+,[1732,8,109,350,4,3,150,0,"Evangelist (New)","","<font color='blue'>SQI</font>",4,15,5,15,8,35,20,1,194,1,220,50,0] //custom TalonRO SQI
+,[1733,63,150,4,0,1,150,0,"Eversong Greaves (New)","","Movement speed increased (same as Increase AGI)<BR><font color='blue'>SQI</font><BR>[Taekwon]<BR>MaxHP + 10%<BR>HIT + 25<BR>[Taekwon Master]<BR>MaxHP + 20%",15,20,16,10,17,130,19,10,0] //custom TalonRO SQI
+,[1734,9,143,225,4,3,150,0,"Ghostdancer Staff (New)*","","<font color='blue'>SQI</font>",4,5,5,5,89,15,0] //custom TalonRO SQI
+,[1735,16,144,250,4,3,100,0,"Hira Shurikat (New)*","","Negates the need for ninja stones<br><font color='blue'>SQI</font>",20,4,5,5,15,20,16,20,18,8,77,20,79,20,0] //custom TalonRO SQI
+,[1736,4,107,200,4,3,550,0,"Nibelungen (New)","","Enable to use Level 1 [Enchant Poison]<BR><font color='blue'>SQI</font>",1,5,8,10,12,13,8,40,0] //custom TalonRO SQI
+,[1737,51,145,7,0,1,10,0,"Scouter (New)","","Enable use of [Monster Property]<br>Power Level: &gt;9000<BR><font color='blue'>SQI</font>",5,10,12,25,15,20,16,20,0] //custom TalonRO SQI
+,[1738,10,114,225,4,3,150,0,"Sherwood Bow (New)","","Enable to use [Arrow Crafting]<BR><font color='blue'>SQI</font>",2,5,5,15,9,30,89,20,0] //custom TalonRO SQI
+,[1739,9,111,250,4,3,50,0,"Staff of Magi (New)","","<font color='blue'>SQI</font>",20,3,4,5,5,15,89,20,0] //custom TalonRO SQI
+,[1740,13,115,150,4,3,60,0,"Suiken (New)","","<font color='blue'>SQI</font>",20,1,1,10,5,10,8,40,12,13,0] //custom TalonRO SQI
+,[1741,12,118,350,4,3,80,0,"Tome of Ymir (New)","","<font color='blue'>SQI</font>",4,4,5,15,12,13,89,20,194,1,0] //custom TalonRO SQI
+,[1742,8,112,220,4,3,600,0,"Mjolnir (New)*","","<font color='blue'>SQI</font>",1,5,5,20,6,20,8,30,20,4,220,8,0] //custom TalonRO SQI
 ];
 
 //Test code for finding the values in Skill.js AutoSpellSkill
@@ -3531,6 +3549,24 @@ ItemID = [
 ,[1722,1,2565]
 ,[1723,1,5765]
 ,[1724,1,5260]
+,[1725,1,1290]
+,[1726,1,2150]
+,[1727,1,1745]
+,[1728,1,1990]
+,[1729,1,1190]
+,[1730,1,1320]
+,[1731,1,1913]
+,[1732,1,1549]
+,[1733,1,2480]
+,[1734,1,1651]
+,[1735,1,13320]
+,[1736,1,1430]
+,[1737,1,5600]
+,[1738,1,1746]
+,[1739,1,1650]
+,[1740,1,1840]
+,[1741,1,1590]
+,[1742,1,1530]
 ];
 
 /*

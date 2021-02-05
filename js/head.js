@@ -1921,6 +1921,12 @@ function BattleCalc999()
 						w_DMG[2] = Math.floor(w_DMG[2]/100*140);
 						break;
 					}
+			if(EquipNumSearch(1727))
+				for(i=0;i<SQI_Bonus_Effect.length;i++)
+					if(SQI_Bonus_Effect[i]==183) {
+						w_DMG[2] = Math.floor(w_DMG[2]/100*140);
+						break;
+					}
 
 		w_DMG[2] = tPlusDamCut(w_DMG[2]);
 		w_DMG[0] = w_DMG[1] = w_DMG[2];
@@ -2869,6 +2875,13 @@ function BattleHiDam(){
 		if(EquipNumSearch(1388))
 			for(i=0;i<SQI_Bonus_Effect.length;i++)
 				if(SQI_Bonus_Effect[i]==135) {
+					for(j=0;j<=6;j++)
+						w_HiDam[j] -= Math.floor(w_HiDam[j] * 15 /100);
+					break;
+				}
+		if(EquipNumSearch(1738))
+			for(i=0;i<SQI_Bonus_Effect.length;i++)
+				if(SQI_Bonus_Effect[i]==297) {
 					for(j=0;j<=6;j++)
 						w_HiDam[j] -= Math.floor(w_HiDam[j] * 15 /100);
 					break;
@@ -7577,6 +7590,12 @@ function BattleCalc2(w999)
 				w999 += 100;
 				break;
 			}
+	if(EquipNumSearch(1729))
+		for(i=0;i<SQI_Bonus_Effect.length;i++)
+			if(SQI_Bonus_Effect[i]==207) {
+				w999 += 100;
+				break;
+			}
 
 	if(wBCEDPch==0){
 		if(n_A_ActiveSkill==17 || n_A_ActiveSkill==307)
@@ -7823,11 +7842,23 @@ function BaiCI(wBaiCI)
 					w1 += 25;
 					break;
 				}
+		if(EquipNumSearch(1725))
+			for(i=0;i<SQI_Bonus_Effect.length;i++)
+				if(SQI_Bonus_Effect[i]==169) {
+					w1 += 25;
+					break;
+				}
 	//custom TalonRO SQI Bonus Aegis Shield: Shield Chain damage +10%
 	if(n_A_ActiveSkill == 324)
 		if(EquipNumSearch(1376))
 			for(i=0;i<SQI_Bonus_Effect.length;i++)
 				if(SQI_Bonus_Effect[i]==14) {
+					w1 += 10;
+					break;
+				}
+		if(EquipNumSearch(1726))
+			for(i=0;i<SQI_Bonus_Effect.length;i++)
+				if(SQI_Bonus_Effect[i]==176) {
 					w1 += 10;
 					break;
 				}
@@ -7839,11 +7870,22 @@ function BaiCI(wBaiCI)
 					w1 += 15;
 					break;
 				}
+	//custom TalonRO SQI Base Artemis Bow: Double Strafe damage +10%
+	if(n_A_ActiveSkill == 40)
+		if(EquipNumSearch(1727))
+			w1 += 10;
+			break;
 	//custom TalonRO SQI Bonus Belmont Whip: Throw Arrow damage +35%
 	if(n_A_ActiveSkill == 207)
 		if(EquipNumSearch(1378))
 			for(i=0;i<SQI_Bonus_Effect.length;i++)
 				if(SQI_Bonus_Effect[i]==36) {
+					w1 += 35;
+					break;
+				}
+		if(EquipNumSearch(1728))
+			for(i=0;i<SQI_Bonus_Effect.length;i++)
+				if(SQI_Bonus_Effect[i]==198) {
 					w1 += 35;
 					break;
 				}
