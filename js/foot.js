@@ -1267,12 +1267,14 @@ function StAllCalc()
 		for(i=0;i<SQI_Bonus_Effect.length;i++)
 			if(SQI_Bonus_Effect[i]==235) {
 				//alert(n_A_JOB+","+n_A_JobSearch());
-				if(n_A_JOB==41)
+				if(n_A_JOB==41) {
 					n_tok[15] += 10;
 					n_tok[16] += 10;
-				else if(n_A_JOB==42)
+				}
+				else if(n_A_JOB==42){
 					n_tok[15] += 20;
 					n_tok[16] += 20;
+				}
 				break;
 			}	
 
@@ -2635,6 +2637,7 @@ function StAllCalc()
 		for(i=0;i<SQI_Bonus_Effect.length;i++)
 			if(SQI_Bonus_Effect[i]==325) {
 				n_tok[73] -= 50;
+				break;
 			}
 	}
 	
@@ -2643,13 +2646,10 @@ function StAllCalc()
 		for(i=0;i<SQI_Bonus_Effect.length;i++)
 			if(SQI_Bonus_Effect[i]==329) {
 				n_tok[73] -= 50;
+				break;
 			}
 	}
 
-	if (SQI_Bonus_Effect[i]==325 && n_A_ActiveSkill==73) {
-		n_tok[74] -= 15;
-	}
-	
 	//[TalonRO Custom - 2018-07-27 - Glorious Claymore - Refine +6 > Gives -10% [Bowling Bash] Casting Time] [Amor]
 	if(EquipNumSearch(1080) && n_A_ActiveSkill == 76){
 		if(n_A_Weapon_ATKplus >= 6) {
@@ -3907,6 +3907,7 @@ function StAllCalc()
 				//alert(n_A_JOB+","+n_A_JobSearch());
 				n_tok[297] += 10;
 				n_tok[296] += 10;
+				break;
 			}
 	
 	

@@ -7874,7 +7874,6 @@ function BaiCI(wBaiCI)
 	if(n_A_ActiveSkill == 40)
 		if(EquipNumSearch(1727))
 			w1 += 10;
-			break;
 	//custom TalonRO SQI Bonus Belmont Whip: Throw Arrow damage +35%
 	if(n_A_ActiveSkill == 207)
 		if(EquipNumSearch(1378))
