@@ -3988,7 +3988,7 @@ function StAllCalc()
 	}
 	
 	// Nibelungen (New) SQI Bonus - Increase damage on large size by 15% when using Brandish Spear
-	if(n_A_ActiveSkill == 308)
+	if(n_A_ActiveSkill == 73)
 		if(EquipNumSearch(1736))
 			for(i=0;i<SQI_Bonus_Effect.length;i++)
 				if(SQI_Bonus_Effect[i]==327) {
