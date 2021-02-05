@@ -1774,7 +1774,7 @@ ItemOBJ = [
 ,[1723,50,0,0,0,1,10,1,"Black Tailed Ribbon","","A jet-black ribbon.",19,5,60,5,78,5,0]
 ,[1724,50,0,2,0,0,50,0,"Cookie Hat","","A Hat worn by Cookie Xmas [the idol of Toy Dungeon]. It covers the ears to protect from cold weather.",2,1,11,5,70,5,0]
 ,[1725,11,0,180,4,4,150,0,"Twin Fang (New)","","<font color='blue'>SQI</font>",2,20,8,50,9,15,10,20,79,15,0] //custom TalonRO SQI
-,[1726,61,113,8,0,1,400,0,"Aegis Shield (New)*","","<font color='blue'>SQI</font>",1,3,3,5,4,3,19,10,61,10,62,10,63,10,64,10,194,1,0] //custom TalonRO SQI
+,[1726,61,113,8,0,1,400,0,"Aegis Shield (New)","","<font color='blue'>SQI</font>",1,3,3,5,4,3,19,10,61,10,62,10,63,10,64,10,194,1,0] //custom TalonRO SQI
 ,[1727,10,110,200,4,3,150,0,"Artemis Bow (New)","","<font color='blue'>SQI</font>",4,15,6,20,0] //custom TalonRO SQI
 ,[1728,15,117,190,4,3,70,0,"Belmont Whip (New)","","<font color='blue'>SQI</font>",2,10,5,15,6,4,20,3,0] //custom TalonRO SQI
 ,[1729,1,50,250,4,3,150,0,"Blade of Angels (New)","","<font color='blue'>SQI</font>",1,10,8,50,15,50,14,1250,79,20,89,25,0] //custom TalonRO SQI
