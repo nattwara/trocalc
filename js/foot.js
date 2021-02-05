@@ -2629,9 +2629,25 @@ function StAllCalc()
 	if(EquipNumSearch(1080) && n_A_ActiveSkill == 308){
 		n_tok[73] -= 3 * n_A_Weapon_ATKplus;
 	}
+
+	// Nibelungen SQI - Brandish 50% cast time reduction bonus
+	if (EquipNumSearch(1736) && n_A_ActiveSkill==73) {
+		for(i=0;i<SQI_Bonus_Effect.length;i++)
+			if(SQI_Bonus_Effect[i]==325) {
+				n_tok[73] -= 50;
+			}
+	}
 	
+	// Ghostdancer StaffSQI - Esma 50% cast time reduction bonus
+	if (EquipNumSearch(1734) && n_A_ActiveSkill==375) {
+		for(i=0;i<SQI_Bonus_Effect.length;i++)
+			if(SQI_Bonus_Effect[i]==329) {
+				n_tok[73] -= 50;
+			}
+	}
+
 	if (SQI_Bonus_Effect[i]==325 && n_A_ActiveSkill==73) {
-		n_tok[73] -= 50;
+		n_tok[74] -= 15;
 	}
 	
 	//[TalonRO Custom - 2018-07-27 - Glorious Claymore - Refine +6 > Gives -10% [Bowling Bash] Casting Time] [Amor]
@@ -3883,6 +3899,17 @@ function StAllCalc()
 		n_tok[295] += n_tok[296];
 	if(n_B[19] == 1)
 		n_tok[295] += n_tok[297];
+	
+	// New SQI Bonus - Blade of Angel Ignore 10% MDEF
+	if(EquipNumSearch(1729))
+		for(i=0;i<SQI_Bonus_Effect.length;i++)
+			if(SQI_Bonus_Effect[i]==201) {
+				//alert(n_A_JOB+","+n_A_JobSearch());
+				n_tok[297] += 10;
+				n_tok[296] += 10;
+			}
+	
+	
 	
 	/*
 		Shadow Staff#1713 - [Every Refine Level]

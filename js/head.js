@@ -7859,7 +7859,7 @@ function BaiCI(wBaiCI)
 		if(EquipNumSearch(1726))
 			for(i=0;i<SQI_Bonus_Effect.length;i++)
 				if(SQI_Bonus_Effect[i]==176) {
-					w1 += 10;
+					w1 += 20;
 					break;
 				}
 	//custom TalonRO SQI Bonus Artemis Bow: Double Strafe damage +15%
