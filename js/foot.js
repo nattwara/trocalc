@@ -1938,7 +1938,6 @@ function StAllCalc()
 		//alert(n_A_JOB+","+n_A_JobSearch());
 		if(n_A_JOB==41)
 			n_A_HIT += 40;
-		break;
 			
 
 	if(SU_STR >= 90 && EquipNumSearch(442))
