@@ -4492,11 +4492,9 @@ function StPlusCalc()
 				break;
 			}
 	if(EquipNumSearch(1733))
-
-				//alert(n_A_JOB+","+n_A_JobSearch());
-				if(n_A_JOB==42)
-					wSPC_LUK += 15;
-				break;
+		//alert(n_A_JOB+","+n_A_JobSearch());
+		if(n_A_JOB==42)
+			wSPC_LUK += 15;
 			
 	//custom TalonRO SQI Bonus Eversong Greaves: [Taekwon Master] +10 DEX
 	if(EquipNumSearch(1383))
