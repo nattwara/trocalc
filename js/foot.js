@@ -3083,13 +3083,10 @@ function StAllCalc()
 				break;
 			}
 	if (EquipNumSearch(1733))
-
-				//alert(n_A_JOB+","+n_A_JobSearch());
-				if (n_A_JOB==41)
-					n_tok[12] += 30;
-				break;
+		//alert(n_A_JOB+","+n_A_JobSearch());
+		if (n_A_JOB==41)
+			n_tok[12] += 30;
 			
-
 	//custom TalonRO Alca Bringer: +3% ASPD every 2 refines
 	if (EquipNumSearch(1455))
 		n_tok[12] += 3 * Math.floor(n_A_Weapon_ATKplus / 2);
