@@ -1262,7 +1262,7 @@ function StAllCalc()
 					n_tok[15] += 20;
 				break;
 			}
-	//custom TalonRO SQI Bonus Eversong Greaves: [Taekwon] +10% MaxHP & +10% MaxSP; [Taekwon Master] +20% MaxHP & +20% MaxSP (the actual bonus)
+	//custom TalonRO NEW SQI Bonus Eversong Greaves: [Taekwon] +10% MaxHP & +10% MaxSP; [Taekwon Master] +20% MaxHP & +20% MaxSP (the actual bonus)
 	if(EquipNumSearch(1733))
 		for(i=0;i<SQI_Bonus_Effect.length;i++)
 			if(SQI_Bonus_Effect[i]==235) {
@@ -4491,6 +4491,7 @@ function StPlusCalc()
 					wSPC_LUK += 15;
 				break;
 			}
+			
 	if(EquipNumSearch(1733))
 		//alert(n_A_JOB+","+n_A_JobSearch());
 		if(n_A_JOB==42)
@@ -4509,7 +4510,7 @@ function StPlusCalc()
 		//alert(n_A_JOB+","+n_A_JobSearch());
 		if(n_A_JOB==42)
 			wSPC_DEX += 10;
-		break;
+
 	//custom King Poring Hat
 	if(EquipNumSearch(1444)){
 		wSPC_DEX += Math.floor(n_A_HEAD_DEF_PLUS/3);
